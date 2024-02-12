@@ -1,0 +1,26 @@
+<div class="container mt-5"> <!-- 全体的に上に5つの余白を追加 -->
+  <div class="row">
+    <div class="col-10 mt-4 mx-auto">
+      <h4 class="mb-4" style="font-weight:bold;">🔳マイペットの詳細情報</h4>
+      <div class="row">
+        <%= render partial: 'public/owner/shared/pet_info', locals: { pet: @pet } %>
+        <div class="col-md-6 border text-center" style="background-color: #E6F4FA; position: relative;">
+          <%= image_tag @pet.image, style: "width: 430px; height: 300px; object-fit: cover; display: inline-block; vertical-align: middle; margin-top: 15px;", alt: "ペットの写真" if @pet.image.attached? %> <!-- 画像の上部に20pxの余白を追加 -->
+          <div style="position: absolute; top: -70px; right: 10px;">
+            <%= link_to "マイページに戻る", owner_my_page_path, class: "btn btn-custom btn-lg" %>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-6 text-right mt-4"> <!-- ボタンの位置を少し下げる -->
+          <!-- ペット情報を編集ボタン -->
+          <%= link_to "ペット情報を編集", edit_owner_pet_path(@pet), class: "btn btn-custom-edit btn-lg mr-3" %>
+        </div>
+        <div class="col-md-6 text-left mt-4"> <!-- ボタンの位置を少し下げる -->
+          <!-- ペット情報の削除ボタン -->
+          <%= link_to "ペット情報の削除", owner_pet_path(@pet), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-lg" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

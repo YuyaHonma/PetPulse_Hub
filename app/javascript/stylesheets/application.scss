@@ -1,0 +1,278 @@
+@use '~bootstrap/scss/bootstrap';
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+
+h5{
+  font-size:1.2rem;
+}
+
+h2{
+  font-size:1.2rem;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+p{
+  margin-top:20px;  
+}
+
+small{
+  background:#ADE3FB;
+  color:#ADE3FB;
+  display: block;
+  text-align: center;
+  padding:20px;
+}
+
+#header {
+  background: #ADE3FB; /* 背景色を指定 */
+  color: #000000;
+  text-align: left;
+  padding: 20px;
+}
+
+#header h3 {
+  display: inline-block;
+  color: #000000;
+  font-size: 2rem; /* 例として追加した大きなフォントサイズ（必要に応じて調整） */
+  margin-right: 10px; /* 各要素の右側の余白（必要に応じて調整） */
+  /* letter-spacing: 2px; 文字と文字の間隔（必要に応じて調整） */
+}
+
+#header h6:last-child {
+  font-size: 1rem; /* 例として追加した小さなフォントサイズ（必要に応じて調整） */
+  letter-spacing: 1px; /* 文字と文字の間隔（必要に応じて調整） */
+}
+
+section{
+  padding:30px;
+}
+
+section:nth-child(2n){
+  background:#FFF9E6; 
+}
+
+#main-vidual img{
+  width: 100%;
+}
+
+#page-link{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+#page-link li{
+  list-style: none;
+}
+
+#page-link li a{
+  color: #333;
+  padding:0 20px;
+  text-decoration: none;
+}
+
+#page-link li a::before{
+  content:'▼';
+  font-size:0.8rem;
+  padding:0 10px 0 0;
+  color: #ccc;
+}
+
+#footer{
+  position: relative;
+  z-index: 2;
+}
+
+.larger-text {
+  font-size: 1.5rem; /* 任意の大きさに調整 */
+  margin-right: 10px; /* 適切な右側のマージンに調整 */
+}
+
+.btn {
+  background-color: #3498db; /* ボタンのデフォルトの色（水色） */
+  color: #fff; /* ボタンのテキストの色 */
+}
+
+/* ボタンにホバー効果を追加 */
+.btn:hover {
+  background-color: #2980b9; /* マウスを重ねた時の色 */
+}
+
+.btn-orange {
+  margin-top: 33px;
+  margin-bottom: 33px;
+  background-color: #EA7F32; /* オレンジ色の背景 */
+  color: white; /* ボタンのテキストの色 */
+}
+
+/* オレンジ色のボタンにホバー効果を追加 */
+.btn-orange:hover {
+  background-color: darkorange; /* マウスを重ねた時の色 */
+}
+
+.btn-symptom {
+  background-color: #4CCA38 !important; /* ボタンの背景色を緑色に設定 */
+  color: white !important; /* ボタンのテキストの色を白に設定 */
+}
+
+.btn-success {
+  background-color: #4CCA38;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: green;
+}
+
+.btn-danger {
+  background-color: #EA3D32;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: darkred;
+}
+
+.btn-custom-edit {
+  background-color: #4CCA38;
+  color: #fff;
+  border-color: #4CCA38;
+}
+
+.btn-custom-edit:hover {
+  background-color: #1ea7e1;
+  border-color: #1ea7e1;
+}
+
+/*リンクを右下に固定*/
+#page-top {
+  position: fixed;
+  right: 10px;
+  bottom:30px;
+  z-index: 2;
+    /*はじめは非表示*/
+  opacity: 0;
+  transform: translateY(150px);
+}
+
+/*　上に上がる動き　*/
+#page-top.UpMove{
+  animation: UpAnime 0.5s forwards;
+}
+
+@keyframes UpAnime{
+  from {
+    opacity: 0;
+  transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+  transform: translateY(0);
+  }
+}
+
+/*　下に下がる動き　*/
+#page-top.DownMove{
+  animation: DownAnime 0.5s forwards;
+}
+
+@keyframes DownAnime{
+  from {
+    opacity: 1;
+  transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+  transform: translateY(150px);
+  }
+}
+
+/*画像の切り替えと動き*/
+#page-top a {
+    /*aタグの形状*/
+  display: block;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  text-transform: uppercase; 
+  text-decoration: none;
+  font-size:0.6rem;
+    /*背景画像の指定*/
+  background: url("https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-1-8/img/pagetop_1.png") no-repeat center;
+  background-size: contain;
+}
+
+#page-top.floatAnime a{
+  width: 100px;
+  height: 130px;
+    /*背景画像の指定*/
+  background: url("https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-1-8/img/pagetop_2.png") no-repeat center;
+  background-size: contain;
+    /*アニメーションの指定*/
+  animation: floatAnime 2s linear infinite;
+  opacity: 0;
+}
+
+@keyframes floatAnime {
+  0% { transform: translateX(0); opacity: 0; }
+  25% { transform: translateX(-6px);opacity: 1; }
+  50% { transform: translateX(0) }
+  100% { transform: translateX(6px);opacity: 1; }
+}
+
+/*Page Topと書かれたテキストの位置*/
+#page-top span{
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+}
+
+#header {
+  background: #ADE3FB; /* 背景色を指定 */
+  color: #000000;
+  text-align: left;
+  padding: 20px;
+}
+
+#bottom-left-image {
+  position: fixed;
+  bottom: 70px;
+  left: 70px;
+}
+
+ /* カスタムスタイル */
+    body {
+      background-color: #f8f9fa;
+      color: #343a40;
+    }
+    .post-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .post-image img {
+      transition: transform 0.3s ease-in-out;
+      width: 100%;
+      height: 200%;
+      object-fit: cover; /* 画像を縦横比を保ったまま均一に表示 */
+    }
+    .post-image:hover img {
+      transform: scale(1.05);
+    }
+    .post-image .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .post-image:hover .overlay {
+      opacity: 1;
+    }

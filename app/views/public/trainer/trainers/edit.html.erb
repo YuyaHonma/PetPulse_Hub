@@ -1,0 +1,56 @@
+<%= image_tag "pet_edit.jpeg", style: "width: 100%; height: auto;", alt: "ペット詳細" %>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-10 mt-4 mx-auto">
+      <h4 class="mb-4" style="font-weight:bold;">🔳トレーナー情報の編集</h4>
+      <%= form_with model: @trainer, url: trainer_trainer_path(@trainer), method: :patch, html: { multipart: true } do |f| %>
+        <div class="form-group text-left">
+          <strong><%= f.label :"アイコン写真" %></strong>
+          <div class="custom-file">
+            <%= f.file_field :image, accept: "image/*", class: "custom-file-input", id: "customFile" %>
+            <label class="custom-file-label" for="customFile">ファイルを選択してください</label>
+          </div>
+        </div>
+        <div class="form-group text-left">
+          <strong><%= f.label :"名前" %></strong>
+          <%= f.text_field :name, placeholder: "山田　太郎", class: "form-control" %>
+        </div>
+        <div class="form-group text-left">
+          <strong><%= f.label :"読み方(フリガナ)" %></strong>
+          <%= f.text_field :name_kana, placeholder: "ヤマダ　タロウ", class: "form-control" %>
+        </div>
+        <div class="form-group text-left">
+          <strong><%= f.label :"生年月日" %></strong>
+          <%= f.date_field :birthday, class: "form-control" %>
+        </div>
+        <div class="form-group text-left">
+          <strong><%= f.label :"趣味" %></strong>
+          <%= f.text_field :hobby, placeholder: "旅行・写真・ゲームなど", class: "form-control" %>
+        </div>
+        <div class="form-group text-left">
+          <strong><%= f.label :"ライセンス他" %></strong>
+          <%= f.text_field :license, placeholder: "愛玩動物飼養管理士", class: "form-control" %>
+        </div>
+        <div class="form-group text-left">
+          <%= f.label :"得意なお悩み" %>
+          <br>
+          <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+            <%= b.check_box %>
+            <%= b.label %><br>
+          <% end %>
+        </div>
+        <div class="form-group text-left">
+          <%= f.label :"愛犬家の方へのメッセージ" %>
+          <%= f.text_area :message, class: 'form-control message' %>
+        </div>
+        <div class="mt-4 text-center">
+          <%= f.submit "変更を更新する", class: "btn btn-primary btn-lg mt-4", style: "width: 300px;" %>
+        </div>
+      <% end %>
+      <div class="row mt-4">
+        <div class="col-12">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+</div>

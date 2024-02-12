@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h2 class="mt-5" style="font-weight:bold; font-family:serif; font-size:45px; "><strong>🐶お悩み一覧・追加🐾</strong></h2>
+        <%= render 'public/trainer/shared/form_category', category: @category %>
+      <div id='category_index'>
+        <%= render 'public/trainer/shared/info_category', categorys: @categorys %>
+      </div>
+    </div>
+  </div>
+</div>

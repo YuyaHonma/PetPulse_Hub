@@ -1,0 +1,31 @@
+<table>
+  <tbody>
+    <% post.advices.each do |advice| %>
+    <tr>
+      <td>
+        <%= link_to trainer_trainer_path(advice.trainer) do %>
+          <% if advice.trainer.image.attached? %>
+            <%= image_tag advice.trainer.image, size: "150x150" %><br>
+          <% else %>
+            <%= image_tag "no_image.jpg", size: "150x150" %><br>
+          <% end %>
+          <%= advice.trainer.name %>トレーナー
+        <% end %>
+      </td>
+      <td style="padding-left: 50px; padding-right: 30px;">
+        <% advice.advice.chars.each_slice(40) do |slice| %>
+          <%= slice.join %><br>
+        <% end %>
+      </td>
+      <td>
+        <% if current_trainer == advice.trainer && current_trainer.present? %>
+          <%# Check if the current user is the same as the trainer who provided the advice and if it's a trainer %>
+          <%= link_to "削除する", trainer_post_advice_path(post, advice), method: :delete, class: "btn btn-danger btn-lg d-inline-block float-end" %>
+        <% elsif current_owner.nil? %>
+          <%# Hide delete button for owner %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

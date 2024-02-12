@@ -1,0 +1,12 @@
+// Place all the styles related to the public/owner/homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+btn-orange {
+  background-color: orange; /* オレンジ色の背景 */
+  color: white; /* ボタンのテキストの色 */
+}
+
+/* オレンジ色のボタンにホバー効果を追加 */
+.btn-orange:hover {
+  background-color: darkorange; /* マウスを重ねた時の色 */
+}

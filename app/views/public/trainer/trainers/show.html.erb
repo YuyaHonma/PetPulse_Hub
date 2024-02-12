@@ -1,0 +1,82 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-10 mt-4 mx-auto">
+      <h4 class="mb-4" style="font-weight:bold;">🔳トレーナー情報確認</h4>
+      <table class="table table-bordered table-condensed" style="background-color: #D8FFF1;">
+        <tbody>
+          <tr>
+            <th style="background-color: #00D7F4; width: 20%;">名前</th>
+            <td><%= @trainer.name %></td>
+          </tr>
+          <tr>
+            <th style="background-color: #00D7F4;">カナ</th>
+            <td><%= @trainer.name_kana %></td>
+          </tr>
+          <tr>
+            <th style="background-color: #00D7F4;">お住まい</th>
+            <td><%= @trainer.address %></td>
+          </tr>
+          <tr>
+            <th style="background-color: #00D7F4;">電話番号</th>
+            <td><%= @trainer.telephone %></td>
+          </tr>
+          <tr>
+            <th style="background-color: #00D7F4;">メールアドレス</th>
+            <td><%= @trainer.email %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% if trainer_signed_in? %>
+        <div class="d-flex justify-content-center mt-4"> <!-- 余白を減らしています -->
+          <%= link_to "トレーナー情報編集", edit_trainer_trainer_path, class: "btn btn-primary btn-sm d-flex align-items-center justify-content-center", style: "width: 200px; height: 50px; border-radius: 10px; background-color: #37C1FF;" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <h4 class="mb-4" style="font-weight:bold;">🔳トレーナー情報詳細</h4>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>ドッグトレーナー</th>
+            <td><%= @trainer.name %>(<%= @trainer.name_kana %>)</td>
+          </tr>
+          <tr>
+            <th>趣味</th>
+            <td><%= @trainer.hobby %></td>
+          </tr>
+          <tr>
+            <th>生年月日</th>
+            <td><%= @trainer.birthday %></td>
+          </tr>
+          <tr>
+            <th>得意なお悩み</th>
+            <td>
+              <% @trainer.categories.each do |category| %>
+                <%= category.name %>,
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>ライセンス他</th>
+            <td><%= @trainer.license %></td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 class="mb-4" style="font-weight:bold;">愛犬家へのメッセージ</h4>
+      <p><%= @trainer.message %></p>
+    </div>
+    <div class="col-md-6 d-flex align-items-center justify-content-center">
+  <% if @trainer.image.present? %>
+    <%= image_tag @trainer.image, style: "max-height: 400px; width: 450px;", alt: "トレーナーのアイコン写真" %>
+  <% else %>
+    <p>画像がありません</p>
+  <% end %>
+</div>
+
+  </div>
+</div>

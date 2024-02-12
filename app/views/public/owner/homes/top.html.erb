@@ -1,0 +1,117 @@
+<ul id="page-link">
+  <li><a href="#area-1"><strong>新着情報</strong></a></li>
+  <li><a href="#area-2"><strong>オススメトレーナー</strong></a></li>
+  <li><a href="#area-3"><strong>よくあるお悩み</strong></a></li>
+</ul>
+
+<%= image_tag "top1.jpg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
+
+<div class="container">
+  <div class="row" style="margin-top: 50px;">
+    <!-- 左側のイラスト -->
+    <div class="col-3" style="margin-left: -80px;">
+      <%= image_tag "top_image.png", style: "width: 420px; height: 400px;", alt: "トップ画像" %>
+    </div>
+    <div class="col-1"></div>
+    <!-- 右側のテキスト -->
+    <div class="col-8 mb-5">
+      <h1 style="white-space: nowrap; font-size: 35px;"><strong>「すべてはペットとペットを愛する人のために。」</strong></h1>
+      <p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 40px;"><strong>　小さな「子供」のように笑顔をもたらしてくれる存在。</strong></p>
+      <p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 10px;"><strong>　仲の良い「兄弟」のように、一緒に遊び、成長する存在。</strong></p>
+      <p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 10px;"><strong>　長年の「パートナー」のように、落ち込んだ心を慰め、元気づけてくれる存在。</strong></p>
+      <p style="white-space: nowrap; font-size: 17px; margin-left: 1em; margin-top: 50px">ペットは大切な家族の一員であり、人生をともに歩む愛すべきパートナーです。</p>
+      <p style="white-space: nowrap; font-size: 17px; margin-left: 1em;">出会いから健やかな日々の暮らしまで、すべてはペットとペットを愛する人のために。</p>
+      <p style="white-space: nowrap; font-size: 17px; margin-left: 1em;">わたしたちは、ペットライフをランクアップさせる便利でやさしいサービスの提供を目指しています。</p>
+    </div>
+  </div>
+</div>
+
+<section class="area" id="area-1">
+  <h1><strong>新着情報</strong></h1>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <% @posts.each_slice(4) do |slice| %>
+        <div class="row">
+          <% slice.each do |post| %>
+            <div class="col-md-3 mb-4"> <!-- col-md-4 を追加 -->
+              <%= link_to owner_post_path(post) do %>
+                <%= image_tag post.image, style: "width: 250px; height: 250px;", alt: "投稿画像" %>
+              <% end %>
+              <p class="text-left"> <!-- 中央揃え -->
+                <strong>投稿者:</strong>
+                <%= link_to post.owner.name, owner_my_page_path(post.owner) %></br>
+                <strong>カテゴリー:</strong>
+                <%= link_to post.category.name, owner_category_path(post.category) %>
+              </p>
+              <% truncated_content = truncate(post.introduction, length: 30, separator: ' ') %>
+              <% truncated_content.scan(/.{1,10}/).each do |line| %> <!-- 10文字ごとに改行 -->
+                <p class="text-center" style="font-size: 18px;"><%= line %></p> <!-- 文字サイズを大きく -->
+              <% end %>
+            </div>
+          <% end %>
+          <% unless slice == @posts.last(3) %>
+            <div class="col-md-4 mb-4"></div> <!-- スペースを作成 -->
+            <div class="col-md-4 mb-4"></div> <!-- スペースを作成 -->
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+
+<section class="area mt-4 mb-5" id="area-2">
+  <h1><strong>オススメトレーナー</strong></h1>
+  <div class="row justify-content-center">
+    <div class="col-10 mt-4">
+      <% @trainers.each_slice(3) do |slice| %>
+        <div class="row">
+          <% slice.each do |trainer| %>
+            <div class="col-md-4 mb-4">
+              <%= link_to owner_trainer_path(trainer) do %>
+                <% if trainer.image.attached? %>
+                  <%= image_tag trainer.image, style: "width: 250px; height: 250px;", alt: "トレーナー画像" %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg', style: "width: 250px; height: 250px;", alt: "デフォルト画像" %>
+                <% end %>
+              <% end %>
+              <p style="line-height: 1.2;"><strong><%= "#{trainer.name} トレーナー" %></strong></p> <!-- 行間を縮める -->
+              <% if trainer.message.present? %>
+                <% truncated_message = truncate(trainer.message, length: 30, separator: ' ') %>
+                <% if truncated_message.present? %>
+                  <% truncated_message.scan(/.{1,10}/).each do |line| %>
+                    <p style="font-size: 18px; line-height: 1.0;"><%= line %></p> <!-- 行間を縮める -->
+                  <% end %>
+                <% end %>
+              <% end %>
+              <%= link_to "詳しく見る", owner_trainer_path(trainer), class: "btn btn-primary btn-sm" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-4"></div> <!-- スペースを作成 -->
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="area mt-5" id="area-3">
+  <div class="container">
+    <h2 class="text-center mb-4"><strong>よくあるお悩み</strong></h2>
+    <div class="row">
+      <% @categorys.each do |category| %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center"><%= category.name %></h5>
+              <p class="card-text">カテゴリーに関する説明などが入ります。</p>
+              <%= link_to "詳しく見る", owner_category_path(category), class: "btn btn-primary btn-sm btn-block" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%= render partial: 'public/owner/shared/new_post_path' %>

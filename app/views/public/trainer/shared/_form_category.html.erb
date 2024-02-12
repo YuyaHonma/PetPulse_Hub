@@ -1,0 +1,15 @@
+<%= form_with model: category, url: trainer_categorys_path, method: :post, local: true do |f| %>
+  <div class="form-row align-items-center mt-4">
+    <div class="col-md-3 mb-2">
+      <%= f.label :name, "お悩み追加", class: "text-md-right", style: "font-size: 22px; font-weight:bold; " %>
+    </div>
+    <div class="col-md-6 mb-2">
+      <%= f.text_field :name, placeholder: 'トイレ', class: "form-control" %>
+    </div>
+    <div class="col-md-3 mb-2 pl-5">
+      <button type="submit" class="btn btn-success btn-sm" style="width: 170px; height: 40px; border-radius: 12px;">
+        <i class="fa-solid fa-plus fa-lg"></i>
+      </button>
+    </div>
+  </div>
+<% end %>

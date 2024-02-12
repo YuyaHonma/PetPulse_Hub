@@ -1,0 +1,49 @@
+<%= image_tag "new_post.jpeg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
+
+<div class="container mt-4 mb-3">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div style="margin-top: 20px; text-align: center; font-weight:bold;">
+        <h1><strong>🐾ご相談フォーム🐾</strong></h1>
+      </div>
+      <div class="row mt-4"></div>
+      <%= form_with(model: @post, url: owner_posts_path, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "しつけに関するお悩み" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "例: 散歩中に引っ張る問題があります" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :category_id, "相談したいお悩み内容" %>
+    <%= f.select :category_id, options_for_select(Category.all.map{ |category| [category.name, category.id] }, selected: nil), {}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image, "画像を添付" %>
+    <%= f.file_field :image, class: "form-control" %>
+    <small id="imagesHelp" class="form-text text-muted">画像を一枚選択してください。</small>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :introduction, "ご相談内容" %>
+    <%= f.text_area :introduction, class: "form-control", placeholder: "例: 最近、散歩中に他の犬に興味を持って引っ張るようになりました。どのように対処したらよいでしょうか？", rows: 5 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_approach, "今行っている対策" %>
+    <%= f.text_area :current_approach, class: "form-control", placeholder: "例: 現在はリードを引っ張ったら立ち止まるようにトレーニング中です。", rows: 3 %>
+  </div>
+
+  <div class="text-center mt-4">
+    <% if @post.new_record? %>
+      <%= f.submit "投稿", class: "btn btn-primary btn-lg px-5 mt-4 mb-4" %>
+    <% else %>
+      <%= f.submit "更新", class: "btn btn-primary btn-lg px-5 mt-4 mb-4" %>
+    <% end %>
+  </div>
+<% end %>
+
+    </div>
+  </div>
+  <div class="row mt-4"></div> <!-- 余白を追加 -->
+</div>

@@ -1,0 +1,41 @@
+<header id="header" style="display: flex; align-items: center;">
+  <%= link_to trainer_trainer_root_path do %>
+    <h3 class="larger-text">PetPulse Hub</h3>
+  <% end %>
+  <h5 style="margin-left: 10px; margin-top: 10px;">日本最大級のオンラインドッグトレーニングサイト</h5>
+  <% if trainer_signed_in? %>
+    <p class="text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px;">
+      Welcome to <%= current_trainer.name %>！
+    </p>
+    
+    <div class="ml-auto">
+      <%= link_to trainer_posts_path, class: "btn btn-outline-light rounded-pill mr-2 md-3", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-user mr-2"></i>Posts
+      <% end %>
+      <%= link_to trainer_trainers_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-address-card mr-2"></i>Trainers
+      <% end %>
+      <%= link_to trainer_categorys_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-shield-dog mr-2"></i>Ploblem
+      <% end %>
+      <%= link_to destroy_trainer_session_path, method: :delete, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-right-from-bracket mr-2"></i>Log Out
+      <% end %>
+    </div>
+  <% else %>
+    <div class="ml-auto">
+      <%= link_to trainer_trainers_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-hand-holding-heart mr-2"></i> Trainers
+      <% end %>
+      <%= link_to trainer_posts_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-list mr-2"></i> Posts
+      <% end %>
+      <%= link_to trainer_categorys_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-shield-dog mr-2"></i></i> Ploblem
+      <% end %>
+      <%= link_to new_trainer_session_path, class: "btn btn-outline-light rounded-pill mr-2", :style => "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-user-plus mr-1"></i> Log in
+      <% end %>
+    </div>
+  <% end %>
+</header>

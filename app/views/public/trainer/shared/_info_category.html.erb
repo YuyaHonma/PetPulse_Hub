@@ -1,0 +1,19 @@
+<table class="table border-top border-bottom table-condensed mt-4" style="background-color: #fffaf0;">
+  <thead class="thead-center">
+    <tr>
+      <th class="text-center" style="background-color: #ccc8c0; padding-right: 50px;">お悩み内容</th>
+      <th class="text-center" style="background-color: #ccc8c0; "></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% categorys.each do |category| %>
+      <tr>
+        <td class="text-center align-middle" style="padding-right: 50px; font-weight:bold;"><%= category.name %></td>
+        <td class="text-center align-middle" style="color:#A07B35; font-family: serif; font-weight:bold;">
+          <%= link_to '<i class="fa-solid fa-pen-to-square fa-lg"></i>'.html_safe, edit_trainer_category_path(category.id), class: "btn btn-success btn-sm", style: "width: 120px; height: 40px; border-radius: 12px; line-height:30px;" %>
+          <%= link_to '<i class="fa-solid fa-trash fa-lg"></i>'.html_safe, trainer_category_path(category), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm", style: "width: 120px; height: 40px; border-radius: 12px; line-height:30px;" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

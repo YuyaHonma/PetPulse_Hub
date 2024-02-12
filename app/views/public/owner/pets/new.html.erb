@@ -1,0 +1,16 @@
+<%= image_tag "pet_create.jpeg", style: "width: 100%; height: auto;", alt: "ペット画像" %>
+<% if @pet.errors.any? %>
+  <div class="alert alert-danger">
+    <h4><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h4>
+    <ul>
+      <% @pet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="container">
+  <div class="row mt-4">
+    <%= render partial: 'public/owner/shared/pet_form', locals: { pet: @pet, title: '🔳マイペット新規登録', url: owner_my_page_path, method: :post, new_registration: @new_registration } %>
+  </div>
+</div>

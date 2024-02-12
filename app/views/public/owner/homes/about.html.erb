@@ -1,0 +1,42 @@
+<div style="position: relative; width: 100%; height: auto;">
+  <%= image_tag "about1.jpeg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
+  <div style="position: absolute; bottom: 10px; left: 50px; padding: 10px;">
+    <p style="margin: 0; font-size: 72px; font-family: serif; letter-spacing: 2px;">Concept</p>
+  </div>
+</div>
+
+<div style="margin-top: 50px; line-height: 2; font-size: 20px; font-family: serif; font-weight: bold; text-align: center;">
+  <h1 style="margin-bottom: 30px;">ペットの幸せのために。</h1>
+  <h2 style="font-size: 30px;">ペットとの暮らしは楽しいけれど、時に悩みもつきもの。<br><br>
+    当サイトでは、経験豊かなトレーナーが丁寧にサポート。<br><br>
+    カテゴリーごとに分かりやすく、あなたのペットの健康と幸福を共に考えます。</h2>
+</div>
+
+<div style="margin-top: 90px; line-height: 2; font-size: 20px; font-family: serif; font-weight: bold; text-align: center;">
+  <h2 style="font-size: 40px;">ペットの喜ぶ顔を増やす場所。<br><br>
+    専門家のサポートでペットとの絆を深めましょう。<br><br>
+    PetPulse Hubがあなたのペットライフをサポートします。</h2>
+</div>
+
+<%= image_tag "about2.jpeg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
+
+<div style="margin-top: 50px; line-height: 2; font-size: 20px; font-family: serif; font-weight: bold; text-align: center;">
+  <h1 style="margin-bottom: 30px; font-weight: bold; font-size: 50px;">想い</h1>
+  <h2 style="font-size: 40px; line-height: 2;">
+    PetPulse Hubは、ペット愛好者のコミュニティで、<br>
+    あなたのペットとの日常に彩りを添えます。<br>
+    トレーナーと共に学び、情報を分かち合い、<br>
+    ペットたちとの絆をより深めるお手伝いをします。<br>
+    一緒に、ペットとの素敵な時間を創り出しましょう。</h2>
+</div>
+
+<div style="margin-top: 80px; line-height: 2; font-size: 20px; font-family: serif; font-weight: bold; text-align: center;">
+  <h1 style="margin-top: 20px; font-weight: bold; font-size: 50px;">ログイン</h1>
+  <div style="width: 800px; height: 300px; border: 2px solid black; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; margin: 0 auto;">
+    <p style="font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 10px; margin-top: 20px;">↓↓ 飼い主の方はこちら ↓↓</p>
+    <%= link_to new_owner_session_path do %>
+      <%= image_tag "login.jpeg", style: "width: 500px; height: 200px;", alt: "ログイン" %>
+    <% end %>
+  </div>
+</div>
+<%= render partial: 'public/owner/shared/new_post_path' %>

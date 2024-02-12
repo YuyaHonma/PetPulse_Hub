@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h2 class="mb-4" style="font-weight:bold; font-size:45px; text-align: center;"><strong>お悩み内容変更</strong></h2>
+
+      <%= form_with model: @category, url: trainer_category_path, method: :patch do |f| %>
+        <div class="form-row align-items-center">
+          <div class="col-md-3 mb-1 text-md-right mx-auto">
+            <%= f.label :name, "ジャンル名" %>
+          </div>
+          <div class="col-md-5 mb-1 mx-auto">
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="col-md-2 mb-2 mx-auto">
+            <button type="submit" class="btn btn-success btn-block" style="border-radius: 12px;" onclick="submitForm()">
+              <i class="fa-solid fa-pen-nib fa-lg"></i>
+            </button>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function submitForm() {
+    document.querySelector('form').submit();
+  }
+</script>

@@ -1,0 +1,41 @@
+<header id="header" style="display: flex; align-items: center;">
+  <%= link_to owner_owner_root_path do %>
+    <h3 class="larger-text">PetPulse Hub</h3>
+  <% end %>
+  <h5 style="margin-left: 10px; margin-top: 10px;">日本最大級のオンラインドッグトレーニングサイト</h5>
+  <% if owner_signed_in? %>
+    <p class="text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px;">
+      Welcome to <%= current_owner.name %>！
+  </p>
+    
+    <div class="ml-auto">
+      <%= link_to owner_my_page_path, class: "btn btn-outline-light rounded-pill mr-2 md-3", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-user mr-2"></i>Mypage
+      <% end %>
+      <%= link_to owner_trainers_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-address-card mr-2"></i>Trainers
+      <% end %>
+      <%= link_to owner_posts_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-cake-candles mr-2"></i>Posts
+      <% end %>
+      <%= link_to destroy_owner_session_path, method: :delete, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-right-from-bracket mr-2"></i>Log Out
+      <% end %>
+    </div>
+  <% else %>
+    <div class="ml-auto">
+      <%= link_to owner_homes_about_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-hand-holding-heart mr-2"></i> Concept
+      <% end %>
+      <%= link_to owner_posts_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-list mr-2"></i> Posts
+      <% end %>
+      <%= link_to new_owner_session_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i> Log In
+      <% end %>
+      <%= link_to new_owner_registration_path, class: "btn btn-outline-light rounded-pill mr-2", :style => "font-family:'Times New Roman'; font-size:20px;" do %>
+        <i class="fa-solid fa-user-plus mr-1"></i> Sign Up
+      <% end %>
+    </div>
+  <% end %>
+</header>

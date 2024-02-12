@@ -1,0 +1,71 @@
+<ul id="page-link">
+      <li><a href="#area-1">お悩み一覧</a></li>
+      <li><a href="#area-2">トレーナー一覧</a></li>
+    </ul>
+    <%= image_tag "trainer_top.jpg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
+    <div class="container">
+  <div class="row", style="margin-top: 50px;">
+    <!-- 左側のイラスト -->
+    <div class="col-3", style="margin-left: -60px;">
+      <%= image_tag "top_image.jpg", style: "width: 400px; height: 400px;", alt: "トップ画像" %>
+    </div>
+    <div class="col-1"></div>
+    <!-- 右側のテキスト -->
+    <div class="col-8">
+  <h1 style="white-space: nowrap; font-size: 35px;"><strong>「すべてはペットとペットを愛する人のために。」</strong></h1>
+  <p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 40px;"><strong>　小さな「子供」のように笑顔をもたらしてくれる存在。</strong></p>
+<p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 10px;"><strong>　仲の良い「兄弟」のように、一緒に遊び、成長する存在。</strong></p>
+<p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 10px;"><strong>　長年の「パートナー」のように、落ち込んだ心を慰め、元気づけてくれる存在。</strong></p>
+<p style="white-space: nowrap; font-size: 17px; margin-left: 1em; margin-top: 50px">ペットは大切な家族の一員であり、人生をともに歩む愛すべきパートナーです。</p>
+<p style="white-space: nowrap; font-size: 17px; margin-left: 1em;">出会いから健やかな日々の暮らしまで、すべてはペットとペットを愛する人のために。</p>
+<p style="white-space: nowrap; font-size: 17px; margin-left: 1em;">わたしたちは、ペットライフをランクアップさせる便利でやさしいサービスの提供を目指しています。</p>
+</div>
+  </div>
+</div>
+    <section class="area" id="area-1">
+  <h1><strong>新着お悩み一覧</strong></h1>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <% @posts.each_slice(3) do |slice| %>
+        <div class="row">
+          <% slice.each do |post| %>
+            <div class="col-md-4 mb-4"> <!-- col-md-4 を追加 -->
+              <%= link_to trainer_post_path(post) do %>
+                <%= image_tag post.image, style: "width: 100%; height: auto;", alt: "投稿画像" %>
+              <% end %>
+              <p class="text-center"> <!-- 中央揃え -->
+                <strong>投稿者:</strong>
+                <%= post.owner.name %>
+                <strong style="margin-left: 10px;">カテゴリー:</strong>
+                <%= post.category.name %>
+              </p>
+              <% truncated_content = truncate(post.introduction, length: 30, separator: ' ') %>
+              <% truncated_content.scan(/.{1,10}/).each do |line| %> <!-- 10文字ごとに改行 -->
+                <p class="text-center" style="font-size: 18px;"><%= line %></p> <!-- 文字サイズを大きく -->
+              <% end %>
+            </div>
+          <% end %>
+          <% unless slice == @posts.last(3) %>
+            <div class="col-md-4 mb-4"></div> <!-- スペースを作成 -->
+            <div class="col-md-4 mb-4"></div> <!-- スペースを作成 -->
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <p class="text-center"><%= link_to "一覧を見る", trainer_posts_path %></p>
+    </div>
+  </div>
+</section>
+
+      <section class="area" id="area-2">
+      <h2>トレーナー一覧</h2>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+
+    <!--/area2--></section>

@@ -1,0 +1,25 @@
+<h1>DOG TRAINER</h1>
+<h2 class="text-center">トレーナー一覧</h2>
+
+<div class="trainer-list mx-3 justify-content-center"> <!-- 左右の余白と中央揃え -->
+  <div class="row">
+    <% @trainers.each_with_index do |trainer, index| %>
+      <div class="col-md-2 mb-3 trainer-info<%= ' new-row' if index % 4 == 0 %>">
+        <div class="card">
+          <% if trainer.image.attached? %>
+            <%= image_tag(trainer.image, class: "card-img-top trainer-photo") %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200", class: "card-img-top trainer-photo" %>
+          <% end %>
+          <div class="card-body">
+            <h3 class="card-title"><%= trainer.name %> トレーナー</h3>
+            <p class="card-text"><%= trainer.message %></p>
+            <%= link_to "詳しく見る", trainer_trainer_path(trainer), class: "btn btn-primary btn-lg rounded-pill d-block mx-auto" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= paginate @trainers, theme: 'twitter-bootstrap-4' %>

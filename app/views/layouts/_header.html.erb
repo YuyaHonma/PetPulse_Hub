@@ -1,0 +1,7 @@
+<% if controller_path.start_with?("public/owner") %>
+  <%= render 'layouts/owner_header' %>
+<% elsif controller_path.start_with?("public/trainer") %>
+  <%= render 'layouts/trainer_header' %>
+<% elsif controller_path.start_with?("admin") %>
+  <%= render 'layouts/admin_header' %>
+<% end %>
