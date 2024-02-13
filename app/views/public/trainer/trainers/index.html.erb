@@ -4,20 +4,25 @@
 <div class="trainer-list mx-3 justify-content-center"> <!-- 左右の余白と中央揃え -->
   <div class="row">
     <% @trainers.each_with_index do |trainer, index| %>
-      <div class="col-md-2 mb-3 trainer-info<%= ' new-row' if index % 4 == 0 %>">
-        <div class="card">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
           <% if trainer.image.attached? %>
-            <%= image_tag(trainer.image, class: "card-img-top trainer-photo") %>
+            <%= image_tag(trainer.image, class: "card-img-top trainer-photo", style: "object-fit: cover; height: 200px;") %>
           <% else %>
-            <%= image_tag 'no_image', size: "200x200", class: "card-img-top trainer-photo" %>
+            <%= image_tag 'no_image', size: "200x200", class: "card-img-top trainer-photo", style: "object-fit: cover;" %>
           <% end %>
           <div class="card-body">
-            <h3 class="card-title"><%= trainer.name %> トレーナー</h3>
+            <h3 class="card-title text-center"><%= trainer.name %> トレーナー</h3>
             <p class="card-text"><%= trainer.message %></p>
-            <%= link_to "詳しく見る", trainer_trainer_path(trainer), class: "btn btn-primary btn-lg rounded-pill d-block mx-auto" %>
+            <div class="text-center">
+              <%= link_to "詳しく見る", trainer_trainer_path(trainer), class: "btn btn-primary rounded-pill" %>
+            </div>
           </div>
         </div>
       </div>
+      <% if (index + 1) % 3 == 0 %>
+        </div><div class="row">
+      <% end %>
     <% end %>
   </div>
 </div>

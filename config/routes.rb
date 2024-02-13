@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 }
   
   scope module: :public do
+    
     namespace :owner do
     #トップページ
     root to: "homes#top", as: :owner_root
@@ -54,10 +55,17 @@ Rails.application.routes.draw do
     get 'owner/owners/:id/search' => 'searches#search_category'
     
     resources :trainers, only: [:index, :show]
+    # DM
+    resources :rooms, only: [:show, :create] do
+    resources :messages, only: [:show, :create]
     end
   end
+end
   
     scope module: :public do
+    # トップページ
+    root to: "homes#top"
+    
       namespace :trainer do
     # トップページ
     root to: "homes#top", as: :trainer_root
@@ -67,9 +75,13 @@ Rails.application.routes.draw do
     resources :categorys, only: [:index, :create, :edit, :update, :destroy]
     # 投稿
     resources :posts, only: [:index, :show] do
-    resource :favorites, only: [:create, :destroy]
-    resources :advices, only: [:create, :destroy]
-      end
+      resource :favorites, only: [:create, :destroy]
+      resources :advices, only: [:create, :destroy]
+    end
+      
+    resources :rooms, only: [:show, :create] do
+      resources :messages, only: [:show, :create]
+     end
     end
   end
   
@@ -80,6 +92,7 @@ Rails.application.routes.draw do
      resources :owners, only: [:show, :edit, :update]
      
      resources :trainers, only: [:show, :edit, :update]
+     
    end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

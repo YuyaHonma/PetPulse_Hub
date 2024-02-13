@@ -2,8 +2,8 @@ class Public::Owner::OwnersController < ApplicationController
   
   def show
     @owner = current_owner
-  @pet = current_owner.pets if current_owner.present?
-  @new_registration = true # 新規登録フォームを表示する
+    @pet = current_owner.pets if current_owner.present?
+    @new_registration = true # 新規登録フォームを表示する
   end
     
   def edit

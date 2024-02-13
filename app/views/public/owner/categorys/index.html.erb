@@ -1,0 +1,52 @@
+<div class="container pb-4">
+    <h1 class="text-center mb-4 mt-4"><strong>よくあるお悩み一覧</strong></h1>
+    <div class="row justify-content-center">
+      <% @categorys.each do |category| %>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card category-card">
+            <div class="card-body d-flex justify-content-center align-items-center" style="cursor: pointer; height: 300px;">
+              <h5 class="card-title text-center category-name">
+                <%= link_to category.name, owner_category_path(category), class: "category-link" %>
+              </h5>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+<style>
+  .category-card {
+    height: 300px; /* 正方形に調整 */
+    overflow: hidden;
+  }
+
+  .category-name {
+    font-size: 48px;
+    transition: font-size 0.3s ease;
+    margin: 0; /* カテゴリー名の余白を削除 */
+  }
+
+  .category-card:hover .category-name {
+    font-size: 72px;
+  }
+  
+  .category-name {
+    font-size: 48px;
+    transition: font-size 0.3s ease;
+    text-decoration: none;
+  }
+
+  .category-link {
+    color: #333;
+    border: 2px solid #333;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .category-link:hover {
+    background-color: #333;
+    color: #fff;
+  }
+</style>

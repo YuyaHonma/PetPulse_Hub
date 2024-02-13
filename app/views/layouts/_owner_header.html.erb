@@ -1,41 +1,131 @@
-<header id="header" style="display: flex; align-items: center;">
-  <%= link_to owner_owner_root_path do %>
-    <h3 class="larger-text">PetPulse Hub</h3>
-  <% end %>
-  <h5 style="margin-left: 10px; margin-top: 10px;">日本最大級のオンラインドッグトレーニングサイト</h5>
-  <% if owner_signed_in? %>
-    <p class="text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px;">
-      Welcome to <%= current_owner.name %>！
-  </p>
-    
-    <div class="ml-auto">
-      <%= link_to owner_my_page_path, class: "btn btn-outline-light rounded-pill mr-2 md-3", style: "font-family:'Times New Roman'; font-size:20px;" do %>
-        <i class="fa-solid fa-user mr-2"></i>Mypage
-      <% end %>
-      <%= link_to owner_trainers_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
-        <i class="fa-solid fa-address-card mr-2"></i>Trainers
-      <% end %>
-      <%= link_to owner_posts_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
-        <i class="fa-solid fa-cake-candles mr-2"></i>Posts
-      <% end %>
-      <%= link_to destroy_owner_session_path, method: :delete, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
-        <i class="fa-solid fa-right-from-bracket mr-2"></i>Log Out
-      <% end %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetPulse Hub</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ADE3FB; /* 背景色を #ADE3FB に設定 */
+      font-family: 'Nunito', sans-serif; /* フォントをNunitoに設定 */
+    }
+    .navbar {
+      background-color: transparent !important; /* ヘッダーの背景色を透明に設定 */
+      transition: background-color 0.3s; /* 背景色にアニメーションを追加 */
+      height: 100px; /* ヘッダーの高さを設定 */
+    }
+    .navbar.scrolled {
+      background-color: #ffffff !important; /* スクロール時の背景色を白に設定 */
+    }
+    .navbar-brand {
+      font-size: 36px; /* ロゴのフォントサイズを調整 */
+      font-weight: bold;
+      color: #343a40; /* ロゴの文字色を設定 */
+    }
+    .navbar-toggler {
+      border: none; /* ハンバーガーアイコンのボーダーを削除 */
+      outline: none; /* ハンバーガーアイコンのアウトラインを削除 */
+    }
+    .navbar-toggler-icon {
+      font-size: 36px; /* ハンバーガーアイコンのサイズを調整 */
+      color: #343a40; /* ハンバーガーアイコンの色を設定 */
+    }
+    .navbar-collapse {
+      justify-content: flex-end; /* メニューを右寄せにする */
+    }
+    .navbar-text {
+      margin-left: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+    .navbar-nav .nav-link {
+      font-family: 'Times New Roman';
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/owner">PetPulse Hub</a>
+    <a class="navbar-text">日本最大級のオンラインドッグトレーニングサイト</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <% if owner_signed_in? %>
+          <li class="nav-item">
+            <%= link_to owner_my_page_path, class: "nav-link" do %>
+              <i class="fa-solid fa-user mr-2"></i>Mypage
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to owner_trainers_path, class: "nav-link" do %>
+              <i class="fa-solid fa-address-card mr-2"></i>Trainers
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to owner_posts_path, class: "nav-link" do %>
+              <i class="fa-solid fa-list mr-2"></i>Posts
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_owner_session_path, method: :delete, class: "nav-link" do %>
+              <i class="fa-solid fa-right-from-bracket mr-2"></i>Log Out
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to owner_homes_about_path, class: "nav-link" do %>
+              <i class="fa-solid fa-hand-holding-heart mr-2"></i>Concept
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to owner_posts_path, class: "nav-link" do %>
+              <i class="fa-solid fa-list mr-2"></i>Posts
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_owner_session_path, class: "nav-link" do %>
+              <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>Log In
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_owner_registration_path, class: "nav-link" do %>
+              <i class="fa-solid fa-user-plus mr-1"></i>Sign Up
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
-  <% else %>
-    <div class="ml-auto">
-      <%= link_to owner_homes_about_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
-        <i class="fa-solid fa-hand-holding-heart mr-2"></i> Concept
-      <% end %>
-      <%= link_to owner_posts_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
-        <i class="fa-solid fa-list mr-2"></i> Posts
-      <% end %>
-      <%= link_to new_owner_session_path, class: "btn btn-outline-light rounded-pill mr-2", style: "font-family:'Times New Roman'; font-size:20px;" do %>
-        <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i> Log In
-      <% end %>
-      <%= link_to new_owner_registration_path, class: "btn btn-outline-light rounded-pill mr-2", :style => "font-family:'Times New Roman'; font-size:20px;" do %>
-        <i class="fa-solid fa-user-plus mr-1"></i> Sign Up
-      <% end %>
-    </div>
-  <% end %>
-</header>
+  </div>
+</nav>
+
+<!-- Content Section -->
+<div class="container">
+  <!-- Your content goes here -->
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 50) {
+      $('.navbar').addClass('scrolled');
+    } else {
+      $('.navbar').removeClass('scrolled');
+    }
+  });
+</script>
+</body>
+</html>

@@ -9,6 +9,8 @@ class Owner < ApplicationRecord
     has_many :posts, dependent: :destroy
     has_many :categorys, dependent: :destroy
     has_many :owner_favorites, dependent: :destroy
+    has_many :rooms, dependent: :destroy
+    has_many :messages, dependent: :destroy
     
     validates :name, presence: true
     validates :name_kana, presence: true

@@ -276,3 +276,81 @@ section:nth-child(2n){
     .post-image:hover .overlay {
       opacity: 1;
     }
+    
+    body {
+      background-color: #ADE3FB; /* 背景色を #ADE3FB に設定 */
+      font-family: 'Nunito', sans-serif; /* フォントをNunitoに設定 */
+    }
+    .navbar {
+      transition: background-color 0.3s; /* ヘッダーの背景色にアニメーションを追加 */
+      height: 100px; /* ヘッダーの高さを設定 */
+    }
+    .navbar-brand {
+      font-size: 36px; /* ロゴのフォントサイズを調整 */
+      font-weight: bold;
+      color: #343a40; /* ロゴの文字色を設定 */
+    }
+    .navbar-toggler {
+      border: none; /* ハンバーガーアイコンのボーダーを削除 */
+      outline: none; /* ハンバーガーアイコンのアウトラインを削除 */
+    }
+    .navbar-toggler-icon {
+      font-size: 36px; /* ハンバーガーアイコンのサイズを調整 */
+      color: #343a40; /* ハンバーガーアイコンの色を設定 */
+    }
+    .navbar-collapse {
+      justify-content: flex-end; /* メニューを右寄せにする */
+    }
+    .hero-section {
+      background-image: url('https://example.com/hero-image.jpg'); /* ここに適切な画像のURLを入れてください */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* テキストに影を付ける */
+    }
+    .hero-section h1 {
+      font-size: 48px;
+      font-weight: bold;
+    }
+    .hero-section p {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    .btn-registration {
+      margin-top: 20px;
+      font-size: 24px; /* ボタンのフォントサイズを調整 */
+    }
+    
+    .trainer {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.trainer-image {
+  margin-right: 20px;
+}
+
+.trainer-info {
+  flex: 1;
+}
+
+.trainer-name {
+  font-weight: bold;
+}
+
+.trainer-name-kana {
+  font-style: italic;
+}
+
+.trainer-details {
+  margin-top: 10px;
+}
+
+.message {
+  margin-top: 20px;
+}

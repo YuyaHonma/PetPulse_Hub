@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    
-    <script src="https://kit.fontawesome.com/943c365873.js" crossorigin="anonymous"></script>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" type="text/css" href="css/8-1-8.css">
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  
+  <script src="https://kit.fontawesome.com/943c365873.js" crossorigin="anonymous"></script>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" type="text/css" href="css/8-1-8.css">
+  
+  <style>
+    body {
+      margin: 100px; /* ページの上の余白を削除 */
+    }
+  </style>
 </head>
-  </head>
 
-  <body>
-    <%= render 'layouts/header' %>
+<body>
+  <%= render 'layouts/header' %>
   <main>
     <div id="main-vidual">
-  <!--/main-vidual--></div>
+    <!--/main-vidual--></div>
+    <body style="margin-top: 150px;">
     <%= yield %>
   </main>
 
   <footer id="footer">
-    <small>&copy; copyright.</small> 
+    <small>&copy; 2024.02.01 PetPulse Hub</small> 
     <p id="page-top"><a href="#"><span>Page Top</span></a></p>
   </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-2-1/js/8-2-1.js"></script>
-<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-1-8/js/8-1-8.js"></script>
-
-  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-2-1/js/8-2-1.js"></script>
+  <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-1-8/js/8-1-8.js"></script>
+</body>
 </html>

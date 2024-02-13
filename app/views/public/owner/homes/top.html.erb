@@ -1,13 +1,14 @@
+<body style="margin-top: 100px;"></div>
 <ul id="page-link">
   <li><a href="#area-1"><strong>新着情報</strong></a></li>
   <li><a href="#area-2"><strong>オススメトレーナー</strong></a></li>
   <li><a href="#area-3"><strong>よくあるお悩み</strong></a></li>
 </ul>
 
-<%= image_tag "top1.jpg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
+<%= image_tag "top1.jpg", class: "img-fluid", alt: "トップ画像" %>
 
 <div class="container">
-  <div class="row" style="margin-top: 50px;">
+  <div class="row" style="margin-top: 100px;">
     <!-- 左側のイラスト -->
     <div class="col-3" style="margin-left: -80px;">
       <%= image_tag "top_image.png", style: "width: 420px; height: 400px;", alt: "トップ画像" %>
@@ -57,61 +58,93 @@
       <% end %>
     </div>
   </div>
+  <a href="<%= owner_posts_path %>" class="btn btn-success btn-block", style="width: 300px; height: 50px;">投稿一覧を見る</a>
 </section>
 
 
 <section class="area mt-4 mb-5" id="area-2">
   <h1><strong>オススメトレーナー</strong></h1>
   <div class="row justify-content-center">
-    <div class="col-10 mt-4">
-      <% @trainers.each_slice(3) do |slice| %>
+    <div class="col-12 mt-4">
+      <% @trainers.each_slice(4) do |slice| %>
         <div class="row">
           <% slice.each do |trainer| %>
-            <div class="col-md-4 mb-4">
-              <%= link_to owner_trainer_path(trainer) do %>
-                <% if trainer.image.attached? %>
-                  <%= image_tag trainer.image, style: "width: 250px; height: 250px;", alt: "トレーナー画像" %>
-                <% else %>
-                  <%= image_tag 'no_image.jpg', style: "width: 250px; height: 250px;", alt: "デフォルト画像" %>
-                <% end %>
-              <% end %>
-              <p style="line-height: 1.2;"><strong><%= "#{trainer.name} トレーナー" %></strong></p> <!-- 行間を縮める -->
-              <% if trainer.message.present? %>
-                <% truncated_message = truncate(trainer.message, length: 30, separator: ' ') %>
-                <% if truncated_message.present? %>
-                  <% truncated_message.scan(/.{1,10}/).each do |line| %>
-                    <p style="font-size: 18px; line-height: 1.0;"><%= line %></p> <!-- 行間を縮める -->
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+              <div class="card">
+                <%= link_to owner_trainer_path(trainer) do %>
+                  <% if trainer.image.attached? %>
+                    <%= image_tag trainer.image, class: "card-img-top", alt: "トレーナー画像" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', class: "card-img-top", alt: "デフォルト画像" %>
                   <% end %>
                 <% end %>
-              <% end %>
-              <%= link_to "詳しく見る", owner_trainer_path(trainer), class: "btn btn-primary btn-sm" %>
+                <div class="card-body">
+                  <h5 class="card-title text-center"><strong><%= "#{trainer.name} トレーナー" %></strong></h5>
+                  <% if trainer.message.present? %>
+                    <% truncated_message = truncate(trainer.message, length: 30, separator: ' ') %>
+                    <% if truncated_message.present? %>
+                      <% truncated_message.scan(/.{1,10}/).each do |line| %>
+                        <p class="card-text" style="font-size: 14px; line-height: 1.2;"><%= line %></p>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <%= link_to "詳しく見る", owner_trainer_path(trainer), class: "btn btn-primary btn-sm btn-block mt-3" %>
+                </div>
+              </div>
             </div>
           <% end %>
         </div>
-        <div class="row">
-          <div class="col-md-4 mb-4"></div> <!-- スペースを作成 -->
       <% end %>
     </div>
   </div>
+  <div class="text-center"> <!-- 中央揃え -->
+    <a href="<%= owner_trainers_path %>" class="btn btn-success mt-3">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
+  </div>
 </section>
+
 
 <section class="area mt-5" id="area-3">
   <div class="container">
     <h2 class="text-center mb-4"><strong>よくあるお悩み</strong></h2>
-    <div class="row">
+    <div class="row justify-content-center">
       <% @categorys.each do |category| %>
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title text-center"><%= category.name %></h5>
-              <p class="card-text">カテゴリーに関する説明などが入ります。</p>
-              <%= link_to "詳しく見る", owner_category_path(category), class: "btn btn-primary btn-sm btn-block" %>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card h-100 category-card" style="overflow: hidden;">
+            <div class="card-body" style="cursor: pointer;">
+              <h5 class="card-title text-center category-name">
+                <%= link_to owner_category_path(category), class: "category-link" do %>
+                  <%= category.name %>
+                <% end %>
+              </h5>
+              <p class="card-text text-center category-description">カテゴリーに関する説明などが入ります。</p>
             </div>
           </div>
         </div>
       <% end %>
     </div>
+    <a href="<%= owner_categorys_path %>" class="btn btn-success btn-block mt-3">カテゴリー一覧を見る</a>
   </div>
 </section>
+
+<style>
+  .category-name {
+    font-size: 24px;
+    transition: font-size 0.3s ease;
+  }
+
+  .category-card:hover .category-name {
+    font-size: 36px;
+  }
+
+  .category-link {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .category-link:hover {
+    color: #28a745; /* ホバーエフェクトによるリンクの色の変化 */
+  }
+</style>
 
 <%= render partial: 'public/owner/shared/new_post_path' %>

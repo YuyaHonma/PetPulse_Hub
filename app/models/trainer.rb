@@ -8,6 +8,8 @@ class Trainer < ApplicationRecord
   has_many :trainer_categories
   has_many :categories, through: :trainer_categories
   has_many :advices, dependent: :destroy
+  has_many :rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
   
   validates :name, presence: true
   validates :name_kana, presence: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_10_054513) do
+ActiveRecord::Schema.define(version: 2024_02_13_010102) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 2024_02_10_054513) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer "owner_id", null: false
+    t.integer "trainer_id", null: false
+    t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_messages_on_owner_id"
+    t.index ["trainer_id"], name: "index_messages_on_trainer_id"
+  end
+
   create_table "owner_favorites", force: :cascade do |t|
     t.integer "owner_id", null: false
     t.integer "post_id", null: false
@@ -123,6 +133,15 @@ ActiveRecord::Schema.define(version: 2024_02_10_054513) do
     t.index ["owner_id"], name: "index_posts_on_owner_id"
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.integer "owner_id", null: false
+    t.integer "trainer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_rooms_on_owner_id"
+    t.index ["trainer_id"], name: "index_rooms_on_trainer_id"
+  end
+
   create_table "trainer_categories", force: :cascade do |t|
     t.integer "trainer_id", null: false
     t.integer "category_id", null: false
@@ -168,11 +187,15 @@ ActiveRecord::Schema.define(version: 2024_02_10_054513) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "advices", "posts"
   add_foreign_key "advices", "trainers"
+  add_foreign_key "messages", "owners"
+  add_foreign_key "messages", "trainers"
   add_foreign_key "owner_favorites", "owners"
   add_foreign_key "owner_favorites", "posts"
   add_foreign_key "pets", "owners"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "owners"
+  add_foreign_key "rooms", "owners"
+  add_foreign_key "rooms", "trainers"
   add_foreign_key "trainer_categories", "categories"
   add_foreign_key "trainer_categories", "trainers"
   add_foreign_key "trainer_favorites", "posts"

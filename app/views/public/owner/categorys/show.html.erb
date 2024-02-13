@@ -1,0 +1,27 @@
+<section class="area mt-5">
+  <div class="container">
+    <h2 class="text-center mb-4"><strong><%= @category.name %> 投稿一覧</strong></h2>
+    <div class="row justify-content-center">
+      <% @posts.each do |post| %>
+        <div class="col-lg-3 col-md-4 mb-4">
+          
+        </div>
+      <% end %>
+    </div>
+    <%= will_paginate @posts %>
+  </div>
+</section>
+
+<section class="area mt-5">
+  <div class="container">
+    <h2 class="text-center mb-4"><strong><%= @category.name %> おすすめトレーナー</strong></h2>
+    <div class="row justify-content-center">
+      <% @trainers.each do |trainer| %>
+        <div class="col-lg-3 col-md-4 mb-4">
+          
+        </div>
+      <% end %>
+    </div>
+    <%= will_paginate @trainers %>
+  </div>
+</section>

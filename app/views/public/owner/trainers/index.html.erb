@@ -1,0 +1,58 @@
+<body style="margin-top: 100px;">
+  <div class="container">
+    <h1 class="text-center mb-5">トレーナー一覧</h1>
+    <% @trainers.each do |trainer| %>
+      <div class="row mb-5 align-items-center">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-lg-0 mb-md-4 mb-sm-4">
+          <div class="text-center">
+            <%= link_to owner_trainer_path(trainer) do %>
+              <% if trainer.image.attached? %>
+                <%= image_tag trainer.image, class: "img-fluid rounded-circle", alt: "トレーナー画像", style: "max-width: 250px; height: 250px; object-position: top; object-fit: cover;" %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', class: "img-fluid rounded-circle", alt: "デフォルト画像", style: "max-width: 250px; height: 250px; object-position: top; object-fit: cover;" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-6 col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <%= link_to owner_trainer_path(trainer), class: "text-decoration-none" do %>
+                <h5 class="card-title"><%= trainer.name %></h5>
+              <% end %>
+              <p class="card-text"><%= trainer.name_kana %></p>
+              <ul class="list-unstyled">
+                <li>生年月日: <%= trainer.birthday %></li>
+                <li>出身地: <%= trainer.address %></li>
+                <li>趣味: <%= trainer.hobby %></li>
+              </ul>
+              <p class="card-text"><%= trainer.message %></p>
+              <div class="d-flex flex-wrap mt-3">
+                <% trainer.categories.each do |category| %>
+                  <%= link_to owner_category_path(category), class: "text-decoration-none" do %>
+                    <div class="rounded-circle border border-primary px-3 py-1 mr-3 mb-2 category-link"><%= category.name %></div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</body>
+
+<style>
+.category-link {
+    color: #333;
+    border: 2px solid #333;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+.category-link:hover {
+    background-color: #37C1FF;
+    color: #fff;
+  }
+</style>
