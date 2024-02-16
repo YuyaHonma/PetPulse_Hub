@@ -7,7 +7,7 @@
   <div class="row", style="margin-top: 50px;">
     <!-- 左側のイラスト -->
     <div class="col-3", style="margin-left: -60px;">
-      <%= image_tag "top_image.jpg", style: "width: 400px; height: 400px;", alt: "トップ画像" %>
+      <%= image_tag "top_image.png", style: "width: 400px; height: 400px;", alt: "トップ画像" %>
     </div>
     <div class="col-1"></div>
     <!-- 右側のテキスト -->
@@ -22,21 +22,22 @@
 </div>
   </div>
 </div>
+
     <section class="area" id="area-1">
   <h1><strong>新着お悩み一覧</strong></h1>
   <div class="row justify-content-center">
     <div class="col-10">
-      <% @posts.each_slice(3) do |slice| %>
+      <% @posts.each_slice(4) do |slice| %>
         <div class="row">
           <% slice.each do |post| %>
-            <div class="col-md-4 mb-4"> <!-- col-md-4 を追加 -->
+            <div class="col-md-3 mb-4"> <!-- col-md-4 を追加 -->
               <%= link_to trainer_post_path(post) do %>
-                <%= image_tag post.image, style: "width: 100%; height: auto;", alt: "投稿画像" %>
+                <%= image_tag post.image, style: "width: 250px; height: 250px;", alt: "投稿画像" %>
               <% end %>
-              <p class="text-center"> <!-- 中央揃え -->
+              <p class="text-left"> <!-- 中央揃え -->
                 <strong>投稿者:</strong>
-                <%= post.owner.name %>
-                <strong style="margin-left: 10px;">カテゴリー:</strong>
+                <%= post.owner.name %></br>
+                <strong>カテゴリー:</strong>
                 <%= post.category.name %>
               </p>
               <% truncated_content = truncate(post.introduction, length: 30, separator: ' ') %>
@@ -61,11 +62,43 @@
 </section>
 
       <section class="area" id="area-2">
-      <h2>トレーナー一覧</h2>
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-
+      <h1><strong>オススメトレーナー</strong></h1>
+  <div class="row justify-content-center">
+    <div class="col-12 mt-4">
+      <% @trainers.each_slice(4) do |slice| %>
+        <div class="row">
+          <% slice.each do |trainer| %>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+              <div class="card">
+                <%= link_to trainer_trainer_path(trainer) do %>
+                  <% if trainer.image.attached? %>
+                    <%= image_tag trainer.image, class: "card-img-top", alt: "トレーナー画像" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', class: "card-img-top", alt: "デフォルト画像" %>
+                  <% end %>
+                <% end %>
+                <div class="card-body">
+                  <h5 class="card-title text-center"><strong><%= "#{trainer.name} トレーナー" %></strong></h5>
+                  <% if trainer.message.present? %>
+                    <% truncated_message = truncate(trainer.message, length: 30, separator: ' ') %>
+                    <% if truncated_message.present? %>
+                      <% truncated_message.scan(/.{1,10}/).each do |line| %>
+                        <p class="card-text" style="font-size: 14px; line-height: 1.2;"><%= line %></p>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <%= link_to "詳しく見る", trainer_trainer_path(trainer), class: "btn btn-primary btn-sm btn-block rounded-pill mt-3" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-center"> <!-- 中央揃え -->
+    <a href="<%= trainer_trainers_path %>" class="btn btn-success mt-3">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
+  </div>
     <!--/area2--></section>
+    <div class="col-2"></div>
+    </div>

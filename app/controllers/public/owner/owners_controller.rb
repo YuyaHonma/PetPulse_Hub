@@ -28,7 +28,7 @@ class Public::Owner::OwnersController < ApplicationController
     @owner.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行しました"
-    redirect_to owner_root_path
+    redirect_to owner_owner_root_path
   end
     
   private

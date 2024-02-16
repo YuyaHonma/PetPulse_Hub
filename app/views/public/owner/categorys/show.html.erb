@@ -1,27 +1,77 @@
-<section class="area mt-5">
+<section class="area" id="area-1">
   <div class="container">
     <h2 class="text-center mb-4"><strong><%= @category.name %> 投稿一覧</strong></h2>
     <div class="row justify-content-center">
       <% @posts.each do |post| %>
-        <div class="col-lg-3 col-md-4 mb-4">
-          
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="card h-100 shadow">
+            <% if post.image.attached? %>
+              <%= link_to owner_post_path(post) do %>
+                <%= image_tag post.image, class: "card-img-top", alt: "投稿画像" %>
+              <% end %>
+            <% else %>
+              <div class="no-image-placeholder d-flex align-items-center justify-content-center">
+                <span class="text-muted">No Image</span>
+              </div>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to post.title, owner_post_path(post), class: "text-dark" %></h5>
+              <p class="card-text text-truncate"><%= truncate(post.introduction, length: 100) %></p>
+              <div class="text-muted small">投稿者: <%= link_to post.owner.name, owner_my_page_path(post.owner), class: "text-muted" %></div>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-    <%= will_paginate @posts %>
+    <div class="text-center mt-4">
+      <%= link_to owner_posts_path, class: "btn btn-success btn-lg", style: "width: 250px;" do %>
+        一覧を見る
+      <% end %>
+    </div>
   </div>
 </section>
 
-<section class="area mt-5">
+<section class="area mt-5" id="area-2">
   <div class="container">
     <h2 class="text-center mb-4"><strong><%= @category.name %> おすすめトレーナー</strong></h2>
     <div class="row justify-content-center">
       <% @trainers.each do |trainer| %>
-        <div class="col-lg-3 col-md-4 mb-4">
-          
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="card h-100 shadow">
+            <% if trainer.image.attached? %>
+              <%= link_to owner_trainer_path(trainer) do %>
+                <%= image_tag trainer.image, class: "card-img-top", alt: "トレーナー画像" %>
+              <% end %>
+            <% else %>
+              <div class="no-image-placeholder d-flex align-items-center justify-content-center">
+                <span class="text-muted">No Image</span>
+              </div>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to "#{trainer.name} トレーナー", owner_trainer_path(trainer), class: "text-dark" %></h5>
+              <% if trainer.message.present? %>
+                <p class="card-text text-truncate"><%= truncate(trainer.message, length: 100) %></p>
+              <% end %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-    <%= will_paginate @trainers %>
+    <div class="text-center mt-4">
+      <%= link_to owner_trainers_path, class: "btn btn-success btn-lg", style: "width: 250px;" do %>
+        一覧を見る
+      <% end %>
+    </div>
   </div>
 </section>
+
+<style>
+  .no-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

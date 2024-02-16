@@ -1,10 +1,9 @@
 <body style="margin-top: 100px;"></div>
 <ul id="page-link">
-  <li><a href="#area-1"><strong>新着情報</strong></a></li>
-  <li><a href="#area-2"><strong>オススメトレーナー</strong></a></li>
-  <li><a href="#area-3"><strong>よくあるお悩み</strong></a></li>
+  <li><a href="#area-1" class="scroll-link"><strong>新着情報</strong></a></li>
+  <li><a href="#area-2" class="scroll-link"><strong>オススメトレーナー</strong></a></li>
+  <li><a href="#area-3" class="scroll-link"><strong>よくあるお悩み</strong></a></li>
 </ul>
-
 <%= image_tag "top1.jpg", class: "img-fluid", alt: "トップ画像" %>
 
 <div class="container">
@@ -96,7 +95,6 @@
         </div>
       <% end %>
     </div>
-  </div>
   <div class="text-center"> <!-- 中央揃え -->
     <a href="<%= owner_trainers_path %>" class="btn btn-success mt-3">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
   </div>
@@ -116,13 +114,14 @@
                   <%= category.name %>
                 <% end %>
               </h5>
-              <p class="card-text text-center category-description">カテゴリーに関する説明などが入ります。</p>
             </div>
           </div>
         </div>
       <% end %>
     </div>
-    <a href="<%= owner_categorys_path %>" class="btn btn-success btn-block mt-3">カテゴリー一覧を見る</a>
+    <div class="text-center"> <!-- 中央揃え -->
+    <a href="<%= owner_categorys_path %>" class="btn btn-success mt-3">カテゴリー一覧を見る</a>
+    </div>
   </div>
 </section>
 

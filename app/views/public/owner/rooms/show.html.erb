@@ -1,0 +1,70 @@
+  <title>DMルーム</title>
+  <style>
+  
+  h1 {
+      font-family: 'Arial', sans-serif; /* フォントファミリーをArialに設定 */
+      font-size: 36px; /* フォントサイズを36pxに設定 */
+      color: #333; /* テキストの色を黒に設定 */
+      text-align: center; /* テキストを中央揃えに設定 */
+      margin-top: 20px; /* 上部の余白を設定 */
+    }
+    
+    .message {
+      background-color: #fff; /* メッセージの背景色を白に設定 */
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 10px; /* メッセージの角を丸くする */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    }
+    .message strong {
+      color: #f15a29; /* メッセージの送信者名の文字色をオレンジに設定 */
+    }
+    .message-content {
+      color: #555; /* メッセージの内容の文字色をグレーに設定 */
+    }
+    .input-group-text {
+      background-color: #f15a29; /* ボタンの背景色をオレンジに設定 */
+      border-color: #f15a29; /* ボタンの枠線の色をオレンジに設定 */
+      color: #fff; /* ボタンの文字色を白に設定 */
+    }
+    .input-group-text:hover {
+      background-color: #e2490f; /* ホバー時の背景色を濃いオレンジに設定 */
+      border-color: #e2490f; /* ホバー時の枠線の色を濃いオレンジに設定 */
+    }
+    .btn-secondary {
+      border-color: #6dc6ff; /* セカンダリボタンの枠線の色を水色に設定 */
+      color: #fff; /* セカンダリボタンの文字色を白に設定 */
+    }
+    .btn-secondary:hover {
+      background-color: #5ab8ff; /* セカンダリボタンのホバー時の背景色を濃い水色に設定 */
+      border-color: #5ab8ff; /* セカンダリボタンのホバー時の枠線の色を濃い水色に設定 */
+    }
+  </style>
+  <h1>DMルーム</h1>
+
+  <div class="container mt-4">
+    <div id="messages">
+      <% @messages.each do |message| %>
+        <div class="message">
+          <strong><%= message.owner.name %></strong>
+          <span><%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+          <div class="message-content">
+            <%= message.message %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <%= form_with(model: [@room, @message], url: owner_room_messages_path(@room), local: true) do |form| %>
+      <div class="input-group mb-3">
+        <%= form.text_area :message, placeholder: 'メッセージを入力してください', rows: 4, class: 'form-control' %>
+        <div class="input-group-append">
+          <!-- 送信ボタンをアイコンに変更 -->
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-paper-plane"></i> <!-- ペーパープレーンのアイコン -->
+          </button>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to "トレーナー詳細に戻る", owner_trainer_path(@trainer), class: "btn btn-secondary" %>
+  </div>

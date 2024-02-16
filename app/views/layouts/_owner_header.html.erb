@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PetPulse Hub</title>
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">-->
   <!-- FontAwesome CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
@@ -53,8 +52,11 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="/owner">PetPulse Hub</a>
-    <a class="navbar-text">日本最大級のオンラインドッグトレーニングサイト</a>
+    <a class="navbar-brand mr-auto" href="/owner">PetPulse Hub</a>
+    <a class="navbar-text">日本最大級の<br>オンラインドッグトレーニングサイト</a>
+      <% if owner_signed_in? %>
+        <p class = "text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px; margin-left: 20px;">Welcome to <%= current_owner.name %>！</p>
+      <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -64,43 +66,43 @@
         <% if owner_signed_in? %>
           <li class="nav-item">
             <%= link_to owner_my_page_path, class: "nav-link" do %>
-              <i class="fa-solid fa-user mr-2"></i>Mypage
+              <i class="fa-solid fa-user mr-2 fa-lg"></i>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to owner_trainers_path, class: "nav-link" do %>
-              <i class="fa-solid fa-address-card mr-2"></i>Trainers
+              <i class="fa-solid fa-address-card mr-2 fa-lg"></i>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to owner_posts_path, class: "nav-link" do %>
-              <i class="fa-solid fa-list mr-2"></i>Posts
+              <i class="fa-solid fa-list mr-2 fa-lg"></i>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to destroy_owner_session_path, method: :delete, class: "nav-link" do %>
-              <i class="fa-solid fa-right-from-bracket mr-2"></i>Log Out
+              <i class="fa-solid fa-right-from-bracket mr-2 fa-lg"></i>
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
             <%= link_to owner_homes_about_path, class: "nav-link" do %>
-              <i class="fa-solid fa-hand-holding-heart mr-2"></i>Concept
+              <i class="fa-solid fa-hand-holding-heart fa-lg"></i>
             <% end %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item", style="margin-right:">
             <%= link_to owner_posts_path, class: "nav-link" do %>
-              <i class="fa-solid fa-list mr-2"></i>Posts
+              <i class="fa-solid fa-list fa-lg"></i>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_owner_session_path, class: "nav-link" do %>
-              <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>Log In
+              <i class="fa-solid fa-arrow-right-to-bracket fa-lg"></i>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_owner_registration_path, class: "nav-link" do %>
-              <i class="fa-solid fa-user-plus mr-1"></i>Sign Up
+              <i class="fa-solid fa-user-plus fa-lg"></i>
             <% end %>
           </li>
         <% end %>

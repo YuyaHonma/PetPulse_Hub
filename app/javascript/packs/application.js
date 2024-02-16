@@ -17,26 +17,34 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-$('#page-link a[href*="#"]').click(function () {
-  var elmHash = $(this).attr('href'); //ページ内リンクのHTMLタグhrefから、リンクされているエリアidの値を取得
-  var pos = $(elmHash).offset().top;  //idの上部の距離を取得
-  $('body,html').animate({scrollTop: pos}, 500); //取得した位置にスクロール。500の数値が大きくなるほどゆっくりスクロール
-  return false;
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const fileInput = document.querySelector('.custom-file-input');
-
-  // ファイルが選択されたときにイベントリスナーを設定する
-  fileInput.addEventListener('change', (event) => {
-    // 選択されたファイル名を取得する
-    const fileName = event.target.files[0].name;
-    
-    // ファイル名をプレースホルダーテキストとして設定する
-    const label = event.target.nextElementSibling;
-    label.textContent = fileName;
+document.addEventListener('DOMContentLoaded', function() {
+  // ページ内リンクをクリックしたときのスクロール処理
+  document.querySelectorAll('#page-link a[href*="#"]').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      var targetId = this.getAttribute('href');
+      var targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        var offsetTop = targetElement.offsetTop;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+      event.preventDefault();
+    });
   });
+
+  // ファイルが選択されたときの処理
+  const fileInput = document.querySelector('.custom-file-input');
+  if (fileInput) {
+    fileInput.addEventListener('change', function(event) {
+      const fileName = event.target.files[0].name;
+      const label = event.target.nextElementSibling;
+      label.textContent = fileName;
+    });
+  }
 });
+
 
 //スクロールした際の動きを関数でまとめる
 function PageTopAnime() {

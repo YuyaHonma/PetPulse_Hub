@@ -1,1 +1,43 @@
-<%= image_tag "admin_top.jpeg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
+<!-- app/views/public/trainer/owners/index.html.erb -->
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center mb-4">飼い主一覧</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table border-top border-bottom mt-4" style="background-color: #fffaf0;">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>飼い主名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @owners.each do |owner| %>
+            <tr>
+              <td class="align-middle"><%= owner.id %></td>
+              <td class="align-middle"><%= owner.name %></td>
+              <td class="align-middle"><%= owner.email %></td>
+              <th class="align-middle"><% if owner.is_active %>
+                  <span class="text-success">有効</span>
+                <% else %>
+                  <span class="text-danger">退会</span>
+                <% end %></td>
+              <th>
+                <%= link_to "プロフィールを見る", admin_owner_path(owner), class: "btn btn-primary btn-sm" %>
+                <!-- 他の操作ボタンをここに追加 -->
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

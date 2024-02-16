@@ -6,29 +6,31 @@
         <tbody>
           <tr>
             <th style="background-color: #00D7F4; width: 20%;">名前</th>
-            <td><%= @owner.name %></td>
+            <td class="text-center"><%= @owner.name %></td>
           </tr>
           <tr>
             <th style="background-color: #00D7F4;">カナ</th>
-            <td><%= @owner.name_kana %></td>
+            <td class="text-center"><%= @owner.name_kana %></td>
           </tr>
           <tr>
             <th style="background-color: #00D7F4;">お住まい</th>
-            <td><%= @owner.address %></td>
+            <td class="text-center"><%= @owner.address %></td>
           </tr>
           <tr>
             <th style="background-color: #00D7F4;">電話番号</th>
-            <td><%= @owner.telephone %></td>
+            <td class="text-center"><%= @owner.telephone %></td>
           </tr>
           <tr>
             <th style="background-color: #00D7F4;">メールアドレス</th>
-            <td><%= @owner.email %></td>
+            <td class="text-center"><%= @owner.email %></td>
           </tr>
         </tbody>
       </table>
-      <div class="d-flex justify-content-center mt-4"> <!-- 余白を減らしています -->
-        <%= link_to "プロフィールを編集する", owner_edit_information_path, class: "btn btn-success btn-sm d-flex align-items-center justify-content-center", style: "width: 200px; height: 50px; border-radius: 10px;" %>
-      </div>
+      <% if current_owner == @owner %>
+        <div class="d-flex justify-content-center mt-4"> <!-- 余白を減らしています -->
+          <%= link_to "プロフィールを編集する", owner_edit_information_path, class: "btn btn-success btn-sm d-flex align-items-center justify-content-center", style: "width: 200px; height: 50px; border-radius: 10px;" %>
+        </div>
+      <% end %>
     </div>
   </div>
 

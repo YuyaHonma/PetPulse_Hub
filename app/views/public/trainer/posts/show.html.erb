@@ -1,73 +1,78 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-12">
-      <h1 class="text-center mb-4"><strong>🐾お悩み詳細🐾</strong></h1>
-      <table class="table table-bordered mb-5">
-        <tbody>
-          <tr>
-            <th colspan="2" class="bg-info text-white">画像</th>
-          </tr>
-          <tr>
-            <td colspan="2" class="text-center">
-              <% if @post.image.attached? %>
-                <%= image_tag @post.image, class: "img-thumbnail", style: "max-width: 300px; max-height: 300px;" %>
-              <% else %>
-                <p class="text-muted">画像はありません</p>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th class="bg-info text-white">項目</th>
-            <th class="bg-info text-white">内容</th>
-          </tr>
-          <tr>
-            <th>投稿者</th>
-            <td><%= @post.owner.name %></td>
-          </tr>
-          <tr>
-            <th>しつけに関するお悩み</th>
-            <td><%= @post.title %></td>
-          </tr>
-          <tr>
-            <th>相談したいしつけのお悩み</th>
-            <td><%= @post.category.name %></td>
-          </tr>
-          <tr>
-            <th>ご相談内容</th>
-            <td>
-              <% if @post.introduction.length > 30 %>
-                <% @post.introduction.scan(/.{1,30}/).each do |line| %>
-                  <%= line %><br>
-                <% end %>
-              <% else %>
-                <%= @post.introduction %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>今行っている対策</th>
-            <td>
-              <% if @post.current_approach.length > 30 %>
-                <% @post.current_approach.scan(/.{1,30}/).each do |line| %>
-                  <%= line %><br>
-                <% end %>
-              <% else %>
-                <%= @post.current_approach %>
-              <% end %>
-            </td>
-          </tr>
-          <!-- コメント数 -->
-          <tr>
-            <th>コメント数</th>
-            <td><%= @post.advices.count %></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-7">
+      <h1><strong>🐾お悩み詳細🐾</strong></h1>
       <!-- 一覧に戻るボタン -->
-      <div class="text-center">
-        <%= link_to trainer_posts_path, class: "btn btn-secondary btn-lg mb-5", style: "width: 350px; height: 55px; border-radius: 25px;" do %>
+      <div class="text-right mb-4">
+        <%= link_to trainer_posts_path, class: "btn btn-primary btn-lg", style: "width: 200px; height: 50px; border-radius: 25px; margin-top: -30px; margin-bottom: 20px;" do %>
           一覧に戻る
         <% end %>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped mb-5" style="background-color: #f8f9fa;">
+          <tbody>
+            <tr class="bg-info text-white">
+              <th colspan="2">画像</th>
+            </tr>
+            <tr>
+              <td colspan="2" class="text-center">
+                <% if @post.image.attached? %>
+                  <%= image_tag @post.image, class: "img-thumbnail", style: "max-width: 300px; max-height: 300px;" %>
+                <% else %>
+                  <p class="text-muted">画像はありません</p>
+                <% end %>
+              </td>
+            </tr>
+            <tr class="bg-info text-white">
+              <th>項目</th>
+              <th>内容</th>
+            </tr>
+            <tr>
+              <th>投稿者</th>
+              <td><%= @post.owner.name %></td>
+            </tr>
+            <tr>
+              <th>しつけに関するお悩み</th>
+              <td><%= @post.title %></td>
+            </tr>
+            <tr>
+              <th>相談したいしつけのお悩み</th>
+              <td><%= @post.category.name %></td>
+            </tr>
+            <tr>
+              <th>ご相談内容</th>
+              <td>
+                <% if @post.introduction.length > 30 %>
+                  <% @post.introduction.scan(/.{1,30}/).each do |line| %>
+                    <%= line %><br>
+                  <% end %>
+                <% else %>
+                  <%= @post.introduction %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th>今行っている対策</th>
+              <td>
+                <% if @post.current_approach.length > 30 %>
+                  <% @post.current_approach.scan(/.{1,30}/).each do |line| %>
+                    <%= line %><br>
+                  <% end %>
+                <% else %>
+                  <%= @post.current_approach %>
+                <% end %>
+              </td>
+            </tr>
+            <!-- コメント数 -->
+            <tr>
+              <th>コメント数</th>
+              <td><%= @post.advices.count %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mb-4">
+      <h1><strong>🐾コメント一覧🐾</strong></h1>
       </div>
       <!-- コメント一覧 -->
       <%= render "public/trainer/advices/index", post: @post %>
@@ -76,3 +81,4 @@
     </div>
   </div>
 </div>
+

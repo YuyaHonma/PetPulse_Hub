@@ -56,8 +56,8 @@ Rails.application.routes.draw do
     
     resources :trainers, only: [:index, :show]
     # DM
-    resources :rooms, only: [:show, :create] do
-    resources :messages, only: [:show, :create]
+    resources :rooms, only: [:index, :show, :create] do
+    resources :messages, only: [:create]
     end
   end
 end
@@ -71,6 +71,8 @@ end
     root to: "homes#top", as: :trainer_root
     # トレーナー
     resources :trainers, only: [:index, :show, :edit, :update]
+    get '/traiers/unsubscribe' => 'trainers#unsubscribe', as: 'unsubscribe'
+    patch '/trainers/withdraw' => 'trainers#withdraw', as: 'withdraw'
     # カテゴリー
     resources :categorys, only: [:index, :create, :edit, :update, :destroy]
     # 投稿
@@ -78,9 +80,11 @@ end
       resource :favorites, only: [:create, :destroy]
       resources :advices, only: [:create, :destroy]
     end
+    
+    resources :owners, only: [:index, :show]
       
-    resources :rooms, only: [:show, :create] do
-      resources :messages, only: [:show, :create]
+    resources :rooms, only: [:index, :show, :create] do
+      resources :messages, only: [:create]
      end
     end
   end
@@ -91,7 +95,10 @@ end
      
      resources :owners, only: [:show, :edit, :update]
      
-     resources :trainers, only: [:show, :edit, :update]
+     resources :trainers, only: [:index, :show, :edit, :update]
+     
+     resources :posts, only: [:index, :show, :update, :destroy]
+     
      
    end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

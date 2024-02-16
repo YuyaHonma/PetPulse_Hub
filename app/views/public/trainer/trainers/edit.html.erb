@@ -3,6 +3,7 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-10 mt-4 mx-auto">
+      
       <h4 class="mb-4" style="font-weight:bold;">🔳トレーナー情報の編集</h4>
       <%= form_with model: @trainer, url: trainer_trainer_path(@trainer), method: :patch, html: { multipart: true } do |f| %>
         <div class="form-group text-left">
@@ -45,7 +46,7 @@
           <%= f.text_area :message, class: 'form-control message' %>
         </div>
         <div class="mt-4 text-center">
-          <%= f.submit "変更を更新する", class: "btn btn-primary btn-lg mt-4", style: "width: 300px;" %>
+          <%= f.submit "変更を更新する", class: "btn btn-primary btn-lg mt-4", style: "width: 300px; border-radius: 30px;" %>
         </div>
       <% end %>
       <div class="row mt-4">

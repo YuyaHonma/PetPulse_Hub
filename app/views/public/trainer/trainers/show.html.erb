@@ -2,6 +2,14 @@
   <div class="row">
     <div class="col-10 mt-4 mx-auto">
       <h4 class="mb-4" style="font-weight:bold;">🔳トレーナー情報確認</h4>
+      <% if current_trainer == @trainer %> <!-- ログイン中のトレーナーが自分の詳細情報の場合にのみ表示 -->
+      <div class="text-right">
+        <%= link_to "メッセージ一覧を見る", trainer_rooms_path, class: "btn btn-primary" %>
+      </div>
+      <%= link_to trainer_unsubscribe_path, class: "btn btn-danger btn-sm float-right mt-2 mb-4", style: "width: 150px; height: 40px; border-radius: 30px; display: flex; justify-content: center; align-items: center;" do %>
+        退会する
+      <% end %>
+      <% end %>
       <table class="table table-bordered table-condensed" style="background-color: #D8FFF1;">
         <tbody>
           <tr>
@@ -26,11 +34,9 @@
           </tr>
         </tbody>
       </table>
-      <% if trainer_signed_in? %>
-        <div class="d-flex justify-content-center mt-4"> <!-- 余白を減らしています -->
-          <%= link_to "トレーナー情報編集", edit_trainer_trainer_path, class: "btn btn-primary btn-sm d-flex align-items-center justify-content-center", style: "width: 200px; height: 50px; border-radius: 10px; background-color: #37C1FF;" %>
-        </div>
-      <% end %>
+      <% if current_trainer == @trainer %> <!-- ログイン中のトレーナーが自分の詳細情報の場合にのみ表示 -->
+          <%= link_to "トレーナー情報編集", edit_trainer_trainer_path, class: "btn btn-primary" %>
+        <% end %>
     </div>
   </div>
 </div>
@@ -39,7 +45,7 @@
   <div class="row">
     <div class="col-md-6">
       <h4 class="mb-4" style="font-weight:bold;">🔳トレーナー情報詳細</h4>
-      <table class="table table-bordered">
+      <table class="table table-bordered" style="background-color: #F0FFFF;">
         <tbody>
           <tr>
             <th>ドッグトレーナー</th>
@@ -71,12 +77,11 @@
       <p><%= @trainer.message %></p>
     </div>
     <div class="col-md-6 d-flex align-items-center justify-content-center">
-  <% if @trainer.image.present? %>
-    <%= image_tag @trainer.image, style: "max-height: 400px; width: 450px;", alt: "トレーナーのアイコン写真" %>
-  <% else %>
-    <p>画像がありません</p>
-  <% end %>
-</div>
-
+      <% if @trainer.image.present? %>
+        <%= image_tag @trainer.image, style: "max-height: 400px; width: 450px;", alt: "トレーナーのアイコン写真" %>
+      <% else %>
+        <p>画像がありません</p>
+      <% end %>
+    </div>
   </div>
 </div>

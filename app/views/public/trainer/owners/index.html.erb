@@ -1,0 +1,31 @@
+<!-- app/views/public/trainer/owners/index.html.erb -->
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center mb-4">飼い主一覧</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @owners.each do |owner| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= owner.name %></h5>
+            <p class="card-text"><%= owner.address %></p>
+            <% if owner.pets.present? %>
+              <% owner.pets.each do |pet| %>
+                <p class="card-text"><strong>ペットの名前:</strong> <%= pet.pet_name %></p>
+                <p class="card-text"><strong>犬種:</strong> <%= pet.dog_breed %></p>
+              <% end %>
+            <% else %>
+              <p class="card-text">ペットの情報はありません</p>
+            <% end %>
+            <%= link_to "プロフィールを見る", trainer_owner_path(owner), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

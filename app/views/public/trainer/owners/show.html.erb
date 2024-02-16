@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-8 mt-4 mx-auto">
+      <h4 class="mb-4" style="font-weight:bold;">🔳飼い主情報確認</h4>
+      <table class="table table-bordered table-condensed" style="background-color: #D8FFF1;">
+        <tbody>
+          <tr>
+            <th class="text-center" style="background-color: #00D7F4; width: 20%;">名前</th>
+            <td class="text-center"><%= @owner.name %></td>
+          </tr>
+          <tr>
+            <th class="text-center" style="background-color: #00D7F4;">カナ</th>
+            <td class="text-center"><%= @owner.name_kana %></td>
+          </tr>
+          <tr>
+            <th class="text-center" style="background-color: #00D7F4;">お住まい</th>
+            <td class="text-center"><%= @owner.address %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    
+    <div class="row mt-4">
+    <div class="col-12 text-center mt-4">
+        <% @pets.each do |pet| %>
+          <div class="col-10 mx-auto mt-4">
+            <h4 class="mb-4" style="font-weight:bold;">🔳登録済みペット情報</h4>
+            <div class="row">
+              <%= render partial: 'public/owner/shared/pet_info', locals: { pet: pet } %>
+              <div class="col-md-6 border text-center" style="background-color: #E6F4FA;">
+                <div class="mb-2" style="margin-top: 10px;">
+                  <%= link_to owner_pet_path(pet) do %>
+                    <%= image_tag pet.image, style: "width: 430px; height: 300px; object-fit: cover; display: inline-block; vertical-align: middle;", alt: "ペットの写真" if pet.image.attached? %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12 text-center">
+      <% unless @is_room %>
+        <%= link_to "DMのルームへ", trainer_rooms_path(owner_id: @owner.id), class: "btn btn-primary mt-3", style: "width: 200px; height: 50px;", method: :post %>
+      <% else %>
+        <%= link_to "DMのルームへ", trainer_room_path(@room.id), class: "btn btn-primary mt-3", style: "width: 200px; height: 50px;" %>
+      <% end %>
+    </div>
+  </div>
+</div>

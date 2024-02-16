@@ -1,5 +1,7 @@
 class Public::Owner::FavoritesController < ApplicationController
     
+    
+    
     def create
         @post = Post.find(params[:post_id])
         favorite = current_owner.owner_favorites.new(post_id: @post.id)

@@ -1,23 +1,22 @@
-
-  <div class="container">
-    <h1 class="text-center mb-5">トレーナー詳細</h1>
-    <%= link_to "DMのルームへ", owner_room_path, class: "btn btn-primary mt-3" %>
-    <div class="row mb-5 align-items-center">
-      <div class="col-lg-3 col-md-6 col-sm-12 mb-lg-0 mb-md-4 mb-sm-4"> <!-- 変更 -->
-        <div class="text-center">
-          <div class="col-md-4 mb-4">
-            <% if @trainer.image.attached? %>
-              <%= image_tag @trainer.image, class: "img-fluid rounded-circle", alt: "トレーナー画像", style: "max-width: 250px; height: 250px; object-position: top; object-fit: cover;" %>
-            <% else %>
-              <%= image_tag @trainer.image, class: "img-fluid rounded-circle", alt: "トレーナー画像", style: "max-width: 250px; height: 250px; object-position: top; object-fit: cover;" %>
-            <% end %>
-          </div>
+<div class="container">
+  <h1 class="text-center mb-5">トレーナー詳細</h1>
+  <div class="row mb-5 align-items-center">
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-lg-0 mb-md-4 mb-sm-4"> <!-- 変更 -->
+      <div class="text-center">
+        <div class="col-md-4 mb-4">
+          <% if @trainer.image.attached? %>
+            <%= image_tag @trainer.image, class: "img-fluid rounded-circle", alt: "トレーナー画像", style: "max-width: 250px; height: 250px; object-position: top; object-fit: cover;" %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', class: "img-fluid rounded-circle", alt: "デフォルト画像", style: "max-width: 250px; height: 250px; object-position: top; object-fit: cover;" %>
+          <% end %>
         </div>
       </div>
-      <div class="col-lg-9 col-md-6 col-sm-12"> <!-- 変更 -->
-        <div class="card">
-          <div class="card-body">
-              <h5 class="card-title"><%= @trainer.name %></h5>
+    </div>
+    <div class="col-lg-9 col-md-6 col-sm-12 d-flex align-items-center"> <!-- 変更 -->
+      <div class="card w-100"> <!-- 変更 -->
+        <div class="card-body d-flex justify-content-between align-items-start"> <!-- 変更 -->
+          <div>
+            <h5 class="card-title mb-3"><%= @trainer.name %></h5>
             <p class="card-text"><%= @trainer.name_kana %></p>
             <ul class="list-unstyled">
               <li>生年月日: <%= @trainer.birthday %></li>
@@ -33,23 +32,30 @@
               <% end %>
             </div>
           </div>
+          <div class="d-flex align-items-center ">
+            <% unless @is_room %>
+              <%= link_to "直接相談する", owner_rooms_path(trainer_id: @trainer.id), class: "btn btn-primary mt-3", style: "width: 200px; height: 50px;", method: :post %>
+            <% else %>
+              <%= link_to "直接相談する", owner_room_path(@room.id), class: "btn btn-primary mt-3", style: "width: 200px; height: 50px;" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</body>
+</div>
 
 <style>
 .category-link {
-    color: #333;
-    border: 2px solid #333;
-    padding: 10px 20px;
-    border-radius: 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+  color: #333;
+  border: 2px solid #333;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 .category-link:hover {
-    background-color: #37C1FF;
-    color: #fff;
-  }
+  background-color: #37C1FF;
+  color: #fff;
+}
 </style>

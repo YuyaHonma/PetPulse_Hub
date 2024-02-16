@@ -12,7 +12,22 @@ class Public::Owner::RoomsController < ApplicationController
   end
   
   def show
+    @room = Room.find(params[:id])
     
+    @trainer = @room.trainer # ルームに関連付けられたトレーナーを取得します
+    @messages = @room.messages.order(created_at: :asc) # ルームに関連付けられた全てのメッセージを時系列順に取得します
+    @message = Message.new
+    
+    # メッセージをトレーナーのメッセージと飼い主のメッセージに分けます
+    @owner_messages = @messages.where(owner_id: current_owner.id)
+    @trainer_messages = @messages.where.not(owner_id: current_owner.id)
+  end
+
+  
+  private
+
+  def message_params
+    params.require(:message).permit(:message)
   end
 
 end

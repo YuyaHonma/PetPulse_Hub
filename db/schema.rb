@@ -76,10 +76,12 @@ ActiveRecord::Schema.define(version: 2024_02_13_010102) do
   create_table "messages", force: :cascade do |t|
     t.integer "owner_id", null: false
     t.integer "trainer_id", null: false
+    t.integer "room_id", null: false
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_messages_on_owner_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["trainer_id"], name: "index_messages_on_trainer_id"
   end
 
@@ -188,6 +190,7 @@ ActiveRecord::Schema.define(version: 2024_02_13_010102) do
   add_foreign_key "advices", "posts"
   add_foreign_key "advices", "trainers"
   add_foreign_key "messages", "owners"
+  add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "trainers"
   add_foreign_key "owner_favorites", "owners"
   add_foreign_key "owner_favorites", "posts"
