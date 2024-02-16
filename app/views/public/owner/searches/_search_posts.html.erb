@@ -1,0 +1,6 @@
+<div class="serch_form">
+    <%= form_with url: owner_owners_search_path,method: :get, local: true do |f| %>
+    <%= f.text_field :title,placeholder:"キーワード検索"%>
+    <%= f.submit'検索'%>
+    <% end %>
+</div>

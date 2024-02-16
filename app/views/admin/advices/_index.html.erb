@@ -14,9 +14,7 @@
           <% end %>
         </td>
         <td>
-          <%= advice.created_at.strftime("%Y年%m月%d日 %H:%M") %>
           <div class="advice-box">
-            
             <% advice.advice.chars.each_slice(24) do |slice| %>
               <%= slice.join %><br>
             <% end %>

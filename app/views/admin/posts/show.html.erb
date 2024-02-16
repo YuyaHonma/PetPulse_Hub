@@ -61,6 +61,8 @@
       </table>
       <div class="text-center">
         <div class="btn-group" role="group" aria-label="Post Actions">
+            <i class="fa-solid fa-pen-to-square fa-lg"></i>
+          <% end %>
           <%= button_to admin_post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-lg", style: "width: 250px; height: 55px; border-radius: 25px; margin-left: 55px;" do %>
             <i class="fa-solid fa-trash fa-lg"></i>
           <% end %>
@@ -71,7 +73,7 @@
       <% end %>
       </div>
       <!-- コメント一覧 -->
-      
+      <%= render "public/admin/advices/index", post: @post %>
     </div>
   </div>
 </div>

@@ -5,13 +5,14 @@ class Public::Owner::PostsController < ApplicationController
     end
     
     def create
-        @post = Post.new(post_params)
-        @post.owner_id = current_owner.id
-        if @post.save!
-          redirect_to owner_post_path(@post.id), notice: '投稿が作成されました'
-        else
-          render :new
-        end
+      @post = Post.new(post_params)
+      @post.owner_id = current_owner.id
+    
+      if @post.save
+        redirect_to owner_post_path(@post.id), notice: '投稿が作成されました'
+      else
+        render :new
+      end
     end
     
     def index

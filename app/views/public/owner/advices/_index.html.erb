@@ -20,14 +20,6 @@
             <% end %>
           </div>
         </td>
-        <td>
-          <% if current_trainer == advice.trainer && current_trainer.present? %>
-            <%# Check if the current user is the same as the trainer who provided the advice and if it's a trainer %>
-            <%= link_to "削除する", trainer_post_advice_path(post, advice), method: :delete, class: "btn btn-danger btn-lg btn-animate d-inline-block float-end", remote: true %>
-          <% elsif current_owner.nil? %>
-            <%# Hide delete button for owner %>
-          <% end %>
-        </td>
       </tr>
     <% end %>
   </tbody>

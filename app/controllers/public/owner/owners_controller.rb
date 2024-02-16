@@ -1,5 +1,10 @@
 class Public::Owner::OwnersController < ApplicationController
   
+  def index
+    @owner = current_owner
+    @posts = @owner.posts  # 飼い主が投稿した内容を取得
+  end
+  
   def show
     @owner = current_owner
     @pet = current_owner.pets if current_owner.present?

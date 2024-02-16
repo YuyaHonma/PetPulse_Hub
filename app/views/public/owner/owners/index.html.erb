@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-10 mt-4 mx-auto">
+      <h4 class="mb-4" style="font-weight:bold;">🔳飼い主情報確認</h4>
+      <div class="col-12 text-right" style="margin-top: -60px; margin-bottom: 30px;">
+        <%= link_to "飼い主詳細情報へ", owner_my_page_path, class: "btn btn-secondary text-center", style: "height: 40px; border-radius: 10px;" %>
+      </div>
+      <%= render "public/owner/owners/owner_info", owners: @owner %>
+      <% if current_owner == @owner %>
+        <div class="d-flex justify-content-center mt-4"> <!-- 余白を減らしています -->
+          <%= link_to "プロフィールを編集する", owner_edit_information_path, class: "btn btn-success btn-sm d-flex align-items-center justify-content-center", style: "width: 200px; height: 50px; border-radius: 10px;" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="mt-4"> <!-- 余白を追加しています -->
+    <h1 style="font-size: 24px; font-weight: bold;"><%= @owner.name %> が投稿した内容一覧</h1>
+
+    <div class="row"> <!-- Bootstrapの列を使用しています -->
+      <% @posts.in_groups_of(4, false) do |group| %>
+        <div class="row">
+          <% group.compact.each do |post| %>
+            <div class="col-md-4 mb-4"> <!-- 列の幅を四分の一にしています -->
+              <%= link_to owner_post_path(post), class: "card-hover-effect", style: "text-decoration: none; color: black;", data: { toggle: "tooltip", placement: "top", title: post.title } do %> <!-- カード全体をリンクにします -->
+                <div class="card h-100"> <!-- カードを使用しています -->
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-size: 18px; font-weight: bold;">しつけに関するお悩み:</br> <%= post.title %></h5> <!-- カードのタイトルに投稿のタイトルを表示しています -->
+                    <p class="card-text" style="font-size: 16px;">ご相談内容: <%= post.introduction %></p> <!-- カードのテキストに投稿の概要を表示しています -->
+                    <p class="card-text" style="font-size: 14px;"><strong class="text-muted">相談したいお悩み内容: <%= link_to post.category.name, owner_category_path(post.category), style: "text-decoration: none; color: #007bff;" %></strong></p> <!-- 投稿者の名前を表示しています -->
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

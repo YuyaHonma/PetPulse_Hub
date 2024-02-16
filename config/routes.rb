@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     #アバウトページ
     get "homes/about"=>"homes#about"
     #飼い主
+    get 'owners/posts_list'=>'owners#index', as: 'posts_list'
     get 'owners/my_page'=>'owners#show', as: 'my_page'
     # get '/owners/:id'=>'owners#show'
     get '/owners/information/edit'=>'owners#edit', as: 'edit_information'
@@ -59,6 +60,8 @@ Rails.application.routes.draw do
     resources :rooms, only: [:index, :show, :create] do
     resources :messages, only: [:create]
     end
+    # キーワード検索
+    get 'owners/search', to: 'searches#search_posts'
   end
 end
   
@@ -98,7 +101,6 @@ end
      resources :trainers, only: [:index, :show, :edit, :update]
      
      resources :posts, only: [:index, :show, :update, :destroy]
-     
      
    end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

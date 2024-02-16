@@ -1,19 +1,22 @@
 <div class="container pb-4">
-    <h1 class="text-center mb-4 mt-4"><strong>よくあるお悩み一覧</strong></h1>
-    <div class="row justify-content-center">
-      <% @categorys.each do |category| %>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="card category-card">
-            <div class="card-body d-flex justify-content-center align-items-center" style="cursor: pointer; height: 300px;">
-              <h5 class="card-title text-center category-name">
-                <%= link_to category.name, owner_category_path(category), class: "category-link" %>
-              </h5>
-            </div>
+  <h1 class="text-center mb-4 mt-4"><strong>よくあるお悩み一覧</strong></h1>
+  <div class="row justify-content-center">
+    <% @categorys.each do |category| %>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card category-card">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center" style="cursor: pointer; height: 300px;">
+            <h5 class="card-title text-center category-name">
+              <%= link_to category.name, owner_category_path(category), class: "category-link" %>
+            </h5>
+            <p class="card-text text-center" style="font-size: 24px;"><strong>投稿数: <%= category.post_count %></strong></p>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
 </div>
+
+
 
 <style>
   .category-card {

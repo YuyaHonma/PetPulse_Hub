@@ -2,36 +2,18 @@
   <div class="row">
     <div class="col-10 mt-4 mx-auto">
       <h4 class="mb-4" style="font-weight:bold;">🔳飼い主情報確認</h4>
-      <table class="table table-bordered table-condensed" style="background-color: #D8FFF1;">
-        <tbody>
-          <tr>
-            <th style="background-color: #00D7F4; width: 20%;">名前</th>
-            <td class="text-center"><%= @owner.name %></td>
-          </tr>
-          <tr>
-            <th style="background-color: #00D7F4;">カナ</th>
-            <td class="text-center"><%= @owner.name_kana %></td>
-          </tr>
-          <tr>
-            <th style="background-color: #00D7F4;">お住まい</th>
-            <td class="text-center"><%= @owner.address %></td>
-          </tr>
-          <tr>
-            <th style="background-color: #00D7F4;">電話番号</th>
-            <td class="text-center"><%= @owner.telephone %></td>
-          </tr>
-          <tr>
-            <th style="background-color: #00D7F4;">メールアドレス</th>
-            <td class="text-center"><%= @owner.email %></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="col-12 text-right" style="margin-top: -60px; margin-bottom: 30px;">
+        <%= link_to "飼い主投稿一覧へ", owner_posts_list_path, class: "btn btn-secondary text-center", style: "height: 40px; border-radius: 10px;" %>
+      </div>
+      <%= render "public/owner/owners/owner_info", owners: @owner %>
       <% if current_owner == @owner %>
         <div class="d-flex justify-content-center mt-4"> <!-- 余白を減らしています -->
           <%= link_to "プロフィールを編集する", owner_edit_information_path, class: "btn btn-success btn-sm d-flex align-items-center justify-content-center", style: "width: 200px; height: 50px; border-radius: 10px;" %>
         </div>
       <% end %>
     </div>
+  </div>
+  <div class="row mt-4">
   </div>
 
   <div class="row mt-4">

@@ -8,7 +8,7 @@
     <% @posts.each_slice(4) do |slice| %>
       <div class="row mb-4">
         <% slice.compact.each do |post| %>
-          <div class="col-md-3"> <!-- カラムの幅を調整 -->
+          <div class="col-md-3 mb-4"> <!-- カラムの幅を調整 -->
             <div class="card">
               <div class="post-image">
                 <%= link_to owner_post_path(post) do %>
@@ -24,15 +24,19 @@
                     <%= post.owner.name %>
                   <% end %>
                 </h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <%= post.title %>
+                </h6>
                 <p class="card-text">
-                  <%= post.category.name %>
+                  <strong>お悩み内容: </strong><%= post.category.name %>
                 </p>
                 <p class="card-text">
+                  <strong>相談内容: </strong></br>
                   <% truncated_introduction = post.introduction.truncate(30, separator: /\s/) %>
-                  <%= truncated_introduction.scan(/.{1,10}/).join('<br>') %>
+                  <%= truncated_introduction %>
                 </p>
                 <p class="card-text">
-                  コメント数: <%= post.advices.count %>
+                  <strong>トレーナー回答: </strong><%= post.advices.count %>件
                 </p>
                 <p id="favorite_btn_<%= post.id %>", class="card-text">
                   <%= render "public/owner/favorites/btn", post: post %></p>

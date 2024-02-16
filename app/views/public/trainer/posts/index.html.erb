@@ -28,8 +28,8 @@
                   <%= post.category.name %>
                 </p>
                 <p class="card-text">
-                  <% truncated_introduction = post.introduction.truncate(30, separator: /\s/) %>
-                  <%= truncated_introduction.scan(/.{1,10}/).join('<br>') %>
+                  <% truncated_introduction = post.introduction.gsub('<br>', ' ').truncate(30, separator: /\s/) %>
+                  <%= truncated_introduction.html_safe %>
                 </p>
                 <p class="card-text">
                   コメント数: <%= post.advices.count %>
