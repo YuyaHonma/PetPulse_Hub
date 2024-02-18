@@ -75,7 +75,9 @@
       <h1><strong>🐾コメント一覧🐾</strong></h1>
       </div>
       <!-- コメント一覧 -->
+      <div id="advice_index"> 
       <%= render "public/trainer/advices/index", post: @post %>
+      </div>
       <!-- コメントフォーム -->
       <%= render "public/trainer/advices/form", post: @post, advice: @advice %>
     </div>

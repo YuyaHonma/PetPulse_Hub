@@ -16,7 +16,7 @@
           <%= link_to "退会しない", edit_trainer_trainer_path(current_trainer), class: "btn btn-light btn-lg", style: "width: 250px; height: 55px;" %>
         </div>
         <div class="col-6 px-0"> <!-- 変更 -->
-          <%= button_to "退会する", trainer_withdraw_path(current_trainer), method: :patch, class: "btn btn-danger btn-lg", style: "width: 250px; height: 55px;" %>
+          <%= button_to "退会する", trainer_withdraw_path, method: :patch, class: "btn btn-danger btn-lg", style: "width: 250px; height: 55px;" %>
         </div>
       </div>
     </div>

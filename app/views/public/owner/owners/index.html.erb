@@ -25,9 +25,9 @@
               <%= link_to owner_post_path(post), class: "card-hover-effect", style: "text-decoration: none; color: black;", data: { toggle: "tooltip", placement: "top", title: post.title } do %> <!-- カード全体をリンクにします -->
                 <div class="card h-100"> <!-- カードを使用しています -->
                   <div class="card-body">
-                    <h5 class="card-title" style="font-size: 18px; font-weight: bold;">しつけに関するお悩み:</br> <%= post.title %></h5> <!-- カードのタイトルに投稿のタイトルを表示しています -->
-                    <p class="card-text" style="font-size: 16px;">ご相談内容: <%= post.introduction %></p> <!-- カードのテキストに投稿の概要を表示しています -->
-                    <p class="card-text" style="font-size: 14px;"><strong class="text-muted">相談したいお悩み内容: <%= link_to post.category.name, owner_category_path(post.category), style: "text-decoration: none; color: #007bff;" %></strong></p> <!-- 投稿者の名前を表示しています -->
+                    <h5 class="card-title" style="font-size: 18px;"><strong>🐶しつけに関するお悩み:</br></strong> <%= post.title %></h5> <!-- カードのタイトルに投稿のタイトルを表示しています -->
+                    <p class="card-text" style="font-size: 16px;"><strong>🐾ご相談内容:</br></strong> <%= post.introduction %></p> <!-- カードのテキストに投稿の概要を表示しています -->
+                    <p class="card-text" style="font-size: 14px;"><strong class="text-muted">🐕相談したいお悩み内容: <%= link_to post.category.name, owner_category_path(post.category), style: "text-decoration: none; color: #007bff;" %></strong></p> <!-- 投稿者の名前を表示しています -->
                   </div>
                 </div>
               <% end %>
@@ -36,5 +36,7 @@
         </div>
       <% end %>
     </div>
+    <%= link_to "いいねした投稿の一覧", owner_favorites_path, class: "btn btn-info" %>
+  </div>
   </div>
 </div>

@@ -5,6 +5,7 @@ class Public::Owner::MessagesController < ApplicationController
     @room = Room.find(params[:room_id]) # パラメータからルームを検索してセットします
     @message = @room.messages.new(message_params)
     @message.owner = current_owner # 現在の飼い主をメッセージの所有者としてセットします
+    @message.send_type = true
     @message.trainer = @room.trainer
     if @message.save!
       redirect_to owner_room_path(@room), notice: 'メッセージが送信されました'

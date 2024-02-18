@@ -51,7 +51,6 @@
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-  <div class="container">
     <a class="navbar-brand" href="/trainer">PetPulse Hub</a>
     <a class="navbar-text">日本最大級のオンラインドッグトレーニングサイト</a>
       <% if trainer_signed_in? %>
@@ -65,55 +64,50 @@
       <ul class="navbar-nav ms-auto">
         <% if trainer_signed_in? %>
           <li class="nav-item">
-            <%= link_to trainer_trainers_path, class: "nav-link" do %>
+            <%= link_to trainer_trainer_path(current_trainer), class: "nav-link" do %>
               <i class="fa-solid fa-address-card mr-2 fa-lg"></i>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to trainer_owners_path, class: "nav-link" do %>
-              <i class="fa-solid fa-users mr-2 fa-lg"></i>
+              <i class="fa-solid fa-users mr-2 fa-lg"></i>Owners
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to trainer_posts_path, class: "nav-link" do %>
-              <i class="fa-solid fa-list mr-2 fa-lg"></i>
+              <i class="fa-solid fa-list mr-2 fa-lg"></i>Posts
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to trainer_categorys_path, class: "nav-link" do %>
-              <i class="fa-solid fa-shield-dog mr-2 fa-lg"></i>
+              <i class="fa-solid fa-shield-dog mr-2 fa-lg"></i>Category
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to destroy_trainer_session_path, method: :delete, class: "nav-link" do %>
-              <i class="fa-solid fa-right-from-bracket mr-2 fa-lg"></i>
+              <i class="fa-solid fa-right-from-bracket mr-2 fa-lg"></i>Log out
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to trainer_trainers_path, class: "nav-link" do %>
-              <i class="fa-solid fa-address-card mr-2 fa-lg"></i>
-            <% end %>
-          </li>
-          <li class="nav-item">
             <%= link_to trainer_posts_path, class: "nav-link" do %>
-              <i class="fa-solid fa-list mr-2 fa-lg"></i>
+              <i class="fa-solid fa-list mr-2 fa-lg"></i>Posts
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to trainer_categorys_path, class: "nav-link" do %>
-             <i class="fa-solid fa-shield-dog mr-2 fa-lg"></i>
+             <i class="fa-solid fa-shield-dog mr-2 fa-lg"></i>Category
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_trainer_session_path, class: "nav-link" do %>
-              <i class="fa-solid fa-arrow-right-to-bracket mr-2 fa-lg"></i>
+              <i class="fa-solid fa-arrow-right-to-bracket mr-2 fa-lg"></i>Log in
             <% end %>
           </li>
         <% end %>
       </ul>
     </div>
-  </div>
+    <%= render "public/trainer/searches/search_posts" %>
 </nav>
 
 <!-- Content Section -->

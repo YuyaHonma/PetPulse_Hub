@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   
   
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
+    sessions: "admin/sessions"
+  }
   
   scope module: :public do
     
@@ -48,6 +48,9 @@ Rails.application.routes.draw do
     resources :posts do
     resource :favorites, only: [:create, :destroy]
     end
+    
+    resources :favorites, only: [:index]
+    
     #トレーナー
     resources :trainers, only: [:index, :show]
     #カテゴリ
@@ -72,10 +75,12 @@ end
       namespace :trainer do
     # トップページ
     root to: "homes#top", as: :trainer_root
+    # キーワード検索
+    get 'trainers/search', to: 'searches#search_posts'
     # トレーナー
-    resources :trainers, only: [:index, :show, :edit, :update]
-    get '/traiers/unsubscribe' => 'trainers#unsubscribe', as: 'unsubscribe'
+    get '/trainers/unsubscribe' => 'trainers#unsubscribe', as: 'unsubscribe'
     patch '/trainers/withdraw' => 'trainers#withdraw', as: 'withdraw'
+    resources :trainers, only: [:index, :show, :edit, :update]
     # カテゴリー
     resources :categorys, only: [:index, :create, :edit, :update, :destroy]
     # 投稿

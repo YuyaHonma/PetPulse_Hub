@@ -44,13 +44,13 @@
 
   <div class="container mt-4">
   <div id="messages">
-    <% (@trainer_messages + @owner_messages).sort_by(&:created_at).each do |message| %>
+    <% @messages.sort_by(&:created_at).each do |message| %>
       <div class="message">
-        <% if message.trainer.present? %>
-          <strong><%= message.trainer.name %></strong>
-        <% else %>
-          <strong><%= message.owner.name %></strong>
-        <% end %>
+        <% if message.send_type.present? %>
+            <strong><%= message.owner.name %></strong>
+          <% else %>
+            <strong><%= message.trainer.name %></strong>
+          <% end %>
         <span><%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
         <div class="message-content">
           <%= message.message %>

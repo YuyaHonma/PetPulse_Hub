@@ -7,7 +7,6 @@ class Owner < ApplicationRecord
     
     has_many :pets, dependent: :destroy
     has_many :posts, dependent: :destroy
-    has_many :categorys, dependent: :destroy
     has_many :owner_favorites, dependent: :destroy
     has_many :rooms, dependent: :destroy
     has_many :messages, dependent: :destroy

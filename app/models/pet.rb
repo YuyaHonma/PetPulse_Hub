@@ -1,6 +1,6 @@
 class Pet < ApplicationRecord
     has_one_attached :image
-    belongs_to :owner, dependent: :destroy
+    belongs_to :owner
     
     validates :image, presence: true
     validates :pet_name, presence: true

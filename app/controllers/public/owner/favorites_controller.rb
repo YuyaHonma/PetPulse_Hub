@@ -1,6 +1,9 @@
 class Public::Owner::FavoritesController < ApplicationController
     
-    
+    def index
+        @owner = current_owner
+        @favorite_posts = current_owner.owner_favorites.includes(:post).map(&:post)
+    end
     
     def create
         @post = Post.find(params[:post_id])

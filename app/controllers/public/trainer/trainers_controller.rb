@@ -5,6 +5,7 @@ class Public::Trainer::TrainersController < ApplicationController
    end
    
    def show
+      @trainer = current_trainer
       @trainer = Trainer.find(params[:id])
    end
    
@@ -30,7 +31,7 @@ class Public::Trainer::TrainersController < ApplicationController
      if @trainer.update(is_active: false) # ここで特定のカラムを更新せずに退会処理を実行
        reset_session
        flash[:notice] = "退会処理を実行しました"
-       redirect_to trainer_root_path
+       redirect_to new_trainer_session_path
      else
        flash[:alert] = "退会処理に失敗しました"
        redirect_to trainer_trainer_path(@trainer)

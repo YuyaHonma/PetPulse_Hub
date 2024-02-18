@@ -6,10 +6,11 @@ class Public::Owner::OwnersController < ApplicationController
   end
   
   def show
-    @owner = current_owner
-    @pet = current_owner.pets if current_owner.present?
-    @new_registration = true # 新規登録フォームを表示する
-  end
+  @owner = current_owner
+  @pet = current_owner.pets.paginate(page: params[:page], per_page: 3) if current_owner.present?
+  @new_registration = true # 新規登録フォームを表示する
+end
+
     
   def edit
     @owner = current_owner

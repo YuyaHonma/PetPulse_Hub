@@ -4,6 +4,15 @@
       <h1><strong>お悩み相談一覧</strong></h1>
     </div>
   </div>
+  
+  <!-- ソート機能のUI -->
+  <div class="text-center mb-4">
+    <%= link_to "新しい順", owner_posts_path(order: 'newest') %>
+    <%= link_to "古い順", owner_posts_path(order: 'oldest') %>
+    <%= link_to "回答の多い順", owner_posts_path(order: 'most_comments') %>
+    <%= link_to "いいね順", owner_posts_path(order: 'most_favorites') %>
+  </div>
+  
   <div class="row">
     <% @posts.each_slice(4) do |slice| %>
       <div class="row mb-4">
@@ -57,3 +66,5 @@
     </div>
   </div>
 </div>
+
+<%= render partial: 'public/owner/shared/new_post_path' %>

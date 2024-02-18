@@ -52,7 +52,7 @@
               <% end %>
             </td>
           </tr>
-                    <!-- コメント数 -->
+          <!-- コメント数 -->
           <tr>
             <th>コメント数</th>
             <td><%= @post.advices.count %></td>
@@ -61,19 +61,17 @@
       </table>
       <div class="text-center">
         <div class="btn-group" role="group" aria-label="Post Actions">
-            <i class="fa-solid fa-pen-to-square fa-lg"></i>
+          <%= button_to admin_post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-lg", style: "width: 250px; height: 55px; border-radius: 25px;" do %>
+            <i class="fa-solid fa-trash fa-lg"></i> <!-- アイコンの i タグはここで削除 -->
           <% end %>
-          <%= button_to admin_post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-lg", style: "width: 250px; height: 55px; border-radius: 25px; margin-left: 55px;" do %>
-            <i class="fa-solid fa-trash fa-lg"></i>
-          <% end %>
-          <div style="margin-bottom: 50px;"></div> <!-- ボタンの下の余白 -->
         </div>
+        <div style="margin-bottom: 50px;"></div> <!-- ボタンの下の余白 -->
         <%= link_to admin_posts_path, class: "btn btn-secondary btn-lg mb-5", style: "width: 250px; height: 55px; border-radius: 25px;" do %>
-        一覧に戻る
-      <% end %>
+          一覧に戻る
+        <% end %>
       </div>
       <!-- コメント一覧 -->
-      <%= render "public/admin/advices/index", post: @post %>
+      <%= render "admin/advices/index", post: @post %>
     </div>
   </div>
 </div>

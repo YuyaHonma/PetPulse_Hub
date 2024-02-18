@@ -2,8 +2,11 @@
   <div class="row">
     <div class="col-10 mt-4 mx-auto">
       <h4 class="mb-4" style="font-weight:bold;">🔳飼い主情報確認</h4>
-      <div class="col-12 text-right" style="margin-top: -60px; margin-bottom: 30px;">
+      <div class="col-12 text-right" style="margin-top: -60px; margin-bottom: 15px;">
         <%= link_to "飼い主投稿一覧へ", owner_posts_list_path, class: "btn btn-secondary text-center", style: "height: 40px; border-radius: 10px;" %>
+      </div>
+      <div class="text-right", style="margin-top: -30px;">
+        <%= link_to "メッセージ一覧を見る", owner_rooms_path, class: "btn btn-orange", style: "margin-top -20px;" %>
       </div>
       <%= render "public/owner/owners/owner_info", owners: @owner %>
       <% if current_owner == @owner %>
@@ -31,6 +34,7 @@
                 <% end %>
               </div>
             </div>
+            <%= paginate @pet %>
           </div>
         </div>
         <!-- スペースを作成するための空の行を追加 -->

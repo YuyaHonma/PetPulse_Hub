@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h4 class="mb-4" style="font-weight:bold;">届いたDM一覧</h4>
+      <% if @rooms.any? %>
+        <div class="list-group">
+          <% @rooms.each do |room| %>
+            <a href="<%= owner_room_path(room.id) %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+              <span>DM with <%= room.trainer.name %></span>
+              <% if room.unread_messages_count > 0 %> <!-- もし未読メッセージがあれば -->
+                <span class="badge bg-primary">New</span> <!-- 新着メッセージのバッジを表示 -->
+              <% end %>
+            </a>
+          <% end %>
+        </div>
+      <% else %>
+        <p>届いたDMはありません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>
