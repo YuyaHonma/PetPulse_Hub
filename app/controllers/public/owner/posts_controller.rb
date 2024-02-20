@@ -50,7 +50,7 @@ class Public::Owner::PostsController < ApplicationController
         @post = Post.find(params[:id])
 
         if @post.update(post_params)
-
+        flash[:notice] = "投稿情報を変更しました。"
         redirect_to owner_post_path(@post.id)
         else
         redirect_to edit_owner_post_path(@post.id)

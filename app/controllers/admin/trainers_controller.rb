@@ -15,6 +15,7 @@ class Admin::TrainersController < ApplicationController
     def update
          @trainer = Trainer.find(params[:id])
       if @trainer.update(trainer_params)
+          flash[:notice] = "トレーナーの登録情報を変更しました。"
         redirect_to admin_trainer_path(@trainer)
       else
         render :edit

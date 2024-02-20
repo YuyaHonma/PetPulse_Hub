@@ -24,10 +24,12 @@ class Public::Owner::SessionsController < Devise::SessionsController
   end
   
   def after_sign_in_path_for(resource)
+    flash[:notice] = "ログインが成功しました！！"
     owner_my_page_path
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトが成功しました"
     new_owner_session_path
   end
   

@@ -1,38 +1,47 @@
 class Public::Trainer::CategorysController < ApplicationController
-    before_action :authenticate_trainer!
-    
-    def index
-        @category = Category.new
-        @categorys = Category.all.order(id: :desc)
+  before_action :authenticate_trainer!
+  
+  def index
+    @category = Category.new
+    @categorys = Category.all.order(id: :desc)
+  end
+  
+  def create
+    @category = Category.new(category_params)
+    if @category.save
+      flash[:notice] = "新規カテゴリーを作成しました。"
+      redirect_to trainer_categorys_path
+    else
+      flash.now[:alert] = "カテゴリーの作成に失敗しました。"
+      render :index
     end
-    
-    def create
-        @category = Category.new(category_params)
-        @category.save
-        flash[:notice] = "新規作成に成功しました。"
-        @categorys = Category.all
-        redirect_to trainer_categorys_path
+  end
+  
+  def edit
+    @category = Category.find(params[:id])
+  end
+  
+  def update
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      flash[:notice] = "カテゴリーを更新しました。"
+      redirect_to trainer_categorys_path
+    else
+      flash.now[:alert] = "カテゴリーの更新に失敗しました。"
+      render :edit
     end
-    
-    def edit
-        @category = Category.find(params[:id])
-    end
-    
-    def update
-        @category=Category.find(params[:id])
-        @category.update(category_params)
-        redirect_to trainer_categorys_path
-    end
-    
-    def destroy
-        @category = Category.find(params[:id])
-        @category.destroy
-        redirect_to trainer_categorys_path, notice: "カテゴリーを削除しました。"
-    end
-    
-    private
+  end
+  
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:notice] = "カテゴリーを削除しました。"
+    redirect_to trainer_categorys_path
+  end
+  
+  private
 
-    def category_params
-      params.require(:category).permit(:name)
-    end
+  def category_params
+    params.require(:category).permit(:name)
+  end
 end

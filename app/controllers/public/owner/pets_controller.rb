@@ -33,7 +33,7 @@ class Public::Owner::PetsController < ApplicationController
         @pet = Pet.find(params[:id])
 
     if @pet.update(pet_params)
-
+      flash[:notice] = "ペット情報を更新しました。"
       redirect_to owner_pet_path(@pet.id)
     else
       redirect_to edit_owner_pet_path(@pet.id)
@@ -43,7 +43,7 @@ class Public::Owner::PetsController < ApplicationController
     def destroy
     @pet = Pet.find(params[:id])
     @pet.destroy
-    redirect_to owner_my_page_path, notice: "You have deleted book successfully."
+    redirect_to owner_my_page_path, notice: "ペット情報を削除しました。"
     end
     
     private

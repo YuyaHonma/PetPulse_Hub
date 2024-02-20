@@ -13,7 +13,7 @@ class Admin::PostsController < ApplicationController
         @post = Post.find(params[:id])
 
         if @post.update(post_params)
-
+        flash[:notice] = "投稿の登録情報を変更しました。"
         redirect_to admin_post_path(@post.id)
         else
         redirect_to edit_admin_post_path(@post.id)
@@ -23,6 +23,6 @@ class Admin::PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-        redirect_to admin_posts_path, notice: '投稿が削除されました'
+        redirect_to admin_posts_path, notice: '投稿が削除されました！'
     end
 end
