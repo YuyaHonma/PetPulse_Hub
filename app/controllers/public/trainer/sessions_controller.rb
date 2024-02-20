@@ -39,8 +39,7 @@ class Public::Trainer::SessionsController < Devise::SessionsController
   # end
   
   def after_sign_in_path_for(resource)
-    
-    trainer_trainers_path
+    trainer_trainer_path(current_trainer)
   end
 
   def after_sign_out_path_for(resource)

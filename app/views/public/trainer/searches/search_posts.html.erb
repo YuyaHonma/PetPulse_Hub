@@ -1,8 +1,8 @@
 <div class="container mt-5">
   <div class="row mb-4">
     <div class="col text-center">
-      <h1><strong>検索結果</strong></h1>
-      <h6>(全<%= @records.count %>件)</h6>
+      <h1 style="font-weight:bold; font-family: serif;"><strong>検索結果</strong></h1>
+      <h4>(全<%= @records.count %>件)</h4>
       <% if @records.empty? %>
         <div class="text-center" style="margin:30px;">
           <p style="color:red;">該当するお悩みはありません</p>

@@ -3,21 +3,21 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-12">
-      <h1 class="text-center mb-4"><strong>飼い主一覧</strong></h1>
+      <h1 class="text-center mb-4" style="font-weight:bold; font-family: serif;"><strong>飼い主一覧</strong></h1>
     </div>
   </div>
 
-  <div class="row">
-    <% @owners.each do |owner| %>
-      <div class="col-md-4">
-        <div class="card mb-4 border-10 shadow rounded">
-          <div class="card-body">
-            <h5 class="card-title"><strong>飼い主名 <%= owner.name %></strong></h5>
-            <p class="card-text"><strong>お住まい <%= owner.address %></strong></p>
-            
-            <% if owner.pets.present? %>
-            <h2 class="text-center"><strong>🐾ワンちゃん情報🐾</strong></h2>
-              <% owner.pets.each do |pet| %>
+<div class="row">
+  <% @owners.each do |owner| %>
+  <div class="col-md-4 mt-4">
+    <div class="card mb-4 border-10 shadow rounded" onclick="window.location='<%= trainer_owner_path(owner) %>'" style="cursor: pointer;">
+      <div class="card-body">
+        <h5 class="card-title"><strong>飼い主名</strong> <a style="color: blue;"><%= owner.name %></a></h5>
+        <p class="card-text"><strong>お住まい</strong> <a style="color: blue;"><%= owner.address %></a></p>
+        
+        <% if owner.pets.present? %>
+          <h2 class="text-center" style="font-weight:bold; font-family: serif;"><strong>🐾ワンちゃん情報🐾</strong></h2>
+          <% owner.pets.each do |pet| %>
               <div class="pet-info bg-info p-3 rounded mb-4">
                 <div class="row">
                   <div class="col-6">
@@ -40,15 +40,12 @@
                 </div>
               </div>
               <% end %>
-            <% else %>
-              <p class="card-text">ペットの情報はありません</p>
-            <% end %>
-            <div class="text-center">
-              <%= link_to "詳細を見る", trainer_owner_path(owner), class: "btn btn-primary mt-3" %>
-            </div>
-          </div>
-        </div>
+        <% else %>
+          <p class="card-text">ペットの情報はありません</p>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+  </div>
+<% end %>
   </div>
 </div>

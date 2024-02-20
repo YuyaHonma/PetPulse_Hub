@@ -1,10 +1,10 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-10 mt-4 mx-auto">
-      <h4 class="mb-4" style="font-weight:bold;">🔳飼い主情報確認</h4>
+      <h4 class="mb-4" style="font-weight:bold; font-family: serif;">🔳飼い主情報確認</h4>
       <div class="col-12 text-right" style="margin-top: -60px; margin-bottom: 30px;">
         <div><%= link_to "🐶飼い主詳細情報へ", owner_my_page_path %></div>
-        <div style="margin-top: 10px;"><%= link_to "🐶いいねした投稿の一覧", owner_favorites_path %></div>
+        <div style="margin-top: 10px;"><%= link_to "🐶いいねした投稿一覧へ", owner_favorites_path %></div>
       </div>
       <%= render "public/owner/owners/owner_info", owners: @owner %>
       <% if current_owner == @owner %>
@@ -16,7 +16,7 @@
   </div>
   
   <div class="mt-4">
-    <h1 style="font-size: 24px; font-weight: bold;"><%= @owner.name %> が投稿した内容一覧</h1>
+    <h1 style="font-size: 24px; font-weight: bold; font-family: serif;"><%= @owner.name %> が投稿した内容一覧</h1>
 
     <div class="row">
       <% @posts.in_groups_of(3, false) do |group| %>

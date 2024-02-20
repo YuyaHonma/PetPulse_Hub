@@ -1,25 +1,25 @@
 <body style="margin-top: 100px;">
   <div class="container">
-    <h1 class="text-center mb-5">トレーナー一覧</h1>
+    <h1 class="text-center mb-5" style="font-weight:bold; font-family: serif;">トレーナー一覧</h1>
     <% @trainers.each do |trainer| %>
       <div class="row mb-5 align-items-center">
         <div class="col-lg-4 col-md-6 col-sm-12 mb-lg-0 mb-md-4 mb-sm-4">
           <div class="text-center">
-            <%= link_to owner_trainer_path(trainer) do %>
+            <a href="<%= owner_trainer_path(trainer) %>" class="text-decoration-none">
               <% if trainer.image.attached? %>
                 <%= image_tag trainer.image, class: "img-fluid rounded-circle", alt: "トレーナー画像", style: "max-width: 250px; height: 250px; object-position: top; object-fit: cover;" %>
               <% else %>
                 <%= image_tag 'no_image.jpg', class: "img-fluid rounded-circle", alt: "デフォルト画像", style: "max-width: 250px; height: 250px; object-position: top; object-fit: cover;" %>
               <% end %>
-            <% end %>
+            </a>
           </div>
         </div>
         <div class="col-lg-8 col-md-6 col-sm-12">
+          
           <div class="card">
             <div class="card-body">
-              <%= link_to owner_trainer_path(trainer), class: "text-decoration-none" do %>
+              <a href="<%= owner_trainer_path(trainer) %>" class="text-decoration-none">
                 <h5 class="card-title"><%= trainer.name %></h5>
-              <% end %>
               <p class="card-text"><%= trainer.name_kana %></p>
               <ul class="list-unstyled">
                 <li>生年月日: <%= trainer.birthday %></li>
@@ -29,11 +29,12 @@
               <p class="card-text"><%= trainer.message %></p>
               <div class="d-flex flex-wrap mt-3">
                 <% trainer.categories.each do |category| %>
-                  <%= link_to owner_category_path(category), class: "text-decoration-none" do %>
+                  <a href="<%= owner_category_path(category) %>" class="text-decoration-none">
                     <div class="rounded-circle border border-primary px-3 py-1 mr-3 mb-2 category-link"><%= category.name %></div>
-                  <% end %>
+                  </a>
                 <% end %>
               </div>
+              </a>
             </div>
           </div>
         </div>

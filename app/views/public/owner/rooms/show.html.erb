@@ -97,7 +97,7 @@
     flex: 0 0 100px; /* 固定幅 */
   }
 </style>
-<h1><strong>"<%= @trainer.name %>"トレーナーさんとの相談部屋</strong></h1>
+<h1 style="font-weight:bold; font-family: serif;"><strong>"<%= @trainer.name %>"トレーナーさんとの相談部屋</strong></h1>
 
 <div class="container mt-4">
   <div id="messages">
@@ -106,7 +106,7 @@
         <div class="chat-container ">
           <div class="chat-bubble" style="background-color: #00F226;"> <!-- 飼い主のメッセージの背景色 -->
             <div class="message-content">
-              <%= message.message %>
+              <strong><%= message.message %></strong>
             </div>
             <div class="timestamp"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></div>
           </div>
@@ -123,7 +123,7 @@
           </div>
           <div class="trainer-chat-bubble chat-bubble" style="background-color: #FFFFFF;">
             <div class="message-content">
-              <%= message.message %>
+              <strong><%= message.message %></strong>
             </div>
             <div class="timestamp"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></div>
           </div>

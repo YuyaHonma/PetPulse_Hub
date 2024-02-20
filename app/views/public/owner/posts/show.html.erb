@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h1 class="text-center mb-4"><strong>🐾お悩み詳細🐾</strong></h1>
+      <h1 class="text-center mb-4" style="font-weight:bold; font-family: serif;"><strong>🐾お悩み詳細🐾</strong></h1>
       <table class="table table-bordered mb-5" style="background-color: #F0F8FF;">
         <tbody>
           <tr>
@@ -58,7 +58,9 @@
           </tr>
         </tbody>
       </table>
+      
       <div class="text-center">
+        <% if current_owner.present? %>
         <div class="btn-group" role="group" aria-label="Post Actions">
           <%= link_to edit_owner_post_path(@post), class: "btn btn-primary btn-lg mb-5", style: "width: 250px; height: 55px; border-radius: 25px; margin-right: 55px; display: flex; justify-content: center; align-items: center;" do %>
             <i class="fa-solid fa-pen-to-square fa-lg"></i>
@@ -68,10 +70,12 @@
           <% end %>
           <div style="margin-bottom: 50px;"></div> <!-- ボタンの下の余白 -->
         </div>
+        <% end %>
         <%= link_to owner_posts_path, class: "btn btn-secondary btn-lg mb-5", style: "width: 250px; height: 55px; border-radius: 25px;" do %>
-        一覧に戻る
+        投稿一覧へ
       <% end %>
       </div>
+      
       <!-- コメント一覧 -->
       <%= render "public/owner/advices/index", post: @post %>
     </div>

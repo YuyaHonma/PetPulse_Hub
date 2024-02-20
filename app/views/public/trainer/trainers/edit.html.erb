@@ -1,9 +1,32 @@
-<%= image_tag "pet_edit.jpeg", style: "width: 100%; height: auto;", alt: "ペット詳細" %>
+<div style="margin-top: -170px;"></div>
+<div class="container">
+    <div class="slider-area">
+        <div class="slider-item">
+            <img src="/assets/edit.1.jpg">
+        </div>
+        <div class="slider-item">
+            <img src="/assets/edit.2.jpg">
+        </div>
+        <div class="slider-item">
+            <img src="/assets/edit.3.jpg">
+        </div>
+    </div>
+</div>
 
 <div class="container mt-4">
   <div class="row">
-    <div class="col-10 mt-4 mx-auto">
-      <h4 class="mb-4" style="font-weight:bold;">🔳トレーナー情報の編集</h4>
+    <div class="col-9 mt-4 mx-auto">
+      <h3 class="mb-4" style="font-weight:bold; font-family: serif;">🔳トレーナー情報編集</h3>
+      <% if @trainer.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@trainer.errors.count, "error") %> prohibited this post from being saved:</h2>
+          <ul>
+            <% @trainer.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <%= form_with model: @trainer, url: trainer_trainer_path(@trainer), method: :patch, html: { multipart: true } do |f| %>
         <div class="form-group text-left">
           <strong><%= f.label :"アイコン写真" %></strong>
@@ -14,35 +37,35 @@
         </div>
         <div class="form-group text-left">
           <strong><%= f.label :"名前" %></strong>
-          <%= f.text_field :name, placeholder: "山田　太郎", class: "form-control" %>
+          <%= f.text_field :name, placeholder: "山田　太郎", required: true, class: "form-control" %>
         </div>
         <div class="form-group text-left">
           <strong><%= f.label :"読み方(フリガナ)" %></strong>
-          <%= f.text_field :name_kana, placeholder: "ヤマダ　タロウ", class: "form-control" %>
+          <%= f.text_field :name_kana, placeholder: "ヤマダ　タロウ", required: true, class: "form-control" %>
         </div>
         <div class="form-group text-left">
           <strong><%= f.label :"生年月日" %></strong>
-          <%= f.date_field :birthday, class: "form-control" %>
+          <%= f.date_field :birthday, required: true, class: "form-control" %>
         </div>
         <div class="form-group text-left">
           <strong><%= f.label :"趣味" %></strong>
-          <%= f.text_field :hobby, placeholder: "旅行・写真・ゲームなど", class: "form-control" %>
+          <%= f.text_field :hobby, placeholder: "旅行・写真・ゲームなど", required: true, class: "form-control" %>
         </div>
         <div class="form-group text-left">
           <strong><%= f.label :"ライセンス他" %></strong>
-          <%= f.text_field :license, placeholder: "愛玩動物飼養管理士", class: "form-control" %>
+          <%= f.text_field :license, placeholder: "愛玩動物飼養管理士", required: true, class: "form-control" %>
         </div>
         <div class="form-group text-left">
-          <%= f.label :"得意なお悩み" %>
+          <strong><%= f.label :"得意なお悩み" %></strong>
           <br>
-          <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+          <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, required: true do |b| %>
             <%= b.check_box %>
             <%= b.label %><br>
           <% end %>
         </div>
-        <div class="form-group text-left">
-          <%= f.label :"愛犬家の方へのメッセージ" %>
-          <%= f.text_area :message, class: 'form-control message' %>
+        <div class="form-group text-left"></strong>
+          <strong><%= f.label :"愛犬家の方へのメッセージ" %>
+          <%= f.text_area :message, required: true, class: 'form-control message' %>
         </div>
         <div class="row mt-4">
           <div class="col-12">
@@ -64,3 +87,67 @@
     </div>
   </div>
 </div>
+
+<style>
+  .container {
+    width: 100%;
+    height: 56vh;
+}
+
+.slider-area {
+    /*position: relative;*/
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slider-item {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: slideShow 27s infinite;
+}
+
+
+
+.slider-item:nth-child(2) {
+    animation-delay: 9s;
+}
+
+.slider-item:nth-child(3) {
+    animation-delay: 18s;
+}
+
+.slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes slideShow {
+    0% {
+        opacity: 0;
+        transform: translateY(0%) scale(1.2);
+        animation-timing-function: ease-in;
+    }
+
+    8% {
+        opacity: 1;
+        transform: translateY(0%) scale(1.15);
+        animation-timing-function: ease-out;
+
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateY(0%) scale(1);
+    }
+
+    43%,
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+}
+</style>

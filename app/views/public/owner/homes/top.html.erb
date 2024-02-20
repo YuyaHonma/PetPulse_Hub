@@ -1,5 +1,21 @@
 <div style="margin-top: -170px;"></div>
-<%= image_tag "top1.jpg", class: "img-fluid", alt: "トップ画像" %>
+<div class="container">
+    <div class="slider-area">
+        <div class="slider-item">
+            <img src="assets/top.1.jpg">
+        </div>
+        <div class="slider-item">
+            <img src="assets/top.2.jpg">
+        </div>
+        <div class="slider-item">
+            <img src="assets/top.3.jpg">
+        </div>
+        <!-- テキストを重ねる -->
+        <div class="slider-text">
+            <p style="margin: -10px; font-size: 35px; font-family: serif; letter-spacing: 2px; color: white;">一緒にいる毎日を</br>もっと楽しく</p>
+        </div>
+    </div>
+</div>
 <ul id="page-link">
   <li><a href="#area-1" class="scroll-link"><strong>新着情報</strong></a></li>
   <li><a href="#area-2" class="scroll-link"><strong>オススメトレーナー</strong></a></li>
@@ -27,9 +43,9 @@
 </div>
 
 <section class="area" id="area-1">
-  <h1><strong>新着情報</strong></h1>
+  <h1 class="row justify-content-center mb-4", style="font-family: serif;"><strong>新着情報</strong></h1>
   <div class="row justify-content-center">
-    <div class="col-10">
+    <div class="col-10 mt-4 mb-3">
       <% @posts.each_slice(4) do |slice| %>
       <div class="row mb-4">
         <% slice.compact.each do |post| %>
@@ -76,16 +92,18 @@
     <% end %>
     </div>
   </div>
+  <div class="col-12">
   <div class="text-center"> <!-- 中央揃え -->
-  <a href="<%= owner_posts_path %>" class="btn btn-success mt-3">投稿一覧を見る</a>
+  <a href="<%= owner_posts_path %>">投稿一覧を見る</a>
+  </div>
   </div>
 </section>
 
 
 <section class="area mt-4 mb-5" id="area-2">
-  <h1><strong>オススメトレーナー</strong></h1>
-  <div class="row justify-content-center">
-    <div class="col-10 mt-4">
+  <h1 class="row justify-content-center mb-4", style="font-family: serif;"><strong>オススメトレーナー</strong></h1>
+  <div class="row justify-content-center mt-4">
+    <div class="col-10 mt-4 mb-3">
       <% @trainers.each_slice(4) do |slice| %>
         <div class="row mb-4">
           <% slice.each do |trainer| %>
@@ -116,8 +134,10 @@
         </div>
       <% end %>
     </div>
+    <div class="col-12">
   <div class="text-center"> <!-- 中央揃え -->
-    <a href="<%= owner_trainers_path %>" class="btn btn-success mt-3">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
+    <a href="<%= owner_trainers_path %>">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
+  </div>
   </div>
 </section>
 
@@ -140,8 +160,8 @@
         </div>
       <% end %>
     </div>
-    <div class="text-center"> <!-- 中央揃え -->
-    <a href="<%= owner_categorys_path %>" class="btn btn-success mt-3">カテゴリー一覧を見る</a>
+    <div class="text-center mt-3"> <!-- 中央揃え -->
+    <a href="<%= owner_categorys_path %>">カテゴリー一覧を見る</a>
     </div>
   </div>
 </section>
@@ -168,3 +188,76 @@
 </style>
 
 <%= render partial: 'public/owner/shared/new_post_path' %>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 56vh;
+}
+
+.slider-area {
+    /*position: relative;*/
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slider-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.slider-item {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 0;
+    animation: sliderAnime 30s linear infinite 0s;
+}
+
+
+.slider-item:nth-child(2) {
+    animation-delay: 10s;
+}
+
+.slider-item:nth-child(3) {
+    animation-delay: 20s;
+}
+
+.slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes sliderAnime {
+    0% {
+        opacity: 0;
+        animation-timing-function: ease-in;
+    }
+
+    8% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+
+    20% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    40%,
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
+</style>

@@ -1,4 +1,6 @@
 class Public::Owner::TrainersController < ApplicationController
+    before_action :authenticate_owner!, only: [:show] # ログインしていない場合はshowアクションにアクセスできない
+    
     def index
         @trainers = Trainer.all
     end

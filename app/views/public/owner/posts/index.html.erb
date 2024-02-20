@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row mb-4">
     <div class="col text-center">
-      <h1><strong>お悩み相談一覧</strong></h1>
+      <h1 style="font-weight:bold; font-family: serif;"><strong>お悩み相談一覧</strong></h1>
     </div>
   </div>
   
@@ -45,8 +45,10 @@
             <p class="card-text">
               <strong>トレーナー回答: </strong><%= post.advices.count %>件
             </p>
+            <% if current_owner.present? %>
             <p id="favorite_btn_<%= post.id %>", class="card-text">
               <%= render "public/owner/favorites/btn", post: post %></p>
+              <% end %>
           </div>
         </div>
       </div>

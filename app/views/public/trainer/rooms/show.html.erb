@@ -115,7 +115,7 @@
   </style>
 </head>
 <body>
-  <h1><strong>"<%= @owner.name %>"様との相談部屋</strong></h1>
+  <h1 style="font-weight:bold; font-family: serif;"><strong>"<%= @owner.name %>"様との相談部屋</strong></h1>
 
   <div class="container mt-4">
     <div id="messages">
@@ -128,7 +128,7 @@
             </div>
             <div class="chat-bubble"  style="background-color: #FFFFFF;">
               <div class="message-content">
-                <%= message.message %>
+                <strong><%= message.message %></strong>
               </div>
               <div class="timestamp"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></div>
             </div>
@@ -137,7 +137,7 @@
           <div class="chat-container trainer-chat-container">
             <div class="trainer-chat-bubble" style="background-color: #00F226;">
               <div class="message-content">
-                <%= message.message %>
+                <strong><%= message.message %></strong>
               </div>
               <div class="timestamp"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></div>
             </div>

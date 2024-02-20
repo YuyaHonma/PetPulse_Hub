@@ -1,9 +1,22 @@
 <div style="margin-top: -150px;"></div>
-<%= image_tag "owner_edit.jpg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
+<div class="container">
+    <div class="slider-area">
+        <div class="slider-item">
+            <img src="/assets/owner_edit.jpg">
+        </div>
+        <div class="slider-item">
+            <img src="/assets/edit.2.jpg">
+        </div>
+        <div class="slider-item">
+            <img src="/assets/edit.3.jpg">
+        </div>
+    </div>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col mt-4">
-      <h2 class="text-center mb-4" style="font-weight:bold; font-family: serif;">飼い主登録情報編集</h2>
+      <h3 class="text-center mb-4" style="font-weight:bold; font-family: serif;">飼い主登録情報編集</h3>
       <% if @owner.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -23,34 +36,34 @@
                 <td class="p-1" style="font-weight:bold;">氏名</td>
                 <td class="p-2 pt-2" style="font-weight:bold;"><%= f.label :name, "名前" %></td>
                 <td class="pl-3">
-                  <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+                  <%= f.text_field :name, autofocus: true, autocomplete: "name", required: true %>
                 </td>
               </tr>
               <tr>
                 <td class="p-1" style="font-weight:bold;">フリガナ</td>
                 <td class="p-2 pt-2" style="font-weight:bold;"><%= f.label :name_kana, "フリガナ" %></td>
                 <td class="pl-3">
-                  <%= f.text_field :name_kana, autofocus: true, autocomplete: "name_kana" %>
+                  <%= f.text_field :name_kana, autofocus: true, autocomplete: "name_kana", required: true %>
                 </td>
               </tr>
               <tr>
                 <td class="p-2 pt-2" style="font-weight:bold;"><%= f.label :address, "住所" %></td>
                 <td></td>
                 <td  class="pl-3" colspan="3">
-                  <%= f.text_field :address, size:"50", autofocus: true, autocomplete: "address" %>
+                  <%= f.text_field :address, size:"50", autofocus: true, autocomplete: "address", required: true %>
                 </td>
               </tr>
               <tr>
                 <td class="p-2 pt-2" style="font-weight:bold;"><%= f.label :telephone, "電話番号(ハイフンなし)" %></td>
                 <td></td>
                 <td class="pl-3">
-                  <%= f.text_field :telephone, autofocus: true, autocomplete: "telephone" %>
+                  <%= f.text_field :telephone, autofocus: true, autocomplete: "telephone", required: true %>
                 </td>
               </tr>
               <tr>
                 <td class="p-2" style="font-weight:bold;"><%= f.label :email, "メールアドレス" %></td>
                 <td></td>
-                <td class="pl-3"><%= f.email_field :email, autocomplete: "email" %></td>
+                <td class="pl-3"><%= f.email_field :email, autocomplete: "email", required: true %></td>
               </tr>
               <tr>
                 <td colspan="2"></td>
@@ -65,3 +78,67 @@
     </div>
   </div>
 </div>
+
+<style>
+  .container {
+    width: 100%;
+    height: 56vh;
+}
+
+.slider-area {
+    /*position: relative;*/
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slider-item {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: slideShow 27s infinite;
+}
+
+
+
+.slider-item:nth-child(2) {
+    animation-delay: 9s;
+}
+
+.slider-item:nth-child(3) {
+    animation-delay: 18s;
+}
+
+.slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes slideShow {
+    0% {
+        opacity: 0;
+        transform: translateY(0%) scale(1.2);
+        animation-timing-function: ease-in;
+    }
+
+    8% {
+        opacity: 1;
+        transform: translateY(0%) scale(1.15);
+        animation-timing-function: ease-out;
+
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateY(0%) scale(1);
+    }
+
+    43%,
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+}
+</style>
