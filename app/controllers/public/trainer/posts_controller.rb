@@ -1,4 +1,5 @@
 class Public::Trainer::PostsController < ApplicationController
+    before_action :authenticate_trainer!
    
    def index
     case params[:order]

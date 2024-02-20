@@ -7,10 +7,10 @@ class Post < ApplicationRecord
     has_many :owner_favorites, dependent: :destroy
     has_many :trainer_favorites, dependent: :destroy
     
-    validates :title, presence: true, length: { maximum: 100 }
+    validates :title, presence: true, length: { minimum: 2, maximum: 100 }
     validates :category_id, presence: true
     validates :image, presence: true
-    validates :introduction, presence: true, length: { maximum: 500 }
+    validates :introduction, presence: true, length: { minimum: 2, maximum: 500 }
     validates :current_approach, presence: true, length: { maximum: 300 }
     
     def get_profile_image(width, height)

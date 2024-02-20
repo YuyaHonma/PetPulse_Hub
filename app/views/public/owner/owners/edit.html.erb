@@ -1,8 +1,19 @@
-
+<div style="margin-top: -150px;"></div>
+<%= image_tag "owner_edit.jpg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
 <div class="container">
   <div class="row">
     <div class="col mt-4">
       <h2 class="text-center mb-4" style="font-weight:bold; font-family: serif;">飼い主登録情報編集</h2>
+      <% if @owner.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this post from being saved:</h2>
+          <ul>
+            <% @owner.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
       <div style="padding: 15px; margin-bottom: 10px; border: 5px double #A07B35; background-color: #fffaf0;">
         <%= form_with(model: @owner, url: owner_update_information_path ,method: :PATCH) do |f| %>

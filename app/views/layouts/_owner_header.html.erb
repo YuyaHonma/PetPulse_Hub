@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +25,8 @@
       font-size: 36px; /* ロゴのフォントサイズを調整 */
       font-weight: bold;
       color: #343a40; /* ロゴの文字色を設定 */
+      margin-right: 30px;
+      margin-left: 50px;
     }
     .navbar-toggler {
       border: none; /* ハンバーガーアイコンのボーダーを削除 */
@@ -38,20 +41,36 @@
     }
     .navbar-text {
       margin-left: 10px;
-      margin-top: 10px;
+      margin-top: 0px;
       font-size: 14px;
       color: #666;
     }
     .navbar-nav .nav-link {
       font-family: 'Times New Roman';
       font-size: 20px;
+      position: relative; /* 相対位置指定 */
+    }
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute; /* 絶対位置指定 */
+      width: 0;
+      height: 2px;
+      bottom: 5px; /* 下端から5px上に移動 */
+      left: 0; /* 左端に配置 */
+      background-color: #000000; /* 下線の色を指定 */
+      transition: width 0.3s ease; /* アニメーションを追加 */
+    }
+    .navbar-nav .nav-link:hover::after {
+      width: 100%; /* マウスを乗せたときの下線の長さ */
     }
   </style>
 </head>
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <a class="navbar-brand" href="/owner">PetPulse Hub</a>
+    <a class="navbar-brand" href="/owner">
+      <%= image_tag("PetPulse_Hub_Logo.png", alt: "PetPulse_Hub", style: "max-height: 90px;") %>
+    </a>
     <a class="navbar-text">日本最大級の<br>オンラインドッグトレーニングサイト</a>
       <% if owner_signed_in? %>
         <p class = "text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px; margin-left: 20px;">Welcome to <%= current_owner.name %>！</p>
@@ -65,43 +84,43 @@
         <% if owner_signed_in? %>
           <li class="nav-item">
             <%= link_to owner_my_page_path, class: "nav-link" do %>
-              <i class="fa-solid fa-user mr-2 fa-lg"></i>My page
+              My page
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to owner_trainers_path, class: "nav-link" do %>
-              <i class="fa-solid fa-address-card mr-2 fa-lg"></i>Trainers
+              Trainers
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to owner_posts_path, class: "nav-link" do %>
-              <i class="fa-solid fa-list mr-2 fa-lg"></i>Posts
+              Posts
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to destroy_owner_session_path, method: :delete, class: "nav-link" do %>
-              <i class="fa-solid fa-right-from-bracket mr-2 fa-lg"></i>Log out
+              Log out
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
             <%= link_to owner_homes_about_path, class: "nav-link" do %>
-              <i class="fa-solid fa-hand-holding-heart mr-2 fa-lg"></i>Concept
+              Concept
             <% end %>
           </li>
-          <li class="nav-item", style="margin-right:">
+          <li class="nav-item">
             <%= link_to owner_posts_path, class: "nav-link" do %>
-              <i class="fa-solid fa-list mr-2 fa-lg"></i>Posts
+              Posts
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_owner_session_path, class: "nav-link" do %>
-              <i class="fa-solid fa-arrow-right-to-bracket mr-2 fa-lg"></i>Log in
+              Log in
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_owner_registration_path, class: "nav-link" do %>
-              <i class="fa-solid fa-user-plus mr-2 fa-lg"></i>Sign up
+              Sign up
             <% end %>
           </li>
         <% end %>

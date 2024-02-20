@@ -1,4 +1,12 @@
-<%= image_tag "login_page.jpeg", style: "width: 100%; height: 600px;", alt: "トップ画像" %>
+
+<div style="margin-top: -150px;"></div>
+<video autoplay muted loop style="width: 100%; height: auto;">
+  <source src="/assets/owner_login.mp4" type="video/mp4">
+</video>
+<div style="position: absolute; bottom: 510px; left: 70px; padding: 50px;">
+    <p style="margin: -10px; font-size: 50px; font-family: serif; letter-spacing: 2px; color: white;"><strong>Service</strong></p>
+    <p style="margin: -10px; margin-top: -20px; font-size: 20px; font-family: serif; letter-spacing: 2px; color: white;"></br>パートナーとの生活を</br>幸せのサポートをする</strong></p>
+</div>
 <div style="margin-bottom: 40px;"></div> <!-- スペースを空けるための追加 -->
 <div class="container">
   <div class="row">
@@ -11,11 +19,11 @@
             <tbody>
               <tr>
                 <td class="pl-2 pt-3" style="vertical-align: top; margin-top: 10px;"><%= f.label :email, "メールアドレス" %></td>
-                <td class="pl-5" style="vertical-align: top;"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", style: "width: 230px; margin-bottom: 8px; margin-top: 10px;" %></td>
+                <td class="pl-5" style="vertical-align: top;"><%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "form-control", style: "width: 230px; margin-bottom: 8px; margin-top: 10px;" %></td>
               </tr>
               <tr>
                 <td class="pl-2 py-4" style="vertical-align: top; margin-top: 5px;"><%= f.label :password, "パスワード" %></td>
-                <td class="pl-5" style="vertical-align: top;"><%= f.password_field :password, autocomplete: "current-password", class: "form-control", style: "width: 230px; margin-top: 20px;" %></td>
+                <td class="pl-5" style="vertical-align: top;"><%= f.password_field :password, autocomplete: "current-password", required: true, class: "form-control", style: "width: 230px; margin-top: 20px;" %></td>
               </tr>
               <tr>
                 <!-- Deviseの内部で使用されるヘルパーメソッドで、rememberableが有効な場合はtrueを返す -->
@@ -41,8 +49,8 @@
          初めてご利用の方は<br>
          こちらから会員登録を行なってください
         </h5>
-        <div class="text-center mt-4">
-          <%= link_to "新規飼い主登録", new_owner_registration_path, class: "btn btn-success", style: "width: 300px; height: 60px; font-size: 20px; font-family: serif; border-radius: 12px; text-align: center; display: inline-block; line-height: 45px;" %>
+        <div class="text-center mt-4 mb-2">
+          <%= link_to "新規飼い主登録", new_owner_registration_path, class: "btn btn-orange", style: "width: 300px; height: 60px; font-size: 20px; font-family: serif; border-radius: 12px; text-align: center; display: inline-block; line-height: 45px;" %>
         </div>
       </div>
     </div>
@@ -63,3 +71,4 @@
      </div>
     </div>
 </div>
+<%= render "public/owner/shared/links" %>

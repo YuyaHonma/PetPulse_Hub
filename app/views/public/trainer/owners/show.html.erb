@@ -19,9 +19,9 @@
         </tbody>
       </table>
     </div>
-    </div>
-    
-    <div class="row mt-4">
+  </div>
+  
+  <div class="row mt-4">
     <div class="col-12 text-center mt-4">
         <% @pets.each do |pet| %>
           <div class="col-10 mx-auto mt-4">
@@ -40,12 +40,13 @@
         <% end %>
     </div>
   </div>
+  
   <div class="row mt-4">
-    <div class="col-12 text-center">
+    <div class="col-12 d-flex justify-content-center">
       <% unless @is_room %>
-        <%= link_to "DMのルームへ", trainer_rooms_path(owner_id: @owner.id), class: "btn btn-primary mt-3", style: "width: 200px; height: 50px;", method: :post %>
+        <%= link_to "DMのルームへ", trainer_rooms_path(owner_id: @owner.id), class: "btn btn-primary mt-3", style: "width: 200px; height: 45px;", method: :post %>
       <% else %>
-        <%= link_to "DMのルームへ", trainer_room_path(@room.id), class: "btn btn-primary mt-3", style: "width: 200px; height: 50px;" %>
+        <%= link_to "DMのルームへ", trainer_room_path(@room.id), class: "btn btn-primary mt-3", style: "width: 200px; height: 45px;" %>
       <% end %>
     </div>
   </div>

@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2024_02_13_010102) do
     t.text "message"
     t.boolean "send_type", default: false
     t.boolean "read", default: false
+    t.datetime "read_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_messages_on_owner_id"

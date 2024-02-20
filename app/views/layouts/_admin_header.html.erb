@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +25,8 @@
       font-size: 36px; /* ロゴのフォントサイズを調整 */
       font-weight: bold;
       color: #343a40; /* ロゴの文字色を設定 */
+      margin-right: 30px;
+      margin-left: 50px;
     }
     .navbar-toggler {
       border: none; /* ハンバーガーアイコンのボーダーを削除 */
@@ -37,24 +41,41 @@
     }
     .navbar-text {
       margin-left: 10px;
-      margin-top: 10px;
+      margin-top: 0px;
       font-size: 14px;
       color: #666;
     }
     .navbar-nav .nav-link {
       font-family: 'Times New Roman';
       font-size: 20px;
+      position: relative;
+      text-decoration: none;
+      color: #343a40;
+    }
+    .navbar-nav .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #343a40;
+      transition: width 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover::before {
+      width: 100%;
     }
   </style>
 </head>
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="/admin">PetPulse Hub</a>
-    <a class="navbar-text">日本最大級のオンラインドッグトレーニングサイト</a>
+    <a class="navbar-brand" href="/trainer">
+      <%= image_tag("PetPulse_Hub_Logo.png", alt: "PetPulse_Hub", style: "max-height: 90px;") %>
+    </a>
+    <a class="navbar-text">日本最大級の<br>オンラインドッグトレーニングサイト</a>
       <% if admin_signed_in? %>
-        <p class = "text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px;">Welcome to admin！</p>
+        <p class="text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px;">Welcome to admin！</p>
       <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,34 +86,33 @@
         <% if admin_signed_in? %>
           <li class="nav-item">
             <%= link_to admin_trainers_path, class: "nav-link" do %>
-              <i class="fa-solid fa-user mr-2 fa-lg"></i>
+              Trainers
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to admin_root_path, class: "nav-link" do %>
-              <i class="fa-solid fa-address-card mr-2 fa-lg"></i>
+              Owners
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to admin_posts_path, class: "nav-link" do %>
-              <i class="fa-solid fa-envelopes-bulk"></i>
+              Posts
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
-              <i class="fa-solid fa-right-from-bracket mr-2"></i>
+              Log out
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
             <%= link_to new_admin_session_path, class: "nav-link" do %>
-              <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>Log In
+              Log In
             <% end %>
           </li>
         <% end %>
       </ul>
     </div>
-  </div>
 </nav>
 
 <!-- Content Section -->

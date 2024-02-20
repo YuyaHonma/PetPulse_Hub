@@ -84,3 +84,21 @@ $('#page-top').click(function () {
 	}
     return false;//リンク自体の無効化
 });
+
+ // ロゴアニメーションが終了した後に.boxを表示する
+$(document).ready(function() {
+  // ロゴアニメーションが終了した後に.boxを表示する
+  setTimeout(function() {
+    $('.contents').fadeOut('slow');
+    $('#imageSection').fadeIn('slow');
+    $('.box').fadeIn('slow'); // .boxを表示する
+  }, 2000);
+});
+
+$(window).scroll(function() {
+  if ($(this).scrollTop() > 100) {
+    $('.navbar').addClass('scrolled');
+  } else {
+    $('.navbar').removeClass('scrolled');
+  }
+});

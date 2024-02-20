@@ -50,7 +50,8 @@ class Public::Trainer::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
   def after_sign_up_path_for(resource)
-    trainer_trainers_path
+    flash[:notice] = "会員の新規登録に成功しました！"
+    trainer_trainer_path
   end
 
   # The path used after sign up.

@@ -3,7 +3,7 @@
     <div class="col-10 mt-4 mx-auto">
       <h4 class="mb-4" style="font-weight:bold;">🔳飼い主情報確認</h4>
       <div class="col-12 text-right" style="margin-top: -60px; margin-bottom: 30px;">
-        <%= link_to "飼い主投稿一覧へ", owner_posts_list_path, class: "btn btn-secondary text-center", style: "height: 40px; border-radius: 10px;" %>
+        <%= link_to "🐶飼い主投稿一覧へ", owner_posts_list_path %>
       </div>
       <%= render "public/owner/owners/owner_info", owners: @owner %>
       <% if current_owner == @owner %>

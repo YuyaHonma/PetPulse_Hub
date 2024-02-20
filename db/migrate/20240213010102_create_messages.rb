@@ -7,6 +7,7 @@ class CreateMessages < ActiveRecord::Migration[6.1]
       t.text :message
       t.boolean :send_type, default: false
       t.boolean :read, default: false
+      t.datetime :read_at, default: false
 
       t.timestamps
     end

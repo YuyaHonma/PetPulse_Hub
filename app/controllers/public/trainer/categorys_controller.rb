@@ -1,4 +1,5 @@
 class Public::Trainer::CategorysController < ApplicationController
+    before_action :authenticate_trainer!
     
     def index
         @category = Category.new

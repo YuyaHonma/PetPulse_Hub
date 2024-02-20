@@ -1,10 +1,10 @@
-<div style="margin-top: 100px;"></div>
+<div style="margin-top: -170px;"></div>
+<%= image_tag "top1.jpg", class: "img-fluid", alt: "トップ画像" %>
 <ul id="page-link">
   <li><a href="#area-1" class="scroll-link"><strong>新着情報</strong></a></li>
   <li><a href="#area-2" class="scroll-link"><strong>オススメトレーナー</strong></a></li>
   <li><a href="#area-3" class="scroll-link"><strong>よくあるお悩み</strong></a></li>
 </ul>
-<%= image_tag "top1.jpg", class: "img-fluid", alt: "トップ画像" %>
 
 <div class="container">
   <div class="row" style="margin-top: 100px;">
@@ -63,8 +63,11 @@
                 <p class="card-text">
                   <strong>トレーナー回答: </strong><%= post.advices.count %>件
                 </p>
-                <p id="favorite_btn_<%= post.id %>", class="card-text">
-                  <%= render "public/owner/favorites/btn", post: post %></p>
+                <% if current_owner.present? %>
+                  <p id="favorite_btn_<%= post.id %>", class="card-text">
+                    <%= render "public/owner/favorites/btn", post: post %>
+                  </p>
+                <% end %>
               </div>
             </div>
           </div>
@@ -73,18 +76,20 @@
     <% end %>
     </div>
   </div>
-  <a href="<%= owner_posts_path %>" class="btn btn-success btn-block", style="width: 300px; height: 50px;">投稿一覧を見る</a>
+  <div class="text-center"> <!-- 中央揃え -->
+  <a href="<%= owner_posts_path %>" class="btn btn-success mt-3">投稿一覧を見る</a>
+  </div>
 </section>
 
 
 <section class="area mt-4 mb-5" id="area-2">
   <h1><strong>オススメトレーナー</strong></h1>
   <div class="row justify-content-center">
-    <div class="col-12 mt-4">
+    <div class="col-10 mt-4">
       <% @trainers.each_slice(4) do |slice| %>
-        <div class="row">
+        <div class="row mb-4">
           <% slice.each do |trainer| %>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="col-md-3"> <!-- カラムの幅を調整 -->
               <div class="card">
                 <%= link_to owner_trainer_path(trainer) do %>
                   <% if trainer.image.attached? %>

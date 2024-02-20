@@ -2,19 +2,18 @@
   <div class="row">
     <div class="col-10 mt-4 mx-auto">
       <h4 class="mb-4" style="font-weight:bold;">🔳トレーナー情報確認</h4>
-      <%= link_to "トレーナー一覧に戻る", trainer_trainers_path, class: "btn btn-orange mt-3 mr-2" %>
-      <% if current_trainer == @trainer %> <!-- ログイン中のトレーナーが自分の詳細情報の場合にのみ表示 -->
-      <div class="text-center", style="margin-top: -30px;">
-        <%= link_to "トレーナー情報編集", edit_trainer_trainer_path, class: "btn btn-success", style: "margin-top: -70px;" %></div>
-      <div class="text-right", style="margin-top: -100px;">
-        <%= link_to "メッセージ一覧を見る", trainer_rooms_path, class: "btn btn-primary" %>
-      </div>
-        <%= link_to trainer_unsubscribe_path, class: "btn btn-danger btn-sm float-right mt-2 mb-4", style: "width: 150px; height: 40px; border-radius: 30px; display: flex; justify-content: center; align-items: center;" do %>
-        退会する
-      <% end %>
       
+      <% if current_trainer == @trainer %> <!-- ログイン中のトレーナーが自分の詳細情報の場合にのみ表示 -->
+      <div class="text-left", style="margin-top: 60px;">
+        <%= link_to "トレーナー情報編集", edit_trainer_trainer_path, class: "btn btn-success", style: "margin-top: -70px;" %></div>
+      <div class="text-right", style="margin-top: -95px; margin-bottom: 20px;">
+        <%= link_to "🐶メッセージ一覧を見る", trainer_rooms_path %>
+        </div>
+        <div class="text-right", style="margin-top: 20px; margin-bottom: 20px;">
+        <%= link_to "🐶トレーナー一覧に戻る", trainer_trainers_path %>
+      </div>
       <% end %>
-      <table class="table table-bordered table-condensed" style="background-color: #D8FFF1;">
+      <table class="table table-bordered table-condensed" style="background-color: #D8FFF1; margin-top: 20px;">
         <tbody>
           <tr>
             <th style="background-color: #00D7F4; width: 20%;">名前</th>
@@ -41,6 +40,7 @@
     </div>
   </div>
 </div>
+
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-6">
@@ -85,3 +85,6 @@
     </div>
   </div>
 </div>
+<div>
+  
+

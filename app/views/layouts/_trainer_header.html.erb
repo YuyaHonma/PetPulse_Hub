@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +25,8 @@
       font-size: 36px; /* ロゴのフォントサイズを調整 */
       font-weight: bold;
       color: #343a40; /* ロゴの文字色を設定 */
+      margin-right: 30px;
+      margin-left: 50px;
     }
     .navbar-toggler {
       border: none; /* ハンバーガーアイコンのボーダーを削除 */
@@ -38,23 +41,39 @@
     }
     .navbar-text {
       margin-left: 10px;
-      margin-top: 10px;
+      margin-top: 0px;
       font-size: 14px;
       color: #666;
     }
     .navbar-nav .nav-link {
       font-family: 'Times New Roman';
       font-size: 20px;
+      position: relative; /* 相対位置指定 */
+    }
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute; /* 絶対位置指定 */
+      width: 0;
+      height: 2px;
+      bottom: 5px; /* 下端から5px上に移動 */
+      left: 0; /* 左端に配置 */
+      background-color: #000000; /* 下線の色を指定 */
+      transition: width 0.3s ease; /* アニメーションを追加 */
+    }
+    .navbar-nav .nav-link:hover::after {
+      width: 100%; /* マウスを乗せたときの下線の長さ */
     }
   </style>
 </head>
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <a class="navbar-brand" href="/trainer">PetPulse Hub</a>
-    <a class="navbar-text">日本最大級のオンラインドッグトレーニングサイト</a>
+    <a class="navbar-brand" href="/trainer">
+      <%= image_tag("PetPulse_Hub_Logo.png", alt: "PetPulse_Hub", style: "max-height: 90px;") %>
+    </a>
+    <a class="navbar-text">日本最大級の<br>オンラインドッグトレーニングサイト</a>
       <% if trainer_signed_in? %>
-        <p class = "text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px;">Welcome to <%= current_trainer.name %>！</p>
+        <p class = "text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px; margin-left: 20px;">Welcome to <%= current_trainer.name %>！</p>
       <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,43 +84,43 @@
         <% if trainer_signed_in? %>
           <li class="nav-item">
             <%= link_to trainer_trainer_path(current_trainer), class: "nav-link" do %>
-              <i class="fa-solid fa-address-card mr-2 fa-lg"></i>
+              My page
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to trainer_owners_path, class: "nav-link" do %>
-              <i class="fa-solid fa-users mr-2 fa-lg"></i>Owners
+              Owners
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to trainer_posts_path, class: "nav-link" do %>
-              <i class="fa-solid fa-list mr-2 fa-lg"></i>Posts
+              Posts
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to trainer_categorys_path, class: "nav-link" do %>
-              <i class="fa-solid fa-shield-dog mr-2 fa-lg"></i>Category
+              Category
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to destroy_trainer_session_path, method: :delete, class: "nav-link" do %>
-              <i class="fa-solid fa-right-from-bracket mr-2 fa-lg"></i>Log out
+              Log out
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
             <%= link_to trainer_posts_path, class: "nav-link" do %>
-              <i class="fa-solid fa-list mr-2 fa-lg"></i>Posts
+              Posts
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to trainer_categorys_path, class: "nav-link" do %>
-             <i class="fa-solid fa-shield-dog mr-2 fa-lg"></i>Category
+             Category
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_trainer_session_path, class: "nav-link" do %>
-              <i class="fa-solid fa-arrow-right-to-bracket mr-2 fa-lg"></i>Log in
+              Log in
             <% end %>
           </li>
         <% end %>

@@ -1,74 +1,146 @@
-  <title>DMルーム</title>
-  <style>
-  
+<title>DMルーム</title>
+<style>
   h1 {
-      font-family: 'Arial', sans-serif; /* フォントファミリーをArialに設定 */
-      font-size: 36px; /* フォントサイズを36pxに設定 */
-      color: #333; /* テキストの色を黒に設定 */
-      text-align: center; /* テキストを中央揃えに設定 */
-      margin-top: 20px; /* 上部の余白を設定 */
-    }
-    
-    .message {
-      background-color: #fff; /* メッセージの背景色を白に設定 */
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 10px; /* メッセージの角を丸くする */
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* 影を追加 */
-    }
-    .message strong {
-      color: #f15a29; /* メッセージの送信者名の文字色をオレンジに設定 */
-    }
-    .message-content {
-      color: #555; /* メッセージの内容の文字色をグレーに設定 */
-    }
-    .input-group-text {
-      background-color: #f15a29; /* ボタンの背景色をオレンジに設定 */
-      border-color: #f15a29; /* ボタンの枠線の色をオレンジに設定 */
-      color: #fff; /* ボタンの文字色を白に設定 */
-    }
-    .input-group-text:hover {
-      background-color: #e2490f; /* ホバー時の背景色を濃いオレンジに設定 */
-      border-color: #e2490f; /* ホバー時の枠線の色を濃いオレンジに設定 */
-    }
-    .btn-secondary {
-      border-color: #6dc6ff; /* セカンダリボタンの枠線の色を水色に設定 */
-      color: #fff; /* セカンダリボタンの文字色を白に設定 */
-    }
-    .btn-secondary:hover {
-      background-color: #5ab8ff; /* セカンダリボタンのホバー時の背景色を濃い水色に設定 */
-      border-color: #5ab8ff; /* セカンダリボタンのホバー時の枠線の色を濃い水色に設定 */
-    }
-  </style>
-  <h1>DMルーム</h1>
+    font-family: 'Arial', sans-serif;
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+  }
 
-  <div class="container mt-4">
-    <div id="messages">
-      <% @messages.sort_by(&:created_at).each do |message| %>
-        <div class="message">
-            <% if message.send_type.present? %>
-              <strong><%= message.owner.name %></strong>
-            <% else %>
-              <strong><%= message.trainer.name %></strong>
-            <% end %>
-        <span><%= message.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
-        <div class="message-content">
-          <%= message.message %>
+  .chat-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .name {
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+    text-align: right;
+    flex: 0 0 70px; /* 固定幅 */
+  }
+
+  .chat-bubble {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    max-width: 70%;
+    position: relative;
+  }
+
+  .chat-bubble::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #00F226; /* 飼い主のメッセージの背景色 */
+    transform: translateY(-50%);
+  }
+
+  .message {
+    margin-bottom: 20px;
+  }
+
+  .message-content {
+    color: #555;
+  }
+  
+  .timestamp {
+      font-size: 12px;
+      color: #999;
+    }
+
+  .input-group-text {
+    background-color: #f15a29;
+    border-color: #f15a29;
+    color: #fff;
+  }
+
+  .input-group-text:hover {
+    background-color: #e2490f;
+    border-color: #e2490f;
+  }
+
+  .btn-secondary {
+    border-color: #6dc6ff;
+    color: #fff;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5ab8ff;
+    border-color: #5ab8ff;
+  }
+
+  .trainer-chat-container {
+    justify-content: flex-start;
+  }
+
+  .trainer-chat-bubble::before {
+    left: -10px;
+    right: auto;
+    border-right: 10px solid #fff;
+    border-left: none;
+  }
+
+  .trainer-name {
+    font-weight: bold;
+    margin-right: 10px;
+    margin-left: 0;
+    text-align: left;
+    flex: 0 0 100px; /* 固定幅 */
+  }
+</style>
+<h1><strong>"<%= @trainer.name %>"トレーナーさんとの相談部屋</strong></h1>
+
+<div class="container mt-4">
+  <div id="messages">
+    <% @messages.sort_by(&:created_at).each do |message| %>
+      <% if message.send_type.present? %>
+        <div class="chat-container ">
+          <div class="chat-bubble" style="background-color: #00F226;"> <!-- 飼い主のメッセージの背景色 -->
+            <div class="message-content">
+              <%= message.message %>
+            </div>
+            <div class="timestamp"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></div>
+          </div>
+          <div class="name text-right">
+            <%= message.owner.name %></br>
+            (飼い主)
+          </div>
         </div>
-      </div>
+      <% else %>
+        <div class="chat-container trainer-chat-container">
+          <div class="trainer-name">
+            <%= message.trainer.name %></br>
+            (トレーナー)
+          </div>
+          <div class="trainer-chat-bubble chat-bubble" style="background-color: #FFFFFF;">
+            <div class="message-content">
+              <%= message.message %>
+            </div>
+            <div class="timestamp"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></div>
+          </div>
+        </div>
       <% end %>
-    </div>
-    
-    <%= form_with(model: [@room, @message], url: owner_room_messages_path(@room), local: true) do |form| %>
-      <div class="input-group mb-3">
-        <%= form.text_area :message, placeholder: 'メッセージを入力してください', rows: 4, class: 'form-control' %>
-        <div class="input-group-append">
-          <!-- 送信ボタンをアイコンに変更 -->
-          <button type="submit" class="btn btn-success">
-            <i class="fas fa-paper-plane"></i> <!-- ペーパープレーンのアイコン -->
-          </button>
-        </div>
-      </div>
     <% end %>
-    <%= link_to "トレーナー詳細に戻る", owner_trainer_path(@trainer), class: "btn btn-secondary" %>
   </div>
+
+  <%= form_with(model: [@room, @message], url: owner_room_messages_path(@room), local: true) do |form| %>
+    <div class="input-group mb-3">
+      <%= form.text_area :message, placeholder: 'メッセージを入力してください', rows: 4, class: 'form-control' %>
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-success">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to "DMルーム一覧に戻る", owner_rooms_path, class: "btn btn-secondary" %>
+</div>

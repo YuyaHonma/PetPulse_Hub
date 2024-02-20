@@ -1,8 +1,9 @@
+<div style="margin-top: -180px;"></div>
+<%= image_tag "trainer_top.jpg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
 <ul id="page-link">
       <li><a href="#area-1">お悩み一覧</a></li>
       <li><a href="#area-2">トレーナー一覧</a></li>
     </ul>
-    <%= image_tag "trainer_top.jpg", style: "width: 100%; height: auto;", alt: "トップ画像" %>
     <div class="container">
   <div class="row", style="margin-top: 50px;">
     <!-- 左側のイラスト -->
@@ -60,8 +61,10 @@
                 <p class="card-text">
                   <strong>トレーナー回答: </strong><%= post.advices.count %>件
                 </p>
+                <% if current_trainer.present? %>
                 <p id="favorite_btn_<%= post.id %>", class="card-text">
                   <%= render "public/trainer/favorites/btn", post: post %></p>
+                  <% end %>
               </div>
             </div>
           </div>

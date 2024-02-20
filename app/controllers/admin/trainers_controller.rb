@@ -5,11 +5,11 @@ class Admin::TrainersController < ApplicationController
     end
     
     def show
-        @trainer = current_trainer
+        @trainer = Trainer.find(params[:id])
     end
     
     def edit
-        @trainer = current_trainer
+        @trainer = Trainer.find(params[:id])
     end
     
     def update

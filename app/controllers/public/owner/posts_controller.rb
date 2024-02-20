@@ -1,5 +1,6 @@
 class Public::Owner::PostsController < ApplicationController
     
+    
     def new
         @post = Post.new
     end
@@ -14,6 +15,7 @@ class Public::Owner::PostsController < ApplicationController
         render :new
       end
     end
+
     
     def index
     case params[:order]

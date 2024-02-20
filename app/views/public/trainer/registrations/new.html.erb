@@ -11,29 +11,29 @@
           <tr>
             <td class="p-1">名前</td>
             <td>
-            <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", required: true %>
             </td>
             </tr>
             <tr>
               <td class="p-1">フリガナ</td>
               <td>
-               <%= f.text_field :name_kana, autofocus: true, autocomplete: "name_kana" %>
+               <%= f.text_field :name_kana, autofocus: true, autocomplete: "name_kana",required: true %>
               </td>
             </tr>
             <tr>
               <td class="p-1"><%= f.label :email, "メールアドレス" %></td>
-              <td class="p-1"><%= f.email_field :email, autocomplete: "email" %></td>          
+              <td class="p-1"><%= f.email_field :email, autocomplete: "email", required: true %></td>          
             </tr>
             <tr>
               <td class="p-1"><%= f.label :address, "住所" %></td>
               <td colspan="3">              
-            <%= f.text_field :address, size:"50", autofocus: true, autocomplete: "address" %>
+            <%= f.text_field :address, size:"50", autofocus: true, autocomplete: "address", required: true %>
               </td>
             </tr>
             <tr>
               <td class="p-1"><%= f.label :telephone, "電話番号(ハイフンなし)" %></td>
               <td>
-              <%= f.text_field :telephone, autofocus: true, autocomplete: "telephone" %>
+              <%= f.text_field :telephone, autofocus: true, autocomplete: "telephone", required: true %>
               </td>          
             </tr>
             <tr>
@@ -44,13 +44,13 @@
               <% end %>
               </td>
               <td>
-               <%= f.password_field :password, autocomplete: "new-password" %>
+               <%= f.password_field :password, autocomplete: "new-password", required: true %>
               </td>
             </tr>
             <tr>
               <td class="p-1"><%= f.label :password_confirmation, "パスワード(確認用)" %></td>
               <td>
-                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
               </td>
             </tr>
             <tr>

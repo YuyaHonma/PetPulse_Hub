@@ -3,7 +3,6 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-10 mt-4 mx-auto">
-      
       <h4 class="mb-4" style="font-weight:bold;">🔳トレーナー情報の編集</h4>
       <%= form_with model: @trainer, url: trainer_trainer_path(@trainer), method: :patch, html: { multipart: true } do |f| %>
         <div class="form-group text-left">
@@ -45,13 +44,23 @@
           <%= f.label :"愛犬家の方へのメッセージ" %>
           <%= f.text_area :message, class: 'form-control message' %>
         </div>
-        <div class="mt-4 text-center">
-          <%= f.submit "変更を更新する", class: "btn btn-primary btn-lg mt-4", style: "width: 300px; border-radius: 30px;" %>
+        <div class="row mt-4">
+          <div class="col-12">
+            <div class="row justify-content-between">
+              <div class="col-lg-6 mb-4">
+                <%= f.submit "変更を更新する", class: "btn btn-primary btn-lg", style: "width: 100%; border-radius: 30px;" %>
+              </div>
+              <div class="col-lg-6">
+                <div class="text-lg-right">
+                  <%= link_to trainer_unsubscribe_path, class: "btn btn-danger btn-lg btn-block", style: "height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 30px;" do %>
+                  退会画面へ
+                <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
-      <div class="row mt-4">
-        <div class="col-12">&nbsp;</div>
-      </div>
     </div>
   </div>
 </div>

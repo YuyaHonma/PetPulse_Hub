@@ -12,13 +12,13 @@
   <link rel="stylesheet" type="text/css" href="css/8-1-8.css">
   
 </head>
-
 <body>
   <%= render 'layouts/header' %>
   <main>
     <div id="main-vidual">
     <!--/main-vidual--></div>
     <body style="margin-top: 150px;">
+    <%= flash[:notice] %>
     <%= yield %>
   </main>
 

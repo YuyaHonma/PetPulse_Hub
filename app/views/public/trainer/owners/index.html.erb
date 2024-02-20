@@ -3,26 +3,49 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-12">
-      <h1 class="text-center mb-4">飼い主一覧</h1>
+      <h1 class="text-center mb-4"><strong>飼い主一覧</strong></h1>
     </div>
   </div>
 
   <div class="row">
     <% @owners.each do |owner| %>
       <div class="col-md-4">
-        <div class="card mb-4">
+        <div class="card mb-4 border-10 shadow rounded">
           <div class="card-body">
-            <h5 class="card-title"><%= owner.name %></h5>
-            <p class="card-text"><%= owner.address %></p>
+            <h5 class="card-title"><strong>飼い主名 <%= owner.name %></strong></h5>
+            <p class="card-text"><strong>お住まい <%= owner.address %></strong></p>
+            
             <% if owner.pets.present? %>
+            <h2 class="text-center"><strong>🐾ワンちゃん情報🐾</strong></h2>
               <% owner.pets.each do |pet| %>
-                <p class="card-text"><strong>ペットの名前:</strong> <%= pet.pet_name %></p>
-                <p class="card-text"><strong>犬種:</strong> <%= pet.dog_breed %></p>
+              <div class="pet-info bg-info p-3 rounded mb-4">
+                <div class="row">
+                  <div class="col-6">
+                    <!-- ペットの写真 -->
+                    <div class="text-center">
+                      <% if pet.image.attached? %>
+                        <%= image_tag pet.image.variant(resize: "300x300^", gravity: "center", crop: "300x300+0+0"), class: "img-fluid rounded-circle pet-photo", alt: "ペットの写真" %>
+                      <% else %>
+                        <%= image_tag "default_pet_image.jpg", class: "img-fluid rounded-circle pet-photo", alt: "デフォルトのペットの写真" %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="col-6", style="margin-top: -15px;">
+                    <!-- ペットの名前と犬種 -->
+                    <div>
+                      <p><strong>ペットの名前:</br></strong> <%= pet.pet_name %></p>
+                      <p><strong>犬種:</br></strong> <%= pet.dog_breed %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <% end %>
             <% else %>
               <p class="card-text">ペットの情報はありません</p>
             <% end %>
-            <%= link_to "プロフィールを見る", trainer_owner_path(owner), class: "btn btn-primary" %>
+            <div class="text-center">
+              <%= link_to "詳細を見る", trainer_owner_path(owner), class: "btn btn-primary mt-3" %>
+            </div>
           </div>
         </div>
       </div>
