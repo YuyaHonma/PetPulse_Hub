@@ -102,3 +102,4 @@ $(window).scroll(function() {
     $('.navbar').removeClass('scrolled');
   }
 });
+

@@ -11,6 +11,40 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" type="text/css" href="css/8-1-8.css">
   
+  <style>
+    .flash-notice {
+      position: fixed;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      animation: slideInDown 0.5s ease forwards, fadeOut 0.5s ease forwards 3s;
+      display: none;
+    }
+
+    @keyframes slideInDown {
+      0% {
+        transform: translate(-50%, -100%);
+      }
+      100% {
+        transform: translate(-50%, 0);
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <%= render 'layouts/header' %>
@@ -18,7 +52,7 @@
     <div id="main-vidual">
     <!--/main-vidual--></div>
     <body style="margin-top: 150px;">
-    <%= flash[:notice] %>
+    <div class="flash-notice"><%= flash[:notice] %></div>
     <%= yield %>
   </main>
 
@@ -30,5 +64,13 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-2-1/js/8-2-1.js"></script>
   <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-1-8/js/8-1-8.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var flashNotice = document.querySelector('.flash-notice');
+      if (flashNotice) {
+        flashNotice.style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>
