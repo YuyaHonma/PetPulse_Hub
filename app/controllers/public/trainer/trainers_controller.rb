@@ -43,4 +43,10 @@ class Public::Trainer::TrainersController < ApplicationController
    def trainer_params
      params.require(:trainer).permit(:image, :name, :name_kana, :birthday, :hobby, :license, :message, category_ids:[])
    end
+   
+   def check_guest
+     if current_trainer.guest?
+       redirect_to trainer_trainer_root_path
+     end
+   end
 end

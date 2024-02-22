@@ -5,8 +5,8 @@ class Admin::PostsController < ApplicationController
     end
     
     def show
-        @posts = Post.all
-        @post = Post.find(params[:id])
+      @post = Post.find(params[:id])
+      @advices = @post.advices
     end
     
     def update
@@ -24,5 +24,12 @@ class Admin::PostsController < ApplicationController
         @post = Post.find(params[:id])
         @post.destroy
         redirect_to admin_posts_path, notice: '投稿が削除されました！'
+    end
+    
+    def destroy_trainer_advice
+      @advice = Advice.find(params[:id])
+      @post = @advice.post
+      @advice.destroy
+      redirect_to admin_post_path(@post), notice: 'トレーナーのコメントが削除されました！'
     end
 end

@@ -51,7 +51,7 @@ class Public::Trainer::RegistrationsController < Devise::RegistrationsController
   # end
   def after_sign_up_path_for(resource)
     flash[:notice] = "会員の新規登録に成功しました！"
-    trainer_trainer_path
+    trainer_trainer_path(current_trainer)
   end
 
   # The path used after sign up.

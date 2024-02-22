@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <h4 class="mb-4" style="font-weight:bold; font-family: serif;">届いたDM一覧</h4>
+      <h4 class="mb-4" style="font-weight:bold; font-family: serif;">📩 届いたDM一覧</h4>
       <div class="col-12 text-right", style="margin-top: -60px; margin-bottom: 30px;">
         <div><%= link_to "🐶トレーナー詳細情報へ", trainer_trainer_path(current_trainer) %></div>
         <div style="margin-top: 10px;"><%= link_to "🐶トレーナー一覧へ", trainer_trainers_path %></div>
@@ -13,7 +13,7 @@
           <% unread_messages_count = room.unread_messages_count %>
           <% room.mark_messages_as_read(current_trainer) if unread_messages_count > 0 %> <!-- ルームが開かれた時に未読メッセージを既読にマーク -->
           <a href="<%= trainer_room_path(room.id) %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center", style="font-weight:bold;">
-            <span>with <span style="color: blue;"><%= room.owner.name.upcase %></span></span> <!-- トレーナーの名前を大文字にして色を付ける -->
+            <span>📨 with <span style="color: blue;"><%= room.owner.name.upcase %></span></span> <!-- トレーナーの名前を大文字にして色を付ける -->
           <% if room.messages.present? %> <!-- メッセージがある場合のみ表示 -->
                 <div class="col-md-6 mx-auto text-center" style="margin-top: -15px; font-weight:bold"> <!-- 少し上に配置 -->
                   <div class="message-content">

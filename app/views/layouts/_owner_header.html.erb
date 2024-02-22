@@ -82,11 +82,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <% if owner_signed_in? %>
+          <% unless current_owner.guest? %>
           <li class="nav-item">
             <%= link_to owner_my_page_path, class: "nav-link" do %>
               My page
             <% end %>
           </li>
+          <% end %>
           <li class="nav-item">
             <%= link_to owner_trainers_path, class: "nav-link" do %>
               Trainers

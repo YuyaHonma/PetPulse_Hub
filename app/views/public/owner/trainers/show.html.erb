@@ -33,7 +33,7 @@
             </div>
           </div>
           
-          <div class="d-flex align-items-center ">
+          <div class="d-flex align-items-center mb-4">
             <% unless @is_room %>
               <%= link_to "直接相談する", owner_rooms_path(trainer_id: @trainer.id), class: "btn btn-primary mt-3", style: "width: 200px; height: 50px;", method: :post %>
             <% else %>
@@ -43,9 +43,9 @@
         </div>
       </div>
     </div>
+    
   </div>
 </div>
-
 <style>
 .category-link {
   color: #333;

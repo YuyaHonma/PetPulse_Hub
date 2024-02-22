@@ -72,7 +72,7 @@ end
     # トップページ
     root to: "homes#top"
     
-      namespace :trainer do
+    namespace :trainer do
     # トップページ
     root to: "homes#top", as: :trainer_root
     # キーワード検索
@@ -98,15 +98,14 @@ end
   end
   
    namespace :admin do
-     
-     root to: "homes#top"
-     
-     resources :owners, only: [:show, :edit, :update]
-     
-     resources :trainers, only: [:index, :show, :edit, :update]
-     
-     resources :posts, only: [:index, :show, :update, :destroy]
-     
-   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+      root to: "homes#top"
+    
+      resources :owners, only: [:show, :edit, :update]
+      resources :trainers, only: [:index, :show, :edit, :update]
+    
+      resources :posts, only: [:index, :show, :update, :destroy] do
+        resources :advices, only: [:destroy]
+      end
+    end
 end
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

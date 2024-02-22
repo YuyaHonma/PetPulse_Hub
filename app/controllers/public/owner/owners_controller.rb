@@ -1,4 +1,5 @@
 class Public::Owner::OwnersController < ApplicationController
+  before_action :check_guest, only: [:show]
   
   def index
     @owner = current_owner
@@ -6,10 +7,10 @@ class Public::Owner::OwnersController < ApplicationController
   end
   
   def show
-  @owner = current_owner
-  @pet = current_owner.pets.paginate(page: params[:page], per_page: 3) if current_owner.present?
-  @new_registration = true # 新規登録フォームを表示する
-end
+    @owner = current_owner
+    @pet = current_owner.pets.paginate(page: params[:page], per_page: 3) if current_owner.present?
+    @new_registration = true # 新規登録フォームを表示する
+  end
 
     
   def edit
@@ -42,4 +43,11 @@ end
   def owner_params
     params.require(:owner).permit(:name, :name_kana, :email, :address, :telephone)
   end
+  
+  def check_guest
+    if current_owner.guest?
+      redirect_to owner_owner_root_path
+    end
+  end
+  
 end

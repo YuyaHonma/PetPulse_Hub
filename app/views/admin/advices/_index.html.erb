@@ -1,30 +1,33 @@
-
-<table class="table table-striped", style="background-color: #f8f9fa;">
+<table class="table table-striped" style="background-color: #f8f9fa;">
   <tbody>
-    <% post.advices.each do |advice| %>
+    <% if @advices.present? %>
+      <% @advices.each do |advice| %>
+        <tr>
+          <td>
+            <%= link_to trainer_trainer_path(advice.trainer) do %>
+              <% if advice.trainer.image.attached? %>
+                <%= image_tag advice.trainer.image, size: "150x150", class: "rounded-circle" %><br>
+              <% else %>
+                <%= image_tag "no_image.jpg", size: "150x150", class: "rounded-circle" %><br>
+              <% end %>
+              <%= advice.trainer.name %>トレーナー
+            <% end %>
+          </td>
+          <td>
+            <div class="advice-box">
+              <%= advice.advice %>
+            </div>
+          </td>
+          <td>
+            <% if admin_signed_in? %>
+              <%= link_to "削除する", admin_post_advice_path(@post, advice), method: :delete, class: "btn btn-danger btn-sm btn-animate d-inline-block float-end", remote: true, data: { confirm: '本当に削除しますか？' } %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
       <tr>
-        <td>
-          <%= link_to trainer_trainer_path(advice.trainer) do %>
-            <% if advice.trainer.image.attached? %>
-              <%= image_tag advice.trainer.image, size: "150x150", class: "rounded-circle" %><br>
-            <% else %>
-              <%= image_tag "no_image.jpg", size: "150x150", class: "rounded-circle" %><br>
-            <% end %>
-            <%= advice.trainer.name %>トレーナー
-          <% end %>
-        </td>
-        <td>
-          <div class="advice-box">
-            <% advice.advice.chars.each_slice(24) do |slice| %>
-              <%= slice.join %><br>
-            <% end %>
-          </div>
-        </td>
-        <td>
-          <% if admin_signed_in? %>
-            <%= link_to "削除する", trainer_post_advice_path(post, advice), method: :delete, class: "btn btn-danger btn-sm btn-animate d-inline-block float-end", remote: true %>
-          <% end %>
-        </td>
+        <td colspan="3">アドバイスがありません。</td>
       </tr>
     <% end %>
   </tbody>

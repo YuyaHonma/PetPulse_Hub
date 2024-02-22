@@ -4,6 +4,7 @@
       <h1 style="font-weight:bold; font-family: serif;"><strong>お悩み相談一覧</strong></h1>
     </div>
   </div>
+  
   <!-- ソート機能のUI -->
   <div class="text-center mb-4">
     <%= link_to "新しい順", owner_posts_path(order: 'newest') %>
@@ -11,9 +12,10 @@
     <%= link_to "回答の多い順", owner_posts_path(order: 'most_comments') %>
     <%= link_to "いいね順", owner_posts_path(order: 'most_favorites') %>
   </div>
+  
   <div class="row">
     <% @posts.each_slice(8) do |slice| %>
-      <div class="row mb-4">
+      
         <% slice.compact.each do |post| %>
           <div class="col-md-3 mb-4"> <!-- カラムの幅を調整 -->
             <div class="card h-100"> <!-- カードの高さを均等にするために h-100 を追加 -->
@@ -51,7 +53,13 @@
             </div>
           </div>
         <% end %>
-      </div>
     <% end %>
+  </div>
+</div>
+
+<!-- ページネーション -->
+<div class="container">
+  <div class="row justify-content-center">
+      <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

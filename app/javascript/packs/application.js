@@ -103,3 +103,46 @@ $(window).scroll(function() {
   }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener("scroll", function() {
+        var scrollPosition = window.scrollY;
+        var elements = document.querySelectorAll(".fadeIn");
+
+        elements.forEach(function(el) {
+            if (el.offsetTop - window.innerHeight < scrollPosition) {
+                el.classList.add("active");
+            }
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener("scroll", function() {
+        var scrollPosition = window.scrollY;
+        var cards = document.querySelectorAll(".card-container");
+
+        cards.forEach(function(card, index) {
+            if (card.offsetTop < (window.innerHeight + scrollPosition)) {
+                setTimeout(function() {
+                    card.classList.add("active");
+                }, (index + 1) * 100); // カードの順番に応じて遅延させる
+            }
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener("scroll", function() {
+        var scrollPosition = window.scrollY;
+        var boxes = document.querySelectorAll(".box2");
+
+        boxes.forEach(function(box, index) {
+            if (box.offsetTop < (window.innerHeight + scrollPosition)) {
+                setTimeout(function() {
+                    box.classList.add("active");
+                }, index * 100); // ボックスの順番に応じて遅延させる
+            }
+        });
+    });
+});
+

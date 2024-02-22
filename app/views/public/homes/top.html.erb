@@ -34,10 +34,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="owners/sign_in">Owner</a>
+          <a class="nav-link" href="owner">Owner</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="trainers/sign_in">Trainer</a>
+          <a class="nav-link" href="trainer">Trainer</a>
         </li>
       </ul>
     </div>
@@ -53,7 +53,7 @@
 </div>
 </div>
 
-<div class="box" style="margin-top: 50px; margin-bottom: 50px; line-height: 2; font-size: 20px; font-family: serif; font-weight: bold; text-align: center;">
+<div class="box fadeIn" style="margin-top: 50px; margin-bottom: 50px; line-height: 2; font-size: 20px; font-family: serif; font-weight: bold; text-align: center;">
   <h1 style="margin-bottom: 30px; font-size: 40px; font-weight: bold;"><strong>「ペットのお悩み相談室」</strong></h1>
   <h1 style="margin-bottom: 30px; font-size: 32px"><strong><span>こんなお悩みありませんか？</span></strong></h1>
   <h2 style="font-size: 25px; color: red;">『パピーを迎え入れたけどどうしたらいいかわからない』<br><br>
@@ -62,7 +62,7 @@
 </div>
 
 <foreignObject id="svg-section" width="60%" height="100%" style="margin-bottom: 50px; height: 100%; overflow: auto;">
-  <div class="pic-container">
+  <div class="pic-container fadeIn">
     <div class="box1">
       <div style="margin-top: 90px; margin-bottom: 100px; line-height: 2; font-size: 20px; font-family: serif; font-weight: bold; text-align: center;">
         <h1 style="margin-bottom: 30px;"><strong>PetPulseなら全部解決！</strong><br></h1>
@@ -78,10 +78,12 @@
 
 </div>
 <div style="margin-top: 100px; line-height: 2; font-size: 20px; font-family: serif; font-weight: bold; text-align: center;">
-  <h1 style="margin-bottom: 30px; font-weight: bold; font-size: 40px;">PetPulse Hubの<span>特徴</span></h1>
-  <div class="row justify-content-center">
+  <div class="ribbon">
+  <h2 style="margin-bottom: 30px; font-weight: bold; font-size: 40px;">PetPulse Hubの特徴</h2>
+  </div>
+  <div class="row justify-content-center" style="margin-top: 50px;">
     <!-- 特徴1 -->
-    <div class="col-md-3" style="margin-bottom: 20px;">
+    <div class="col-md-3 card-container fadeInRight" style="margin-bottom: 20px;">
       <div class="card" style="padding: 20px; transition: transform 0.3s;">
         <h2 style="font-size: 22px;"><span>飼い主様に寄り添ったマンツーマン対応！</span></h2>
         <div class="text-center">
@@ -91,7 +93,7 @@
       </div>
     </div>
     <!-- 特徴2 -->
-    <div class="col-md-3" style="margin-bottom: 20px;">
+    <div class="col-md-3 card-container fadeInRight" style="margin-bottom: 20px;">
       <div class="card" style="padding: 20px; transition: transform 0.3s;">
         <h2 style="font-size: 22px;"><span>資格を持ったトレーナーから</br>的確なアドバイス！</span></h2>
         <div class="text-center">
@@ -101,7 +103,7 @@
       </div>
     </div>
     <!-- 特徴3 -->
-    <div class="col-md-3" style="margin-bottom: 20px;">
+    <div class="col-md-3 card-container fadeInRight" style="margin-bottom: 20px;">
       <div class="card" style="padding: 20px; transition: transform 0.3s;">
         <h2 style="font-size: 22px;"><span>使いやすいサイトデザイン！</span></h2>
         <div class="text-center">
@@ -113,12 +115,10 @@
   </div>
 </div>
 
-
-
   </div>
 </div>
 
-<section class="hero-section text-center">
+<section class="hero-section fadeIn text-center">
     <h1 style="margin-bottom: 30px; font-weight: bold; font-size: 40px;"><span>PetPulse Hubでできること</span></h1>
     <div class="row justify-content-center">
         <div class="col-4">
@@ -127,7 +127,7 @@
                     <span style="margin-top: -20px;">飼い主は専門家からのアドバイスやコミュニティのサポートを受けながら、
                     ペットの健康管理やしつけに関する情報を得ることができます。</span>
                 </p>
-                <a href="owners/sign_in" class="btn btn-success btn-lg btn-registration" style="font-size: 22px; width: 80%;">飼い主として登録する</a>
+                <a href="owner" class="btn btn-success btn-lg btn-registration" style="font-size: 22px; width: 80%;">飼い主として登録する</a>
             </div>
         </div>
         <div class="col-4">
@@ -137,7 +137,7 @@
                     ペット愛好者に対して専門知識やアドバイスを提供し、
                     ペットと飼い主の関係性をより深める手助けを行います。</span>
                 </p>
-                <a href="/trainers/sign_in" class="btn btn-primary btn-lg btn-registration" style="font-size: 22px; width: 80%;">トレーナーとして登録する</a>
+                <a href="trainer" class="btn btn-primary btn-lg btn-registration" style="font-size: 22px; width: 80%;">トレーナーとして登録する</a>
             </div>
         </div>
     </div>

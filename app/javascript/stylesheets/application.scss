@@ -82,7 +82,7 @@ color: #ccc;
 }
 
 #footer{
-position: relative;
+// position: relative;
 z-index: 2;
 }
 
@@ -555,6 +555,14 @@ h1 span {
   background-color: #FFFFFF;
   font-weight: bold;
   font-size: 26px;
+  opacity: 0;
+  transform: translateY(50px); /* 初期状態で下に移動させる */
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.box2.active {
+  opacity: 1;
+  transform: translateY(0); /* 下から元の位置に移動させる */
 }
 
 .box2::before {
@@ -619,4 +627,162 @@ border-radius: 15px;
   transform: scale(1.2);
 }
 
+.flash-notice {
+      position: fixed;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      animation: slideInDown 0.5s ease forwards, fadeOut 0.5s ease forwards 3s;
+      display: none;
+    }
 
+    @keyframes slideInDown {
+      0% {
+        transform: translate(-50%, -100%);
+      }
+      100% {
+        transform: translate(-50%, 0);
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        display: none;
+      }
+    }
+
+.fadeIn {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.fadeIn.active {
+    opacity: 1;
+}
+
+.fadeInRight {
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.fadeInRight.active {
+    opacity: 1;
+}
+
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 180px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin-bottom: 10px;
+  /* ツールチップを要素の下に配置 */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 30%;
+  margin-left: -60px; /* ツールチップの幅の半分 */
+  
+  /* ツールチップをフェードインさせるアニメーション */
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  /* テキストが改行されないようにする */
+  white-space: nowrap;
+}
+
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.link-style {
+    padding: 0.3rem 0;
+    color: #43a4d6;
+    text-decoration: none;
+    background-image: linear-gradient(90deg, transparent 50%, #4eb4e0 50%);
+    background-size: 200% auto;
+    transition: .8s;
+}
+
+.link-style:hover {
+    background-position: -100% 0;
+    color: #fff;
+}
+
+.ribbon {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.ribbon::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  bottom: -10px;
+  left: -35px;
+  z-index: -2;
+  border: 20px solid #fc9492;
+  border-left-color: transparent;
+}
+
+.ribbon::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  bottom: -10px;
+  right: -35px;
+  z-index: -2;
+  border: 20px solid #fc9492;
+  border-right-color: transparent;
+}
+
+.ribbon h2 {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0 20px;
+  line-height: 50px;
+  font-size: 25px;
+  color: #FFF;
+  background: #f57a78;
+}
+
+.ribbon h2::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 10px transparent;
+  border-right: solid 15px #b65a59;
+}
+
+.ribbon h2::after {
+  position: absolute;
+  content: '';
+  top: 100%;
+  right: 0;
+  border: none;
+  border-bottom: solid 10px transparent;
+  border-left: solid 15px #b65a59;
+}

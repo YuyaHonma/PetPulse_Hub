@@ -25,6 +25,10 @@ class Owner < ApplicationRecord
     end
   end
   
+  def guest?
+    email == 'test@test'
+  end
+  
   def self.guest
     find_or_create_by(email: 'test@test') do |owner|
       owner.name = 'ゲスト'

@@ -48,7 +48,7 @@
             <% if current_owner.present? %>
             <p id="favorite_btn_<%= post.id %>", class="card-text">
               <%= render "public/owner/favorites/btn", post: post %></p>
-              <% end %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -59,9 +59,7 @@
 <!-- ページネーション -->
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6 text-center">
       <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
-    </div>
   </div>
 </div>
 

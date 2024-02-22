@@ -31,7 +31,8 @@
 - 初めて子犬や子猫を飼われる方がしつけの仕方を知りたい時。
 ​
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
+ER図：https://app.diagrams.net/#G1VpRXScHT1tkHry4IRWWIkXgtRA0oQKN8
+ワイヤーフレーム(figma使用)：https://www.figma.com/file/cBQ5eGe9ubA9FlxWWwJCQ1/Wireframing-(Copy)?type=design&node-id=77%3A432&mode=design&t=64uawFoGFkczbDXf-1
 ​
 ## 開発環境
 - OS：Linux(CentOS)

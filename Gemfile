@@ -60,6 +60,7 @@ gem 'happybirthday', '~> 1.0'
 gem 'bootstrap4-kaminari-views'
 gem 'will_paginate'
 gem 'ransack'
+gem 'rails-i18n'
 
 gem 'dotenv-rails'
 group :production do

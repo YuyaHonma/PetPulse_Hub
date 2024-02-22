@@ -1,28 +1,28 @@
 <div style="margin-top: -180px;"></div>
 <div class="container">
-    <div class="slider-area">
-        <div class="slider-item">
-            <img src="assets/top.1.jpg">
-        </div>
-        <div class="slider-item">
-            <img src="assets/top.2.jpg">
-        </div>
-        <div class="slider-item">
-            <img src="assets/top.3.jpg">
-        </div>
-        <!-- テキストを重ねる -->
-        <div class="slider-text">
-            <p style="margin: -10px; font-size: 35px; font-family: serif; letter-spacing: 2px; color: white;">一緒にいる毎日を</br>もっと楽しく</p>
-        </div>
+  <div class="slider-area">
+    <div class="slider-item">
+      <img src="assets/top.1.jpg">
     </div>
+    <div class="slider-item">
+      <img src="assets/top.2.jpg">
+    </div>
+    <div class="slider-item">
+      <img src="assets/top.3.jpg">
+    </div>
+    <!-- テキストを重ねる -->
+    <div class="slider-text">
+      <p style="margin: -10px; font-size: 35px; font-family: serif; letter-spacing: 2px; color: white;">一緒にいる毎日を</br>もっと楽しく</p>
+    </div>
+  </div>
 </div>
 
-
 <ul id="page-link">
-      <li><a href="#area-1">お悩み一覧</a></li>
-      <li><a href="#area-2">トレーナー一覧</a></li>
-    </ul>
-    <div class="container">
+  <li><a href="#area-1">お悩み一覧</a></li>
+  <li><a href="#area-2">トレーナー一覧</a></li>
+</ul>
+
+<div class="container">
   <div class="row" style="margin-top: 50px;">
     <!-- 左側のイラスト -->
     <div class="col-3", style="margin-left: -60px;">
@@ -31,64 +31,65 @@
     <div class="col-1"></div>
     <!-- 右側のテキスト -->
     <div class="col-8">
-  <h1 style="white-space: nowrap; font-size: 35px;"><strong>「すべてはペットとペットを愛する人のために。」</strong></h1>
-  <p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 40px;"><strong>　小さな「子供」のように笑顔をもたらしてくれる存在。</strong></p>
-<p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 10px;"><strong>　仲の良い「兄弟」のように、一緒に遊び、成長する存在。</strong></p>
-<p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 10px;"><strong>　長年の「パートナー」のように、落ち込んだ心を慰め、元気づけてくれる存在。</strong></p>
-<p style="white-space: nowrap; font-size: 17px; margin-left: 1em; margin-top: 50px">ペットは大切な家族の一員であり、人生をともに歩む愛すべきパートナーです。</p>
-<p style="white-space: nowrap; font-size: 17px; margin-left: 1em;">出会いから健やかな日々の暮らしまで、すべてはペットとペットを愛する人のために。</p>
-<p style="white-space: nowrap; font-size: 17px; margin-left: 1em;">わたしたちは、ペットライフをランクアップさせる便利でやさしいサービスの提供を目指しています。</p>
-</div>
+      <h1 style="white-space: nowrap; font-size: 35px;"><strong>「すべてはペットとペットを愛する人のために。」</strong></h1>
+      <p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 40px;"><strong>　小さな「子供」のように笑顔をもたらしてくれる存在。</strong></p>
+      <p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 10px;"><strong>　仲の良い「兄弟」のように、一緒に遊び、成長する存在。</strong></p>
+      <p style="white-space: nowrap; font-size: 20px; line-height: 1.4; margin-top: 10px;"><strong>　長年の「パートナー」のように、落ち込んだ心を慰め、元気づけてくれる存在。</strong></p>
+      <p style="white-space: nowrap; font-size: 17px; margin-left: 1em; margin-top: 50px">ペットは大切な家族の一員であり、人生をともに歩む愛すべきパートナーです。</p>
+      <p style="white-space: nowrap; font-size: 17px; margin-left: 1em;">出会いから健やかな日々の暮らしまで、すべてはペットとペットを愛する人のために。</p>
+      <p style="white-space: nowrap; font-size: 17px; margin-left: 1em;">わたしたちは、ペットライフをランクアップさせる便利でやさしいサービスの提供を目指しています。</p>
+    </div>
   </div>
 </div>
 
-    <section class="area" id="area-1">
+<section class="area" id="area-1">
   <h1 class="row justify-content-center mb-4", style="font-family: serif;"><strong>新着お悩み一覧</strong></h1>
   <div class="row justify-content-center">
     <div class="col-10 mt-4 mb-3">
       <% @posts.each_slice(4) do |slice| %>
-      <div class="row mb-4">
-        <% slice.compact.each do |post| %>
-          <div class="col-md-3 mb-4"> <!-- カラムの幅を調整 -->
-            <div class="card">
-              <div class="post-image">
-                <%= link_to trainer_post_path(post) do %>
-                  <%= image_tag post.image, class: "img-thumbnail" if post.image.attached? %>
-                  <div class="overlay">
-                    <i class="fas fa-search-plus fa-3x"></i>
-                  </div>
-                <% end %>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">
-                  <%= link_to trainer_owner_path(post.owner) do %>
-                    <%= post.owner.name %>
+        <div class="row mb-4">
+          <% slice.compact.each do |post| %>
+            <div class="col-md-3 mb-4"> <!-- カラムの幅を調整 -->
+              <div class="card">
+                <div class="post-image">
+                  <%= link_to trainer_post_path(post) do %>
+                    <%= image_tag post.image, class: "img-thumbnail" if post.image.attached? %>
+                    <div class="overlay">
+                      <i class="fas fa-search-plus fa-3x"></i>
+                    </div>
                   <% end %>
-                </h5>
-                <h6 class="card-subtitle mb-2 text-muted">
-                  <%= post.title %>
-                </h6>
-                <p class="card-text">
-                  <strong>お悩み内容: </strong><%= post.category.name %>
-                </p>
-                <p class="card-text">
-                  <strong>相談内容: </strong></br>
-                  <% truncated_introduction = post.introduction.truncate(30, separator: /\s/) %>
-                  <%= truncated_introduction %>
-                </p>
-                <p class="card-text">
-                  <strong>トレーナー回答: </strong><%= post.advices.count %>件
-                </p>
-                <% if current_trainer.present? %>
-                <p id="favorite_btn_<%= post.id %>", class="card-text">
-                  <%= render "public/trainer/favorites/btn", post: post %></p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= link_to trainer_owner_path(post.owner) do %>
+                      <%= post.owner.name %>
+                    <% end %>
+                  </h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <%= post.title %>
+                  </h6>
+                  <p class="card-text">
+                    <strong>お悩み内容: </strong><%= post.category.name %>
+                  </p>
+                  <p class="card-text">
+                    <strong>相談内容: </strong></br>
+                    <% truncated_introduction = post.introduction.truncate(30, separator: /\s/) %>
+                    <%= truncated_introduction %>
+                  </p>
+                  <p class="card-text">
+                    <strong>トレーナー回答: </strong><%= post.advices.count %>件
+                  </p>
+                  <% if current_trainer.present? %>
+                    <p id="favorite_btn_<%= post.id %>", class="card-text">
+                      <%= render "public/trainer/favorites/btn", post: post %>
+                    </p>
                   <% end %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="row justify-content-center">
@@ -98,8 +99,8 @@
   </div>
 </section>
 
-            <section class="area" id="area-2">
-  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong>オススメトレーナー</strong></h1>
+<section class="area" id="area-2">
+  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong>トレーナー一覧</strong></h1>
   <div class="row justify-content-center">
     <div class="col-10 mt-4">
       <% @trainers.each_slice(4) do |slice| %>
@@ -138,80 +139,78 @@
   </div>
 </section>
 
+<div class="col-2"></div>
+</div>
 
-    <div class="col-2"></div>
-    </div>
-    
 <style>
   body {
     margin: 0;
     padding: 0;
-}
+  }
 
-.container {
+  .container {
     width: 100%;
     height: 56vh;
-}
+  }
 
-.slider-area {
+  .slider-area {
     /*position: relative;*/
     width: 100%;
     height: 100%;
     overflow: hidden;
-}
+  }
 
-.slider-text {
+  .slider-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
-}
+  }
 
-.slider-item {
+  .slider-item {
     position: absolute;
     inset: 0;
     opacity: 0;
     z-index: 0;
     animation: sliderAnime 30s linear infinite 0s;
-}
+  }
 
-
-.slider-item:nth-child(2) {
+  .slider-item:nth-child(2) {
     animation-delay: 10s;
-}
+  }
 
-.slider-item:nth-child(3) {
+  .slider-item:nth-child(3) {
     animation-delay: 20s;
-}
+  }
 
-.slider-item img {
+  .slider-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+  }
 
-@keyframes sliderAnime {
+  @keyframes sliderAnime {
     0% {
-        opacity: 0;
-        animation-timing-function: ease-in;
+      opacity: 0;
+      animation-timing-function: ease-in;
     }
 
     8% {
-        opacity: 1;
-        animation-timing-function: ease-out;
+      opacity: 1;
+      animation-timing-function: ease-out;
     }
 
     20% {
-        opacity: 1;
-        transform: scale(1.1);
+      opacity: 1;
+      transform: scale(1.1);
     }
 
     40%,
     100% {
-        opacity: 0;
-        transform: scale(1.2);
+      opacity: 0;
+      transform: scale(1.2);
     }
-}
+  }
 </style>

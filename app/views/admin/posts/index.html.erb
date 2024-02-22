@@ -30,7 +30,7 @@
         <tbody>
           <% @posts.each do |post| %>
             <tr onclick="window.location='<%= admin_post_path(post) %>';">
-              <td><%= link_to admin_owner_path(post.owner), class: "text-decoration-none" do %><%= post.owner.name %><% end %></td>
+              <td><%= post.owner.name %></td>
               <td><%= post.category.name %></td>
               <td><%= post.introduction.truncate(30, separator: /\s/) %></td>
               <td><%= post.advices.count %></td>
