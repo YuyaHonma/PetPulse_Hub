@@ -1,23 +1,22 @@
 class Public::Owner::PostsController < ApplicationController
+  before_action :authenticate_owner!, except:[:index, :show]
     
+  def new
+    @post = Post.new
+  end
     
-    def new
-        @post = Post.new
+  def create
+    @post = Post.new(post_params)
+    @post.owner_id = current_owner.id
+    
+    if @post.save
+      redirect_to owner_post_path(@post.id), notice: '投稿が作成されました'
+    else
+      render :new
     end
+  end
     
-    def create
-      @post = Post.new(post_params)
-      @post.owner_id = current_owner.id
-    
-      if @post.save
-        redirect_to owner_post_path(@post.id), notice: '投稿が作成されました'
-      else
-        render :new
-      end
-    end
-
-    
-    def index
+  def index
     case params[:order]
     when 'newest'
       @posts = Post.includes(:advices, :owner, :category).order(created_at: :desc).paginate(page: params[:page], per_page: 8)
@@ -37,37 +36,36 @@ class Public::Owner::PostsController < ApplicationController
     end
   end
     
-    def show
-        @posts = Post.all
-        @post = Post.find(params[:id])
-    end
+  def show
+    @posts = Post.all
+    @post = Post.find(params[:id])
+  end
     
-    def edit
-        @post = Post.find(params[:id])
-    end
+  def edit
+    @post = Post.find(params[:id])
+  end
     
-    def update
-        @post = Post.find(params[:id])
+  def update
+    @post = Post.find(params[:id])
 
-        if @post.update(post_params)
-        flash[:notice] = "投稿情報を変更しました。"
-        redirect_to owner_post_path(@post.id)
-        else
-        redirect_to edit_owner_post_path(@post.id)
-        end
+    if @post.update(post_params)
+      flash[:notice] = "投稿情報を変更しました。"
+      redirect_to owner_post_path(@post.id)
+    else
+      redirect_to edit_owner_post_path(@post.id)
     end
+  end
     
-    def destroy
-        @post = Post.find(params[:id])
-        @post.destroy
-        redirect_to owner_posts_path, notice: '投稿が削除されました'
-    end
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to owner_posts_path, notice: '投稿が削除されました'
+  end
 
     
-    private
+  private
 
-    def post_params
-      params.require(:post).permit(:title, :category_id, :introduction, :current_approach, :image)
-    end
+  def post_params
+    params.require(:post).permit(:title, :category_id, :introduction, :current_approach, :image)
+  end
 end
-

@@ -20,19 +20,19 @@
 
     <div class="row">
       <% @posts.in_groups_of(3, false) do |group| %>
-          <% group.compact.each do |post| %>
-            <div class="col-md-3 mb-4">
-              <%= link_to owner_post_path(post), class: "card-hover-effect", style: "text-decoration: none; color: black;", data: { toggle: "tooltip", placement: "top", title: post.title } do %>
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title" style="font-size: 18px;"><strong>🐶しつけに関するお悩み:</br></strong> <%= post.title %></h5>
-                    <p class="card-text" style="font-size: 16px;"><strong>🐾ご相談内容:</br></strong> <%= post.introduction %></p>
-                    <p class="card-text" style="font-size: 14px;"><strong class="text-muted">🐕相談したいお悩み内容: <%= link_to post.category.name, owner_category_path(post.category), style: "text-decoration: none; color: #007bff;" %></strong></p>
-                  </div>
+        <% group.compact.each do |post| %>
+          <div class="col-md-3 mb-4">
+            <%= link_to owner_post_path(post), class: "card-hover-effect", style: "text-decoration: none; color: black;", data: { toggle: "tooltip", placement: "top", title: post.title } do %>
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title" style="font-size: 18px;"><strong>🐶しつけに関するお悩み:</br></strong> <%= post.title %></h5>
+                  <p class="card-text" style="font-size: 16px;"><strong>🐾ご相談内容:</br></strong> <%= post.introduction %></p>
+                  <p class="card-text" style="font-size: 14px;"><strong class="text-muted">🐕相談したいお悩み内容: <%= link_to post.category.name, owner_category_path(post.category), style: "text-decoration: none; color: #007bff;" %></strong></p>
                 </div>
-              <% end %>
-            </div>
-          <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

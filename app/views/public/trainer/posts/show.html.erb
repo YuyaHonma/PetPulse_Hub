@@ -72,15 +72,14 @@
         </table>
       </div>
       <div class="mb-4">
-      <h1 style="font-weight:bold; font-family: serif;"><strong>🐾コメント一覧🐾</strong></h1>
+        <h1 style="font-weight:bold; font-family: serif;"><strong>🐾コメント一覧🐾</strong></h1>
       </div>
       <!-- コメント一覧 -->
       <div id="advice_index"> 
-      <%= render "public/trainer/advices/index", post: @post %>
+        <%= render "public/trainer/advices/index", post: @post %>
       </div>
       <!-- コメントフォーム -->
       <%= render "public/trainer/advices/form", post: @post, advice: @advice %>
     </div>
   </div>
 </div>
-

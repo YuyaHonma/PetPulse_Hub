@@ -1,7 +1,7 @@
-<div class = "container">
-  <div class = "row">
-    <div class = "col mt-3">
-      <h3  class="mb-4" style="font-weight:bold; font-family: serif; font-size:30px;"><strong>"<%= @trainer.name %>"さん会員登録編集</strong> </h3>
+<div class="container">
+  <div class="row">
+    <div class="col mt-3">
+      <h3 class="mb-4" style="font-weight:bold; font-family: serif; font-size:30px;"><strong>"<%= @trainer.name %>" さん会員登録編集</strong></h3>
       <% if @trainer.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@trainer.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -13,46 +13,46 @@
         </div>
       <% end %>
       <%= form_with model: @trainer, url: admin_trainer_path(@trainer) do |f| %>
-      <table class = "table table-borderless", style="background-color: #fffaf0;">
-        <tr>
-          <th class="align-middle">トレーナーID</th>
-          <td class="align-middle"><%= @trainer.id %></td>
-        </tr>
-        <tr>
-          <th class="align-middle">名前</th>
-          <td class="align-middle"><%= f.text_field :name, autofocus: true, autocomplete: "name", required: true %></td>
-        </tr>
-        <tr>
-          <th class="align-middle">フリガナ</th>
-          <td class="align-middle"><%= f.text_field :name_kana, autofocus: true, autocomplete: "name_kana", required: true %></td>
-        </tr>
-        <tr>
-          <th class="align-middle">お住まい</th>
-          <td class="align-middle" colspan="2"><%= f.text_field :address, autofocus: true, autocomplete: "address", required: true, style: "width: 500px;" %></td>
-        </tr>
-        <tr>
-          <th class="align-middle">電話番号</th>
-          <td class="align-middle"><%= f.text_field :telephone, autofocus: true, autocomplete: "telephone", required: true %></td>
-        </tr>
-        <tr>
-          <th class="align-middle">メールアドレス</th>
-          <td class="align-middle"><%= f.text_field :email, autofocus: true, autocomplete: "email", required: true %></td>
-        </tr>
-        <tr>
-          <th class="align-middle">会員ステータス</th>
-          <td class="align-middle">
-            <span><%= f.radio_button :is_active, "true" %>有効</span>
-            <span class="pl-3"><%= f.radio_button :is_active, "false" %>退会</span>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="pt-5">
-            <%= f.submit "変更を保存", class: "btn btn-lg btn-success", style:"width: 150px" %>
-          </td>
-        </tr>
-      </table>
-        <% end %>
+        <table class="table table-borderless" style="background-color: #fffaf0;">
+          <tr>
+            <th class="align-middle">トレーナーID</th>
+            <td class="align-middle"><%= @trainer.id %></td>
+          </tr>
+          <tr>
+            <th class="align-middle">名前</th>
+            <td class="align-middle"><%= f.text_field :name, autofocus: true, autocomplete: "name", required: true %></td>
+          </tr>
+          <tr>
+            <th class="align-middle">フリガナ</th>
+            <td class="align-middle"><%= f.text_field :name_kana, autofocus: true, autocomplete: "name_kana", required: true %></td>
+          </tr>
+          <tr>
+            <th class="align-middle">お住まい</th>
+            <td class="align-middle" colspan="2"><%= f.text_field :address, autofocus: true, autocomplete: "address", required: true, style: "width: 500px;" %></td>
+          </tr>
+          <tr>
+            <th class="align-middle">電話番号</th>
+            <td class="align-middle"><%= f.text_field :telephone, autofocus: true, autocomplete: "telephone", required: true %></td>
+          </tr>
+          <tr>
+            <th class="align-middle">メールアドレス</th>
+            <td class="align-middle"><%= f.text_field :email, autofocus: true, autocomplete: "email", required: true %></td>
+          </tr>
+          <tr>
+            <th class="align-middle">会員ステータス</th>
+            <td class="align-middle">
+              <span><%= f.radio_button :is_active, "true" %> 有効</span>
+              <span class="pl-3"><%= f.radio_button :is_active, "false" %> 退会</span>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="pt-5">
+              <%= f.submit "変更を保存", class: "btn btn-lg btn-success", style:"width: 150px" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>

@@ -43,7 +43,7 @@
 </div>
 
 <section class="area" id="area-1">
-  <h1 class="row justify-content-center mb-4 fadeIn", style="font-family: serif;"><strong>新着情報</strong></h1>
+  <h1 class="row justify-content-center mb-4 fadeIn" style="font-family: serif;"><strong>新着情報</strong></h1>
   <div class="row justify-content-center">
     <div class="col-10 mt-4 mb-3">
       <% @posts.each_slice(4) do |slice| %>
@@ -80,7 +80,7 @@
                   <strong>トレーナー回答: </strong><%= post.advices.count %>件
                 </p>
                 <% if current_owner.present? %>
-                  <p id="favorite_btn_<%= post.id %>", class="card-text">
+                  <p id="favorite_btn_<%= post.id %>" class="card-text">
                     <%= render "public/owner/favorites/btn", post: post %>
                   </p>
                 <% end %>
@@ -93,15 +93,14 @@
     </div>
   </div>
   <div class="col-12">
-  <div class="text-center"> <!-- 中央揃え -->
-  <a href="<%= owner_posts_path %>" class="link-style">投稿一覧を見る</a>
-  </div>
+    <div class="text-center"> <!-- 中央揃え -->
+      <a href="<%= owner_posts_path %>" class="link-style">投稿一覧を見る</a>
+    </div>
   </div>
 </section>
 
-
 <section class="area mt-4 mb-5" id="area-2">
-  <h1 class="row justify-content-center mb-4", style="font-family: serif;"><strong>オススメトレーナー</strong></h1>
+  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong>オススメトレーナー</strong></h1>
   <div class="row justify-content-center mt-4">
     <div class="col-10 mt-4 mb-3">
       <% @trainers.each_slice(4) do |slice| %>
@@ -135,12 +134,11 @@
       <% end %>
     </div>
     <div class="col-12">
-  <div class="text-center"> <!-- 中央揃え -->
-    <a href="<%= owner_trainers_path %>" class="link-style">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
-  </div>
-  </div>
+      <div class="text-center"> <!-- 中央揃え -->
+        <a href="<%= owner_trainers_path %>" class="link-style">トレーナー一覧を見る</a>
+      </div>
+    </div>
 </section>
-
 
 <section class="area mt-5" id="area-3">
   <div class="container">
@@ -161,7 +159,7 @@
       <% end %>
     </div>
     <div class="text-center mt-3"> <!-- 中央揃え -->
-    <a href="<%= owner_categorys_path %>" class="link-style">カテゴリー一覧を見る</a>
+      <a href="<%= owner_categorys_path %>" class="link-style">カテゴリー一覧を見る</a>
     </div>
   </div>
 </section>
@@ -188,6 +186,7 @@
 </style>
 
 <%= render partial: 'public/owner/shared/new_post_path' %>
+
 <style>
   body {
     margin: 0;
@@ -222,7 +221,6 @@
     z-index: 0;
     animation: sliderAnime 30s linear infinite 0s;
 }
-
 
 .slider-item:nth-child(2) {
     animation-delay: 10s;

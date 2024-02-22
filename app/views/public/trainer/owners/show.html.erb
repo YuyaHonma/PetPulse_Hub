@@ -23,21 +23,21 @@
   
   <div class="row mt-4">
     <div class="col-12 text-center mt-4">
-        <% @pets.each do |pet| %>
-          <div class="col-10 mx-auto mt-4">
-            <h3 class="mb-4" style="font-weight:bold; font-family: serif;">🔳登録済みペット情報</h3>
-            <div class="row">
-              <%= render partial: 'public/owner/shared/pet_info', locals: { pet: pet } %>
-              <div class="col-md-6 border text-center" style="background-color: #E6F4FA;">
-                <div class="mb-2" style="margin-top: 10px;">
-                  <%= link_to owner_pet_path(pet) do %>
-                    <%= image_tag pet.image, style: "width: 430px; height: 300px; object-fit: cover; display: inline-block; vertical-align: middle;", alt: "ペットの写真" if pet.image.attached? %>
-                  <% end %>
-                </div>
+      <% @pets.each do |pet| %>
+        <div class="col-10 mx-auto mt-4">
+          <h3 class="mb-4" style="font-weight:bold; font-family: serif;">🔳登録済みペット情報</h3>
+          <div class="row">
+            <%= render partial: 'public/owner/shared/pet_info', locals: { pet: pet } %>
+            <div class="col-md-6 border text-center" style="background-color: #E6F4FA;">
+              <div class="mb-2" style="margin-top: 10px;">
+                <%= link_to owner_pet_path(pet) do %>
+                  <%= image_tag pet.image, style: "width: 430px; height: 300px; object-fit: cover; display: inline-block; vertical-align: middle;", alt: "ペットの写真" if pet.image.attached? %>
+                <% end %>
               </div>
             </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
   

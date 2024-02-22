@@ -72,9 +72,9 @@
       <%= image_tag("PetPulse_Hub_Logo.png", alt: "PetPulse_Hub", style: "max-height: 90px;") %>
     </a>
     <a class="navbar-text">日本最大級の<br>オンラインドッグトレーニングサイト</a>
-      <% if trainer_signed_in? %>
-        <p class = "text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px; margin-left: 20px;">Welcome to <%= current_trainer.name %>！</p>
-      <% end %>
+    <% if trainer_signed_in? %>
+      <p class="text-black" style="font-family: 'Playfair Display', serif; color: black; margin-top: 20px; margin-left: 20px;">Welcome to <%= current_trainer.name %>！</p>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -83,11 +83,11 @@
       <ul class="navbar-nav ms-auto">
         <% if trainer_signed_in? %>
           <% unless current_trainer.guest? %>
-          <li class="nav-item">
-            <%= link_to trainer_trainer_path(current_trainer), class: "nav-link" do %>
-              My page
-            <% end %>
-          </li>
+            <li class="nav-item">
+              <%= link_to trainer_trainer_path(current_trainer), class: "nav-link" do %>
+                My page
+              <% end %>
+            </li>
           <% end %>
           <li class="nav-item">
             <%= link_to trainer_owners_path, class: "nav-link" do %>

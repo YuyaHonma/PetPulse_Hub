@@ -1,7 +1,7 @@
 class Public::Trainer::PostsController < ApplicationController
-    before_action :authenticate_trainer!
+  before_action :authenticate_trainer!
    
-   def index
+  def index
     case params[:order]
     when 'newest'
       @posts = Post.includes(:advices, :owner, :category).order(created_at: :desc).paginate(page: params[:page], per_page: 8)
@@ -21,9 +21,9 @@ class Public::Trainer::PostsController < ApplicationController
     end
   end
    
-   def show
-       @posts = Post.all
-       @post = Post.find(params[:id])
-       @advice = Advice.new
-   end
+  def show
+    @posts = Post.all
+    @post = Post.find(params[:id])
+    @advice = Advice.new
+  end
 end

@@ -9,4 +9,5 @@ class Admin::AdvicesController < ApplicationController
       format.js
     end
   end
+  
 end

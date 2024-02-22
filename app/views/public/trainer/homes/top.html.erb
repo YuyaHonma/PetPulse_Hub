@@ -25,7 +25,7 @@
 <div class="container">
   <div class="row" style="margin-top: 50px;">
     <!-- 左側のイラスト -->
-    <div class="col-3", style="margin-left: -60px;">
+    <div class="col-3" style="margin-left: -60px;">
       <%= image_tag "top_image.png", style: "width: 400px; height: 400px;", alt: "トップ画像" %>
     </div>
     <div class="col-1"></div>
@@ -43,7 +43,7 @@
 </div>
 
 <section class="area" id="area-1">
-  <h1 class="row justify-content-center mb-4", style="font-family: serif;"><strong>新着お悩み一覧</strong></h1>
+  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong>新着お悩み一覧</strong></h1>
   <div class="row justify-content-center">
     <div class="col-10 mt-4 mb-3">
       <% @posts.each_slice(4) do |slice| %>
@@ -80,7 +80,7 @@
                     <strong>トレーナー回答: </strong><%= post.advices.count %>件
                   </p>
                   <% if current_trainer.present? %>
-                    <p id="favorite_btn_<%= post.id %>", class="card-text">
+                    <p id="favorite_btn_<%= post.id %>" class="card-text">
                       <%= render "public/trainer/favorites/btn", post: post %>
                     </p>
                   <% end %>

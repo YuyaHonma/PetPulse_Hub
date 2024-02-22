@@ -1,45 +1,45 @@
 <div class="container mt-4">
     <div class="row">
-    <div class="col-10 mt-4 mx-auto">
-      <h3 class="mb-4" style="font-weight:bold; font-family: serif;">🔳飼い主情報確認</h3>
-      <div class="col-12 text-right" style="margin-top: -60px; margin-bottom: 30px;">
-        <%= link_to "🐶飼い主投稿一覧へ", owner_posts_list_path, class: "link-style" %>
-      </div>
-      <%= render "public/owner/owners/owner_info", owners: @owner %>
-      <% if current_owner == @owner %>
-        <div class="d-flex justify-content-center mt-4"> <!-- 余白を減らしています -->
-          <%= link_to "プロフィールを編集する", owner_edit_information_path, class: "btn btn-success btn-sm d-flex align-items-center justify-content-center", style: "width: 200px; height: 50px; border-radius: 10px;" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="row mt-4">
-  </div>
-  
-  <div class="row">
-    <div class="col-10 mx-auto">
-      <h3 class="mb-4" style="font-weight:bold; font-family: serif;">いいねした投稿一覧</h3>
-      <% if @favorite_posts.any? %>
-        <% @favorite_posts.each_slice(3) do |slice| %>
-          <div class="row">
-            <% slice.each do |post| %>
-              <div class="col-md-4 mb-4">
-                <%= link_to owner_post_path(post), class: "card-hover-effect", style: "text-decoration: none; color: black;", data: { toggle: "tooltip", placement: "top", title: post.title } do %>
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h5 class="card-title" style="font-size: 18px;"><strong>🐶しつけに関するお悩み:</br></strong> <%= post.title %></h5>
-                      <p class="card-text" style="font-size: 16px;"><strong>🐾ご相談内容:</br></strong> <%= post.introduction %></p>
-                      <p class="card-text" style="font-size: 14px;"><strong class="text-muted">🐕相談したいお悩み内容: <%= link_to post.category.name, owner_category_path(post.category), style: "text-decoration: none; color: #007bff;" %></strong></p>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
+        <div class="col-10 mt-4 mx-auto">
+            <h3 class="mb-4" style="font-weight:bold; font-family: serif;">🔳飼い主情報確認</h3>
+            <div class="col-12 text-right" style="margin-top: -60px; margin-bottom: 30px;">
+                <%= link_to "🐶飼い主投稿一覧へ", owner_posts_list_path, class: "link-style" %>
+            </div>
+            <%= render "public/owner/owners/owner_info", owners: @owner %>
+            <% if current_owner == @owner %>
+                <div class="d-flex justify-content-center mt-4">
+                    <%= link_to "プロフィールを編集する", owner_edit_information_path, class: "btn btn-success btn-sm d-flex align-items-center justify-content-center", style: "width: 200px; height: 50px; border-radius: 10px;" %>
+                </div>
             <% end %>
-          </div>
-        <% end %>
-      <% else %>
-        <p>いいねした投稿はありません。</p>
-      <% end %>
+        </div>
     </div>
-  </div>
+    <div class="row mt-4">
+    </div>
+
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h3 class="mb-4" style="font-weight:bold; font-family: serif;">いいねした投稿一覧</h3>
+            <% if @favorite_posts.any? %>
+                <% @favorite_posts.each_slice(3) do |slice| %>
+                    <div class="row">
+                        <% slice.each do |post| %>
+                            <div class="col-md-4 mb-4">
+                                <%= link_to owner_post_path(post), class: "card-hover-effect", style: "text-decoration: none; color: black;", data: { toggle: "tooltip", placement: "top", title: post.title } do %>
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-size: 18px;"><strong>🐶しつけに関するお悩み:</br></strong> <%= post.title %></h5>
+                                            <p class="card-text" style="font-size: 16px;"><strong>🐾ご相談内容:</br></strong> <%= post.introduction %></p>
+                                            <p class="card-text" style="font-size: 14px;"><strong class="text-muted">🐕相談したいお悩み内容: <%= link_to post.category.name, owner_category_path(post.category), style: "text-decoration: none; color: #007bff;" %></strong></p>
+                                        </div>
+                                    </div>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+            <% else %>
+                <p>いいねした投稿はありません。</p>
+            <% end %>
+        </div>
+    </div>
 </div>

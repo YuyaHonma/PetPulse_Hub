@@ -32,5 +32,4 @@ class Public::Owner::RoomsController < ApplicationController
   def message_params
     params.require(:message).permit(:message)
   end
-
 end
