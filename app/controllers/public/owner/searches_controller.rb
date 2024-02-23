@@ -1,4 +1,5 @@
 class Public::Owner::SearchesController < ApplicationController
+  
     
   def search_posts
     @title=params[:title]

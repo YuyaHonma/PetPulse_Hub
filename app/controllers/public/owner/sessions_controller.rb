@@ -7,6 +7,16 @@ class Public::Owner::SessionsController < Devise::SessionsController
     sign_in owner
     redirect_to owner_owner_root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
+  
+  def after_sign_in_path_for(resource)
+    flash[:notice] = "ログインが成功しました！！"
+    owner_my_page_path
+  end
+
+  def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトが成功しました"
+    owner_owner_root_path
+  end
 
   protected
 
@@ -21,16 +31,6 @@ class Public::Owner::SessionsController < Devise::SessionsController
       flash[:notice] = "既に退会済みのアカウントです。新規会員登録が必要になります。"
       redirect_to new_owner_registration_path
     end
-  end
-  
-  def after_sign_in_path_for(resource)
-    flash[:notice] = "ログインが成功しました！！"
-    owner_my_page_path
-  end
-
-  def after_sign_out_path_for(resource)
-    flash[:notice] = "ログアウトが成功しました"
-    new_owner_session_path
   end
   
 end
