@@ -92,7 +92,7 @@ $(document).ready(function() {
     $('.contents').fadeOut('slow');
     $('#imageSection').fadeIn('slow');
     $('.box').fadeIn('slow'); // .boxを表示する
-  }, 2000);
+  }, 5000);
 });
 
 $(window).scroll(function() {

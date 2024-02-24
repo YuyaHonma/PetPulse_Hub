@@ -8,16 +8,24 @@ class Public::Owner::PetsController < ApplicationController
     
   def create
     @pet = current_owner.pets.build(pet_params)
-
     if @pet.save
       # ペット情報が保存された場合
       flash[:success] = "ペット情報が登録されました。"
       redirect_to owner_my_page_path
     else
+      @owner = current_owner
+      @pets = current_owner.pets.paginate(page: params[:page], per_page: 3) if current_owner.present?
       # ペット情報が保存されなかった場合
+      puts  @pet.errors.full_messages
       flash.now[:error] = "ペット情報の登録に失敗しました。"
-      puts @pet.errors.full_messages # エラーメッセージをコンソールに出力
-      render :new
+      if @owner.pets.size > 1
+        render template: "public/owner/owners/show"
+      else
+        render :new
+      end
+     # エラーメッセージをコンソールに出力
+      #render template: "public/owner/owners/show"
+      #redirect_to owner_my_page_path
     end
   end
     

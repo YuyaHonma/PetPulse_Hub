@@ -554,10 +554,11 @@ h1 span {
   border-box: box-sizing;
   background-color: #FFFFFF;
   font-weight: bold;
-  font-size: 26px;
+  font-size: 36px;
   opacity: 0;
   transform: translateY(50px); /* 初期状態で下に移動させる */
   transition: opacity 0.5s, transform 0.5s;
+  margin-bottom: 20px;
 }
 
 .box2.active {
@@ -581,6 +582,7 @@ h1 span {
 .box2 p {
   color: #333;
   line-height: 1.5;
+  margin-top: 50px;
 }  
 
 /* 全ての枠やカードの角を丸くする */
@@ -724,66 +726,5 @@ border-radius: 15px;
 .link-style:hover {
     background-position: -100% 0;
     color: #fff;
-}
-
-.ribbon {
-  display: inline-block;
-  position: relative;
-  height: 50px;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.ribbon::before {
-  content: '';
-  position: absolute;
-  width: 20px;
-  bottom: -10px;
-  left: -35px;
-  z-index: -2;
-  border: 20px solid #fc9492;
-  border-left-color: transparent;
-}
-
-.ribbon::after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  bottom: -10px;
-  right: -35px;
-  z-index: -2;
-  border: 20px solid #fc9492;
-  border-right-color: transparent;
-}
-
-.ribbon h2 {
-  display: inline-block;
-  position: relative;
-  margin: 0;
-  padding: 0 20px;
-  line-height: 50px;
-  font-size: 25px;
-  color: #FFF;
-  background: #f57a78;
-}
-
-.ribbon h2::before {
-  position: absolute;
-  content: '';
-  top: 100%;
-  left: 0;
-  border: none;
-  border-bottom: solid 10px transparent;
-  border-right: solid 15px #b65a59;
-}
-
-.ribbon h2::after {
-  position: absolute;
-  content: '';
-  top: 100%;
-  right: 0;
-  border: none;
-  border-bottom: solid 10px transparent;
-  border-left: solid 15px #b65a59;
 }
 

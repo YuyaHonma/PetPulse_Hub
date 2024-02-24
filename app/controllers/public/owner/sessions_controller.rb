@@ -26,7 +26,7 @@ class Public::Owner::SessionsController < Devise::SessionsController
     return unless owner.valid_password?(params[:owner][:password])
     if owner.is_active
       sign_in(owner)
-      redirect_to owner_owner_root_path
+      redirect_to owner_my_page_path
     else
       flash[:notice] = "既に退会済みのアカウントです。新規会員登録が必要になります。"
       redirect_to new_owner_registration_path

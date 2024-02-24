@@ -1,8 +1,7 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-10 mt-4 mx-auto">
-      <h3 class="mb-4" style="font-weight:bold; font-family: serif;">🔳トレーナー情報確認</h3>
-      
+      <h3 class="text-center mb-4" style="font-weight:bold; font-family: serif;">🔳トレーナー情報確認</h3>
       <% if current_trainer == @trainer %> <!-- ログイン中のトレーナーが自分の詳細情報の場合にのみ表示 -->
         <div class="text-left" style="margin-top: 60px;">
           <%= link_to "トレーナー情報編集", edit_trainer_trainer_path, class: "btn btn-success", style: "margin-top: -70px;" %>
@@ -14,6 +13,10 @@
           <%= link_to "🐶トレーナー一覧へ", trainer_trainers_path, class: "link-style" %>
         </div>
       <% end %>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-10 mx-auto">
       <table class="table table-bordered table-condensed" style="background-color: #D8FFF1; margin-top: 20px;">
         <tbody>
           <tr>
@@ -44,8 +47,12 @@
 
 <div class="container mt-4">
   <div class="row">
+    <div class="col-10 mt-4 mx-auto">
+      <h3 class="text-center mb-4" style="font-weight:bold; font-family: serif;">🔳トレーナー情報詳細</h3>
+        </div>
+          </div>
+      <div class="row">
     <div class="col-md-6">
-      <h3 class="mb-4" style="font-weight:bold; font-family: serif;">🔳トレーナー情報詳細</h3>
       <table class="table table-bordered" style="background-color: #F0FFFF;">
         <tbody>
           <tr>

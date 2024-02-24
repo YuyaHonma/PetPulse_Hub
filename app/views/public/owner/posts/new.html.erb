@@ -31,9 +31,12 @@
 
         <div class="form-group">
           <%= f.label :image, "画像を添付" %>
-          <%= f.file_field :image, class: "form-control" %>
+          <%= f.file_field :image, class: "form-control", id: "post_image" %>
           <small id="imagesHelp" class="form-text text-muted">画像を一枚選択してください。</small>
         </div>
+
+        <!-- Add a div to display the selected image URL -->
+        <div id="image_url_display"></div>
 
         <div class="form-group">
           <%= f.label :introduction, "ご相談内容" %>
@@ -57,3 +60,12 @@
   </div>
   <div class="row mt-4"></div> <!-- 余白を追加 -->
 </div>
+
+<!-- JavaScript to display the selected image URL -->
+<script>
+  document.getElementById('post_image').addEventListener('change', function() {
+    var file = this.files[0];
+    var image_url_display = document.getElementById('image_url_display');
+    image_url_display.innerHTML = '<p>選択した画像のURL: ' + URL.createObjectURL(file) + '</p>';
+  });
+</script>

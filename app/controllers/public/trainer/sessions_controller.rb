@@ -8,6 +8,16 @@ class Public::Trainer::SessionsController < Devise::SessionsController
     redirect_to trainer_trainer_root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
   
+  def after_sign_in_path_for(resource)
+    flash[:notice] = "ログインが成功しました！！"
+    trainer_trainer_path(current_trainer)
+  end
+
+  def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトが成功しました"
+    new_trainer_session_path
+  end
+  
   protected
   
   def trainer_state
@@ -16,7 +26,7 @@ class Public::Trainer::SessionsController < Devise::SessionsController
     return unless trainer.valid_password?(params[:trainer][:password])
     if trainer.is_active
       sign_in(trainer)
-      redirect_to trainer_trainer_root_path
+      redirect_to trainer_trainer_path(current_trainer)
     else
       flash[:notice] = "既に退会済みのアカウントです。新規会員登録が必要になります。"
       redirect_to new_trainer_registration_path
@@ -38,15 +48,7 @@ class Public::Trainer::SessionsController < Devise::SessionsController
   #   super
   # end
   
-  def after_sign_in_path_for(resource)
-    flash[:notice] = "ログインが成功しました！！"
-    trainer_trainer_path(current_trainer)
-  end
-
-  def after_sign_out_path_for(resource)
-    flash[:notice] = "ログアウトが成功しました"
-    new_trainer_session_path
-  end
+  
 
   # protected
 

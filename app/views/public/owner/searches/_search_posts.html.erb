@@ -1,6 +1,6 @@
 <div class="search-box">
     <%= form_with url: owner_owners_search_path, method: :get, local: true do |f| %>
-        <%= f.text_field :title, placeholder: "キーワード検索" %>
+        <%= f.text_field :title, placeholder: "キーワード検索", style: "font-size: 20px; width: 300px;" %> <!-- 幅を300pxに変更 -->
         <button type="submit">
             <i class="fas fa-search fa-fw"></i>
         </button>
