@@ -728,3 +728,20 @@ border-radius: 15px;
     color: #fff;
 }
 
+/* アイコンのアニメーションを定義 */
+@keyframes boneAnimation {
+  0%, 100% {
+    transform: rotate(0deg); /* 初期位置 */
+  }
+  25% {
+    transform: rotate(30deg); /* 右に30度回転 */
+  }
+  75% {
+    transform: rotate(-30deg); /* 左に30度回転 */
+  }
+}
+
+/* アイコンにアニメーションを適用 */
+.fa-bone {
+  animation: boneAnimation 4s linear infinite; /* 4秒間で1回のアニメーションを行い、linearで一定の速度でアニメーションを行う */
+}

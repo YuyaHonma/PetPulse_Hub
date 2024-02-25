@@ -1,3 +1,4 @@
+<div style="margin-top: -180px;"></div>
 <%= image_tag "pet_create.jpeg", style: "width: 100%; height: auto;", alt: "ペット画像" %>
 <% if @pet.errors.any? %>
   <div class="alert alert-danger">
@@ -11,6 +12,11 @@
 <% end %>
 <div class="container">
   <div class="row mt-4">
-    <%= render partial: 'public/owner/shared/pet_form', locals: { pet: @pet, title: '🔳マイペット新規登録', url: owner_my_page_path, method: :post, new_registration: @new_registration } %>
+    <!-- 画像表示部分 -->
+    <div class="col-md-3 mt-4 mx-auto text-left" style="padding-top: 420px;">
+      <%= image_tag "hello-everyone.gif", style: " width: 100%; height: auto;", alt: "Hello Everyone" %>
+    </div>
+    <%= render partial: 'public/owner/shared/pet_form', locals: { pet: @pet, title: raw('<i class="fa-solid fa-bone"></i> マイペット新規登録 <i class="fa-solid fa-bone"></i>'), url: owner_my_page_path, method: :post, new_registration: @new_registration } %>
+    <div class="col-1"></div>
   </div>
 </div>

@@ -32,13 +32,6 @@ class Public::Trainer::CategorysController < ApplicationController
     end
   end
   
-  def destroy
-    @category = Category.find(params[:id])
-    @category.destroy
-    flash[:notice] = "カテゴリーを削除しました。"
-    redirect_to trainer_categorys_path
-  end
-  
   private
 
   def category_params

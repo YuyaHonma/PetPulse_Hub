@@ -1,6 +1,6 @@
 <section class="area" id="area-1">
   <div class="container">
-    <h2 class="text-center mb-4"><strong><%= @category.name %> 投稿一覧</strong></h2>
+    <h2 class="text-center mb-4"><strong><i class="fa-solid fa-bone"></i> <%= @category.name %> 投稿一覧 <i class="fa-solid fa-bone"></i></strong></h2>
     <div class="row justify-content-center">
       <% @posts.each do |post| %>
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
@@ -33,7 +33,7 @@
 
 <section class="area mt-5" id="area-2">
   <div class="container">
-    <h2 class="text-center mb-4"><strong><%= @category.name %> おすすめトレーナー</strong></h2>
+    <h2 class="text-center mb-4"><strong><i class="fa-solid fa-bone"></i> <%= @category.name %> おすすめトレーナー <i class="fa-solid fa-bone"></i></strong></h2>
     <div class="row justify-content-center">
       <% @trainers.each do |trainer| %>
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">

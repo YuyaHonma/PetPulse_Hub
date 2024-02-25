@@ -52,7 +52,7 @@
         </div>
           </div>
       <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-7">
       <table class="table table-bordered" style="background-color: #F0FFFF;">
         <tbody>
           <tr>
@@ -84,9 +84,9 @@
       <h4 class="mb-4" style="font-weight:bold; font-family: serif;">愛犬家へのメッセージ</h4>
       <p><%= @trainer.message %></p>
     </div>
-    <div class="col-md-6 d-flex align-items-center justify-content-center">
+    <div class="col-md-5 d-flex align-items-center justify-content-center">
       <% if @trainer.image.present? %>
-        <%= image_tag @trainer.image, style: "max-height: 400px; width: 450px;", alt: "トレーナーのアイコン写真" %>
+        <%= image_tag @trainer.image, style: "max-height: 350px; width: 400px;", alt: "トレーナーのアイコン写真" %>
       <% else %>
         <p>画像がありません</p>
       <% end %>

@@ -18,9 +18,9 @@
     </div>
 </div>
 <ul id="page-link">
-  <li><a href="#area-1" class="scroll-link"><strong>新着情報</strong></a></li>
-  <li><a href="#area-2" class="scroll-link"><strong>オススメトレーナー</strong></a></li>
-  <li><a href="#area-3" class="scroll-link"><strong>よくあるお悩み</strong></a></li>
+  <li><a href="#area-1" class="scroll-link"><strong><i class="fa-solid fa-bone"></i> 新着情報</strong></a></li>
+  <li><a href="#area-2" class="scroll-link"><strong><i class="fa-solid fa-bone"></i> オススメトレーナー</strong></a></li>
+  <li><a href="#area-3" class="scroll-link"><strong><i class="fa-solid fa-bone"></i> よくあるお悩み</strong></a></li>
 </ul>
 
 <div class="container">
@@ -44,7 +44,7 @@
 </div>
 
 <section class="area" id="area-1">
-  <h1 class="row justify-content-center mb-4 fadeIn" style="font-family: serif;"><strong>新着情報</strong></h1>
+  <h1 class="row justify-content-center mb-4 fadeIn" style="font-family: serif;"><strong><i class="fa-solid fa-bone"></i> 新着情報 <i class="fa-solid fa-bone"></i></strong></h1>
   <div class="row justify-content-center">
     <div class="col-10 mt-4 mb-3">
       <% @posts.each_slice(4) do |slice| %>
@@ -101,14 +101,14 @@
 </section>
 
 <section class="area mt-4 mb-5" id="area-2">
-  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong>オススメトレーナー</strong></h1>
+  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong><i class="fa-solid fa-bone"></i> オススメトレーナー <i class="fa-solid fa-bone"></i></strong></h1>
   <div class="row justify-content-center mt-4">
     <div class="col-10 mt-4 mb-3">
       <% @trainers.each_slice(4) do |slice| %>
         <div class="row mb-4">
           <% slice.each do |trainer| %>
             <div class="col-md-3"> <!-- カラムの幅を調整 -->
-              <div class="card">
+              <div class="card rotate">
                 <%= link_to owner_trainer_path(trainer) do %>
                   <% if trainer.image.attached? %>
                     <%= image_tag trainer.image, class: "card-img-top", alt: "トレーナー画像" %>
@@ -118,14 +118,21 @@
                 <% end %>
                 <div class="card-body">
                   <h5 class="card-title text-center"><strong><%= "#{trainer.name} トレーナー" %></strong></h5>
-                  <% if trainer.message.present? %>
-                    <% truncated_message = truncate(trainer.message, length: 30, separator: ' ') %>
-                    <% if truncated_message.present? %>
-                      <% truncated_message.scan(/.{1,10}/).each do |line| %>
-                        <p class="card-text" style="font-size: 14px; line-height: 1.2;"><%= line %></p>
+                  <div class="front">
+                    <p class="card-text" style="font-size: 14px; line-height: 1.2;">
+                      <% if trainer.message.present? %>
+                        <% truncated_message = truncate(trainer.message, length: 30, separator: ' ') %>
+                        <% if truncated_message.present? %>
+                          <% truncated_message.scan(/.{1,10}/).each do |line| %>
+                            <%= line %><br>
+                          <% end %>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  <% end %>
+                    </p>
+                  </div>
+                  <div class="back">
+                    <p class="card-text text-center"><%= trainer.message %></p>
+                  </div>
                   <%= link_to "詳しく見る", owner_trainer_path(trainer), class: "btn btn-primary btn-sm btn-block mt-3" %>
                 </div>
               </div>
@@ -139,11 +146,13 @@
         <a href="<%= owner_trainers_path %>" class="link-style">トレーナー一覧を見る</a>
       </div>
     </div>
+  </div>
 </section>
+
 
 <section class="area mt-5" id="area-3">
   <div class="container">
-    <h2 class="text-center mb-4"><strong>よくあるお悩み</strong></h2>
+    <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong><i class="fa-solid fa-bone"></i> よくあるお悩み <i class="fa-solid fa-bone"></i></strong></h1>
     <div class="row justify-content-center">
       <% @categorys.each do |category| %>
         <div class="col-lg-4 col-md-6 mb-4">
