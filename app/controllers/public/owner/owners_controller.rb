@@ -1,16 +1,17 @@
 class Public::Owner::OwnersController < ApplicationController
+  before_action :authenticate_owner!
   before_action :check_guest, only: [:show]
   
   def index
     @owner = current_owner
-    @posts = @owner.posts  # 飼い主が投稿した内容を取得
+    @posts = @owner.posts
   end
   
   def show
     @owner = current_owner
     @pet = Pet.new
-    @pets = current_owner.pets.paginate(page: params[:page], per_page: 3) if current_owner.present?
-    @new_registration = true # 新規登録フォームを表示する
+    @pets = @owner.pets.paginate(page: params[:page], per_page: 3)
+    @new_registration = true
   end
     
   def edit
@@ -28,6 +29,7 @@ class Public::Owner::OwnersController < ApplicationController
   end
     
   def unsubscribe
+    # 退会手続きの実装が必要
   end
     
   def withdraw
@@ -45,9 +47,6 @@ class Public::Owner::OwnersController < ApplicationController
   end
   
   def check_guest
-    if current_owner.guest?
-      redirect_to owner_owner_root_path
-    end
+    redirect_to owner_owner_root_path if current_owner.guest?
   end
-  
 end

@@ -17,7 +17,7 @@
             <div class="card-body">
               <h5 class="card-title"><%= link_to post.title, owner_post_path(post), class: "text-dark" %></h5>
               <p class="card-text text-truncate"><%= truncate(post.introduction, length: 100) %></p>
-              <div class="text-muted small">投稿者: <%= link_to post.owner.name, owner_my_page_path(post.owner), class: "text-muted" %></div>
+              <div class="text-muted small">投稿者: <%= post.owner.name %></div>
             </div>
           </div>
         </div>

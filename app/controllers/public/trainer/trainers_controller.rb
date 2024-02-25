@@ -1,4 +1,5 @@
 class Public::Trainer::TrainersController < ApplicationController
+   before_action :check_guest, only: [:show]
    
    def index
       @trainers = Trainer.page(params[:page]).per(8)

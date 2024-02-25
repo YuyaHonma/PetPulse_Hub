@@ -421,6 +421,7 @@ margin-left: 10px;
 margin-top: 0px;
 font-size: 14px;
 color: #666;
+white-space: nowrap; /* 改行を無効にする */
 }
 .navbar-nav .nav-link {
 font-family: 'Times New Roman';
@@ -728,16 +729,16 @@ border-radius: 15px;
     color: #fff;
 }
 
-/* アイコンのアニメーションを定義 */
-@keyframes boneAnimation {
-  0%, 100% {
-    transform: rotate(0deg); /* 初期位置 */
+/* アイコンのアニメーション */
+.icon-container {
+  animation: iconLoop 2s linear infinite alternate; /* アニメーションを定義 */
+}
+@keyframes iconLoop {
+  from {
+    transform: translateX(40px); /* 開始位置 */
   }
-  25% {
-    transform: rotate(30deg); /* 右に30度回転 */
-  }
-  75% {
-    transform: rotate(-30deg); /* 左に30度回転 */
+  to {
+    transform: translateX(80px); /* 終了位置 */
   }
 }
 
@@ -745,3 +746,35 @@ border-radius: 15px;
 .fa-bone {
   animation: boneAnimation 4s linear infinite; /* 4秒間で1回のアニメーションを行い、linearで一定の速度でアニメーションを行う */
 }
+
+ /* アイコンのアニメーション */
+    .icon-container {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      animation: iconLoop 2s linear infinite alternate; /* アニメーションを定義 */
+    }
+    .icon-container .fa-dog {
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: iconMove 2s linear infinite alternate;
+    }
+    @keyframes iconLoop {
+      from {
+        transform: translateX(-20px); /* 開始位置 */
+      }
+      to {
+        transform: translateX(20px); /* 終了位置 */
+      }
+    }
+    @keyframes iconMove {
+      from {
+        left: 0;
+        top: 0;
+      }
+      to {
+        left: 20px;
+        top: 20px;
+      }
+    }

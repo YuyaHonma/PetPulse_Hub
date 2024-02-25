@@ -26,7 +26,13 @@
     <a class="navbar-brand" href="/">
       <%= image_tag("PetPulse_Hub_Logo.png", alt: "PetPulse_Hub", style: "max-height: 90px;") %>
     </a>
-    <a>日本最大級のオンラインドッグトレーニングサイト</a>
+    <a class="navbar-text" style="margin-right: 200px;">日本最大級の</br>オンラインドッグトレーニングサイト</a>
+    <div class="icon-container">
+      <i class="fas fa-dog"></i>
+    </div>
+    <div class="container">
+  <i class="fa-solid fa-house "></i>
+</div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -42,6 +48,7 @@
       </ul>
     </div>
 </nav>
+
 
 <div style="position: relative; height: auto; display: none;" id="imageSection">
   <%= video_tag "video (2160p)-2.mov", autoplay: true, muted: true, loop: true, style: "width: 100%;"%>

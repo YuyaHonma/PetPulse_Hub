@@ -12,7 +12,7 @@
   </div>
   <div class="row">
     <% @records.each do |post| %>
-      <div class="col-md-3"> <!-- カラムの幅を調整 -->
+      <div class="col-md-3 mb-4"> <!-- カラムの幅を調整 -->
         <div class="card">
           <div class="post-image">
             <%= link_to owner_post_path(post) do %>
@@ -24,9 +24,7 @@
           </div>
           <div class="card-body">
             <h5 class="card-title">
-              <%= link_to owner_my_page_path(post.owner) do %>
                 <%= post.owner.name %>
-              <% end %>
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
               <%= post.title %>
