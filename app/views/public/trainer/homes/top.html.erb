@@ -116,12 +116,12 @@
                     <%= image_tag 'no_image.jpg', class: "card-img-top", alt: "デフォルト画像" %>
                   <% end %>
                 <% end %>
-                <div class="card-body">
+                <div class="card-body text-center">
                   <h5 class="card-title text-center"><strong><%= "#{trainer.name} トレーナー" %></strong></h5>
                   <% if trainer.message.present? %>
-                    <% truncated_message = truncate(trainer.message, length: 30, separator: ' ') %>
+                    <% truncated_message = truncate(trainer.message, length: 42, separator: ' ') %>
                     <% if truncated_message.present? %>
-                      <% truncated_message.scan(/.{1,10}/).each do |line| %>
+                      <% truncated_message.scan(/.{1,14}/).each do |line| %>
                         <p class="card-text" style="font-size: 14px; line-height: 1.2;"><%= line %></p>
                       <% end %>
                     <% end %>
