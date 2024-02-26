@@ -12,8 +12,8 @@
         </div>
     </div>
 </div>
-
-<div class="container mt-4">
+<div style="margin-bottom: 150px;">
+<div class="container mt-4" style="margin-bottom: 150px;">
   <div class="row">
     <div class="col-9 mt-4 mx-auto">
       <h3 class="mb-4" style="font-weight:bold; font-family: serif;">🔳トレーナー情報編集</h3>
@@ -67,14 +67,14 @@
           <strong><%= f.label :"愛犬家の方へのメッセージ" %>
           <%= f.text_area :message, required: true, class: 'form-control message' %>
         </div>
-        <div class="row mt-4">
+        <div class="row mt-4" style="margin-bottom: 100px;">
           <div class="col-12">
             <div class="row justify-content-between">
               <div class="col-lg-6 mb-4">
                 <%= f.submit "変更を更新する", class: "btn btn-primary btn-lg", style: "width: 100%; border-radius: 30px;" %>
               </div>
               <div class="col-lg-6">
-                <div class="text-lg-right">
+                <div class="text-lg-right mb-4">
                   <%= link_to trainer_unsubscribe_path, class: "btn btn-danger btn-lg btn-block", style: "height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 30px;" do %>
                   退会画面へ
                 <% end %>
@@ -87,7 +87,7 @@
     </div>
   </div>
 </div>
-
+</div>
 <style>
   .container {
     width: 100%;

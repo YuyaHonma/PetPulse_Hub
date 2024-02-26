@@ -1,5 +1,4 @@
 class Public::Owner::OwnersController < ApplicationController
-  before_action :authenticate_owner!
   before_action :check_guest, only: [:show]
   
   def index
