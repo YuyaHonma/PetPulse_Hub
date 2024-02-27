@@ -81,8 +81,10 @@
           </tr>
         </tbody>
       </table>
-      <h4 class="mb-4" style="font-weight:bold; font-family: serif;">愛犬家へのメッセージ</h4>
-      <p><%= @trainer.message %></p>
+      <div class="message-box" style="background-color: white; border: 1px solid #ccc; padding: 10px; margin-top: 20px;">
+        <h4 class="mb-4" style="font-weight:bold; font-family: serif; border-bottom: 1px solid #ccc;">愛犬家へのメッセージ</h4>
+        <p><strong><%= @trainer.message %></strong></p>
+      </div>
     </div>
     <div class="col-md-4 d-flex align-items-center justify-content-center">
       <% if @trainer.image.present? %>
