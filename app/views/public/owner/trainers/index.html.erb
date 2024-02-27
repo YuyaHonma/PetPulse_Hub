@@ -19,13 +19,14 @@
           <div class="card">
             <div class="card-body">
               <a href="<%= owner_trainer_path(trainer) %>" class="text-decoration-none">
-                <h5 class="card-title"><%= trainer.name %></h5>
+                <h4 class="card-title"><%= trainer.name %> トレーナー</h4>
               <p class="card-text"><%= trainer.name_kana %></p>
               <ul class="list-unstyled">
-                <li>生年月日: <%= trainer.birthday %></li>
-                <li>出身地: <%= trainer.address %></li>
-                <li>趣味: <%= trainer.hobby %></li>
+                <li><strong>生年月日: <%= trainer.birthday %></strong></li>
+                <li><strong>出身地: <%= trainer.address %></strong></li>
+                <li><strong>趣味: <%= trainer.hobby %></strong></li>
               </ul>
+              <h4 class="mb-4" style="font-weight:bold; font-family: serif; border-bottom: 1px solid #ccc;">愛犬家の方へのメッセージ</h4>
               <p class="card-text"><%= trainer.message %></p>
               <div class="d-flex flex-wrap mt-3">
                 <% trainer.categories.each do |category| %>
