@@ -184,9 +184,11 @@
   }
 </style>
 
-<%= render partial: 'public/owner/shared/new_post_path' %>
-
+<% if current_owner.present? %>
+  <%= render partial: 'public/owner/shared/new_post_path' %>
+<% end %>
 <style>
+
   body {
     margin: 0;
     padding: 0;

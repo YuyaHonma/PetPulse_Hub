@@ -43,3 +43,5 @@
 ​
 ## 使用素材
 - Freepik(https://jp.freepik.com/photos/pet)
+- Pexels(https://www.pexels.com/ja-jp/)
+- フリーペンシル(https://iconbu.com/)
