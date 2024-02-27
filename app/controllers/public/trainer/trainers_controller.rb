@@ -47,8 +47,8 @@ class Public::Trainer::TrainersController < ApplicationController
    end
    
    def check_guest
-     if current_trainer.guest?
-       redirect_to trainer_trainer_root_path
-     end
+
+       redirect_to trainer_trainer_root_path if current_trainer.guest?
+
    end
 end

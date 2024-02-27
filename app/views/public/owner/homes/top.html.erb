@@ -124,7 +124,7 @@
                       <% end %>
                     <% end %>
                   <% end %>
-                  <%= link_to "詳しく見る", trainer_trainer_path(trainer), class: "btn btn-primary btn-sm btn-block rounded-pill mt-3" %>
+                  <%= link_to "詳しく見る", owner_trainer_path(trainer), class: "btn btn-primary btn-sm btn-block rounded-pill mt-3" %>
                 </div>
               </div>
             </div>
@@ -134,7 +134,7 @@
     </div>
   </div>
   <div class="text-center"> <!-- 中央揃え -->
-    <a href="<%= trainer_trainers_path %>">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
+    <a href="<%= owner_trainers_path %>">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
   </div>
 </section>
 
