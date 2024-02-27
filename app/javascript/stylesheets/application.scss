@@ -748,33 +748,33 @@ border-radius: 15px;
 }
 
  /* アイコンのアニメーション */
-    .icon-container {
-      position: relative;
-      width: 40px;
-      height: 40px;
-      animation: iconLoop 2s linear infinite alternate; /* アニメーションを定義 */
-    }
-    .icon-container .fa-dog {
-      position: absolute;
-      left: 0;
-      top: 0;
-      animation: iconMove 2s linear infinite alternate;
-    }
-    @keyframes iconLoop {
-      from {
-        transform: translateX(-20px); /* 開始位置 */
-      }
-      to {
-        transform: translateX(20px); /* 終了位置 */
-      }
-    }
-    @keyframes iconMove {
-      from {
-        left: 0;
-        top: 0;
-      }
-      to {
-        left: 20px;
-        top: 20px;
-      }
-    }
+.icon-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  animation: iconLoop 2s linear infinite alternate; /* アニメーションを定義 */
+}
+.icon-container .fa-dog {
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: iconMove 2s linear infinite alternate;
+}
+@keyframes iconLoop {
+  from {
+    transform: translateX(-20px); /* 開始位置 */
+  }
+  to {
+    transform: translateX(20px); /* 終了位置 */
+  }
+}
+@keyframes iconMove {
+  from {
+    left: 0;
+    top: 0;
+  }
+  to {
+    left: 20px;
+    top: 20px;
+  }
+}

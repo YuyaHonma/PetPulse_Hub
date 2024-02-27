@@ -1,12 +1,13 @@
 class Public::Trainer::TrainersController < ApplicationController
    
-   before_action :check_trainer, only: [:index, :show]
+   before_action :check_guest, only: [:show]
    
    def index
       @trainers = Trainer.page(params[:page]).per(8)
    end
    
    def show
+      @trainer = current_trainer
       @trainer = Trainer.find(params[:id])
    end
    
@@ -45,14 +46,9 @@ class Public::Trainer::TrainersController < ApplicationController
      params.require(:trainer).permit(:image, :name, :name_kana, :birthday, :hobby, :license, :message, category_ids:[])
    end
    
-   def check_trainer
-      unless trainer_signed_in?
-        flash[:alert] = "ログインが必要です"
-        redirect_to trainer_trainer_root_path
-      else current_trainer.guest?
-        flash[:alert] = "ログインが必要です"
-        redirect_to trainer_trainer_root_path
-      end
-    end
-
+   def check_guest
+     if current_trainer.guest?
+       redirect_to trainer_trainer_root_path
+     end
+   end
 end
