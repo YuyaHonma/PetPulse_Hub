@@ -1,5 +1,4 @@
 class Public::Trainer::TrainersController < ApplicationController
-   
    before_action :check_guest, only: [:show]
    
    def index
@@ -47,8 +46,6 @@ class Public::Trainer::TrainersController < ApplicationController
    end
    
    def check_guest
-
-       redirect_to trainer_trainer_root_path if current_trainer.guest?
-
+      redirect_to trainer_trainer_root_path if current_trainer.present? && current_trainer.guest?
    end
 end

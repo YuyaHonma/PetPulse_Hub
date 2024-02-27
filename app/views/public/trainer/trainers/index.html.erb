@@ -24,7 +24,11 @@
                       <% end %>
                     <% end %>
                   <% end %>
-                  <%= link_to "詳しく見る", trainer_trainer_path(trainer), class: "btn btn-primary btn-sm btn-block rounded-pill mt-3" %>
+                  <% if trainer_signed_in? %>
+                    <%= link_to "詳しく見る", trainer_trainer_path(trainer), class: "btn btn-primary btn-sm btn-block rounded-pill mt-3" %>
+                  <% else %>
+                    <%= link_to "詳しく見る", new_trainer_session_path, class: "btn btn-primary btn-sm btn-block rounded-pill mt-3" %>
+                  <% end %>
                 </div>
               </div>
             </div>
