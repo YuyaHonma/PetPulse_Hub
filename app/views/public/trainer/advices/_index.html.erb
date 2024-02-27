@@ -13,19 +13,19 @@
             <%= advice.trainer.name %>トレーナー
           <% end %>
         </td>
-        <td>
+        <td style="width: 600px;">
           <%= advice.created_at.strftime("%Y年%m月%d日 %H:%M") %>
           <div class="advice-box">
             
-            <% advice.advice.chars.each_slice(24) do |slice| %>
+            <% advice.advice.chars.each_slice(29) do |slice| %>
               <%= slice.join %><br>
             <% end %>
           </div>
         </td>
-        <td>
+        <td class="text-right" style="width: 150px;">
           <% if current_trainer == advice.trainer && current_trainer.present? %>
             <%# Check if the current user is the same as the trainer who provided the advice and if it's a trainer %>
-            <%= link_to "削除する", trainer_post_advice_path(post, advice), method: :delete, class: "btn btn-danger btn-lg btn-animate d-inline-block float-end", remote: true %>
+            <%= link_to "削除する", trainer_post_advice_path(post, advice), method: :delete, class: "btn btn-danger btn-lg btn-animate d-inline-block float-end", style: "font-size: 15px;",  remote: true %>
           <% elsif current_owner.nil? %>
             <%# Hide delete button for owner %>
           <% end %>
