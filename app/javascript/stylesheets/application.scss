@@ -742,10 +742,7 @@ border-radius: 15px;
   }
 }
 
-/* アイコンにアニメーションを適用 */
-.fa-bone {
-  animation: boneAnimation 4s linear infinite; /* 4秒間で1回のアニメーションを行い、linearで一定の速度でアニメーションを行う */
-}
+
 
  /* アイコンのアニメーション */
 .icon-container {
@@ -777,4 +774,25 @@ border-radius: 15px;
     left: 20px;
     top: 20px;
   }
+}
+
+/* アイコンにアニメーションを適用 */
+.fa-bone {
+  animation: boneAnimation 4s linear infinite; /* 4秒間で1回のアニメーションを行い、linearで一定の速度でアニメーションを行う */
+}
+
+@keyframes boneAnimation {
+  0% {
+    transform: rotate(25deg);
+  }
+  50% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: rotate(25deg);
+  }
+}
+
+.fa-bone {
+  animation: boneAnimation 4s linear infinite;
 }

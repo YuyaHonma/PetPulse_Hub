@@ -3,13 +3,13 @@
 <div class="container">
   <div class="slider-area">
     <div class="slider-item">
-      <%= image_tag "top.1.jpg" %>
+      <%= image_tag "trainer_top_1.jpg" %>
     </div>
     <div class="slider-item">
-      <%= image_tag "top.2.jpg" %>
+      <%= image_tag "trainer_top_2.jpg" %>
     </div>
     <div class="slider-item">
-      <%= image_tag "top.3.jpg" %>
+      <%= image_tag "trainer_top_3.jpg" %>
     </div>
     <!-- テキストを重ねる -->
     <div class="slider-text">
@@ -19,8 +19,8 @@
 </div>
 
 <ul id="page-link">
-  <li><a href="#area-1">お悩み一覧</a></li>
-  <li><a href="#area-2">トレーナー一覧</a></li>
+  <li><a href="#area-1"><strong><i class="fa-solid fa-bone"></i> お悩み一覧</strong></a></li>
+  <li><a href="#area-2"><strong><i class="fa-solid fa-bone"></i> トレーナー一覧</strong></a></li>
 </ul>
 
 <div class="container">
@@ -44,7 +44,7 @@
 </div>
 
 <section class="area" id="area-1">
-  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong>新着お悩み一覧</strong></h1>
+  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong><i class="fa-solid fa-bone"></i> 新着お悩み一覧 <i class="fa-solid fa-bone"></i></strong></h1>
   <div class="row justify-content-center">
     <div class="col-10 mt-4 mb-3">
       <% @posts.each_slice(4) do |slice| %>
@@ -94,14 +94,14 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-10">
-      <p class="text-center"><%= link_to "一覧を見る", trainer_posts_path %></p>
+    <div class="col-1">
+      <p class="text-center link-style"><%= link_to "一覧を見る", trainer_posts_path %></p>
     </div>
   </div>
 </section>
 
 <section class="area" id="area-2">
-  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong>トレーナー一覧</strong></h1>
+  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong><i class="fa-solid fa-bone"></i> トレーナー一覧 <i class="fa-solid fa-bone"></i></strong></h1>
   <div class="row justify-content-center">
     <div class="col-10 mt-4">
       <% @trainers.each_slice(4) do |slice| %>
@@ -136,8 +136,8 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-10">
-      <p class="text-center"><%= link_to "トレーナー一覧を見る", trainer_trainers_path %></p>
+    <div class="col-2">
+      <p class="text-center link-style"><%= link_to "トレーナー一覧を見る", trainer_trainers_path %></p>
     </div>
   </div>
 </section>

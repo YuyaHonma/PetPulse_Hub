@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row mb-4">
     <div class="col text-center">
-      <h1 style="font-weight:bold; font-family: serif;"><strong>検索結果</strong></h1>
+      <h1 style="font-weight:bold; font-family: serif;"><strong><i class="fa-solid fa-bone"></i> 検索結果 <i class="fa-solid fa-bone"></i></strong></h1>
       <h4>(全<%= @records.count %>件)</h4>
       <% if @records.empty? %>
         <div class="text-center" style="margin:30px;">
@@ -44,7 +44,7 @@
             </p>
             <% if current_trainer.present? %>
             <p id="favorite_btn_<%= post.id %>", class="card-text">
-              <%= render "public/owner/favorites/btn", post: post %></p>
+              <%= render "public/trainer/favorites/btn", post: post %></p>
               <% end %>
           </div>
         </div>

@@ -99,7 +99,7 @@
 </section>
 
 <section class="area" id="area-2">
-  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong>トレーナー一覧</strong></h1>
+  <h1 class="row justify-content-center mb-4" style="font-family: serif;"><strong><i class="fa-solid fa-bone"></i> トレーナー一覧 <i class="fa-solid fa-bone"></i></strong></h1>
   <div class="row justify-content-center">
     <div class="col-10 mt-4">
       <% @trainers.each_slice(4) do |slice| %>
@@ -133,8 +133,8 @@
       <% end %>
     </div>
   </div>
-  <div class="text-center"> <!-- 中央揃え -->
-    <a href="<%= owner_trainers_path %>">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
+  <div class="text-center mt-3"> <!-- 中央揃え -->
+    <a href="<%= owner_trainers_path %>" class="link-style">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
   </div>
 </section>
 
