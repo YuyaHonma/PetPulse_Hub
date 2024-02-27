@@ -61,17 +61,17 @@
       </table>
       
       <div class="text-center">
-        <% if current_owner.present? %>
-        <div class="btn-group" role="group" aria-label="Post Actions">
-          <%= link_to edit_owner_post_path(@post), class: "btn btn-primary btn-lg mb-5", style: "width: 250px; height: 55px; border-radius: 25px; margin-right: 55px; display: flex; justify-content: center; align-items: center;" do %>
-            <i class="fa-solid fa-pen-to-square fa-lg"></i>
-          <% end %>
-          <%= button_to owner_post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-lg", style: "width: 250px; height: 55px; border-radius: 25px; margin-left: 55px;" do %>
-            <i class="fa-solid fa-trash fa-lg"></i>
-          <% end %>
-          <div style="margin-bottom: 50px;"></div> <!-- ボタンの下の余白 -->
-        </div>
+        <% if current_owner.present? && current_owner.id == @post.owner_id %>
+      <div class="btn-group" role="group" aria-label="Post Actions">
+        <%= link_to edit_owner_post_path(@post), class: "btn btn-primary btn-lg mb-5", style: "width: 250px; height: 55px; border-radius: 25px; margin-right: 55px; display: flex; justify-content: center; align-items: center;" do %>
+          <i class="fa-solid fa-pen-to-square fa-lg"></i>
         <% end %>
+        <%= button_to owner_post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-lg", style: "width: 250px; height: 55px; border-radius: 25px; margin-left: 55px;" do %>
+          <i class="fa-solid fa-trash fa-lg"></i>
+        <% end %>
+        <div style="margin-bottom: 50px;"></div> <!-- ボタンの下の余白 -->
+      </div>
+      <% end %>
         <%= link_to owner_posts_path, class: "btn btn-secondary btn-lg mb-5", style: "width: 250px; height: 55px; border-radius: 25px;" do %>
         投稿一覧へ
       <% end %>
