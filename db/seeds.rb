@@ -2,7 +2,7 @@ Admin.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |admin|
   admin.email = ENV['ADMIN_EMAIL']
   admin.password = ENV['ADMIN_PASSWORD']
 end
-  
+
 category_names = ['トイレ',
                   '噛む',
                   '吠える',

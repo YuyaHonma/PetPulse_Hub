@@ -1,28 +1,37 @@
-<h2 class="text-center mb-4" style="font-size: 40px; font-weight: bold; font-family: serif;">トレーナー一覧</h2>
-
 <div class="container">
-  <div class="row">
-    <% @trainers.each_with_index do |trainer, index| %>
-      <div class="col-md-3 mb-4 mt-4">
-        <div class="card h-100 rounded-20">
-          <% if trainer.image.attached? %>
-            <%= image_tag(trainer.image, class: "card-img-top trainer-photo rounded-top", style: "object-fit: cover; height: 300px;") %>
-          <% else %>
-            <%= image_tag 'no_image', size: "300x300", class: "card-img-top trainer-photo rounded-top", style: "object-fit: cover;" %>
-          <% end %>
-          <div class="card-body">
-            <h3 class="card-title text-center"><%= trainer.name %> トレーナー</h3>
-            <p class="card-text"><%= trainer.message %></p>
-            <div class="text-center">
-              <%= link_to "詳しく見る", trainer_trainer_path(trainer), class: "btn btn-primary rounded-pill" %>
+  <h2 class="text-center mb-4" style="font-size: 40px; font-weight: bold; font-family: serif;">トレーナー一覧</h2>
+  <div class="row justify-content-center">
+    <div class="col-11 mt-4">
+      <% @trainers.each_slice(4) do |slice| %>
+        <div class="row">
+          <% slice.each do |trainer| %>
+            <div class="col-lg-3 col-md-3 col-sm-3 mb-4"> <!-- ここを変更 -->
+              <div class="card" style="width: 100%;"> <!-- ここを追加 -->
+                <%= link_to trainer_trainer_path(trainer) do %>
+                  <% if trainer.image.attached? %>
+                    <%= image_tag trainer.image, class: "card-img-top", alt: "トレーナー画像" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', class: "card-img-top", alt: "デフォルト画像" %>
+                  <% end %>
+                <% end %>
+                <div class="card-body text-center">
+                  <h5 class="card-title text-center"><strong><%= "#{trainer.name} トレーナー" %></strong></h5>
+                  <% if trainer.message.present? %>
+                    <% truncated_message = truncate(trainer.message, length: 42, separator: ' ') %>
+                    <% if truncated_message.present? %>
+                      <% truncated_message.scan(/.{1,14}/).each do |line| %>
+                        <p class="card-text" style="font-size: 14px; line-height: 1.2;"><%= line %></p>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <%= link_to "詳しく見る", trainer_trainer_path(trainer), class: "btn btn-primary btn-sm btn-block rounded-pill mt-3" %>
+                </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
-      </div>
-      <% if (index + 1) % 4 == 0 %>
-        </div><div class="row">
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
 
