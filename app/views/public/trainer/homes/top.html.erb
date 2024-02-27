@@ -135,8 +135,10 @@
       <% end %>
     </div>
   </div>
-  <div class="text-center"> <!-- 中央揃え -->
-    <a href="<%= trainer_trainers_path %>">トレーナー一覧を見る</a> <!-- 幅や高さはBootstrapのクラスで調整 -->
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <p class="text-center"><%= link_to "トレーナー一覧を見る", trainer_trainers_path %></p>
+    </div>
   </div>
 </section>
 
