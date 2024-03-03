@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col mt-4">
-      <h2 class="text-center mb-4" style="font-weight:bold; color:#A07B35; font-family: serif;">新規会員登録</h2>
+      <h1 class="text-center mb-4" style="font-weight:bold; font-family: serif;"><i class="fa-solid fa-bone"></i> 新規会員登録 <i class="fa-solid fa-bone"></i></h1>
       
       <div style="padding: 15px; margin-bottom: 10px; border: 5px double #A07B35; background-color: #fffaf0;">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -9,53 +9,58 @@
       <table>
         <tbody>
           <tr>
-            <td class="p-1">名前</td>
+            <td class="p-1"><strong>名前</strong></td>
             <td>
             <%= f.text_field :name, autofocus: true, autocomplete: "name", required: true %>
             </td>
             </tr>
             <tr>
-              <td class="p-1">フリガナ</td>
+              <td class="p-1"><strong>フリガナ</strong></td>
               <td>
                <%= f.text_field :name_kana, autofocus: true, autocomplete: "name_kana", required: true %>
               </td>
             </tr>
             <tr>
-              <td class="p-1"><%= f.label :email, "メールアドレス" %></td>
+              <td class="p-1"><strong><%= f.label :email, "メールアドレス" %></strong></td>
               <td class="p-1"><%= f.email_field :email, autocomplete: "email", required: true %></td>          
             </tr>
             <tr>
-              <td class="p-1"><%= f.label :address, "住所" %></td>
+              <td class="p-1"><strong><%= f.label :address, "住所" %></strong></td>
               <td colspan="3">              
             <%= f.text_field :address, size:"50", autofocus: true, autocomplete: "address", required: true %>
               </td>
             </tr>
             <tr>
-              <td class="p-1"><%= f.label :telephone, "電話番号(ハイフンなし)" %></td>
+              <td class="p-1"><strong><%= f.label :telephone, "電話番号(ハイフンなし)" %></strong></td>
               <td>
               <%= f.text_field :telephone, autofocus: true, autocomplete: "telephone", required: true %>
               </td>          
             </tr>
             <tr>
               <td>
-              <%= f.label :password, "パスワード" %>
+              <strong><%= f.label :password, "パスワード" %>
               <% if @minimum_password_length %>                
               <em>(<%= @minimum_password_length %> 文字以上)</em>
               <% end %>
-              </td>
+              </strong></td>
               <td>
                <%= f.password_field :password, autocomplete: "new-password", required: true %>
               </td>
             </tr>
             <tr>
-              <td class="p-1"><%= f.label :password_confirmation, "パスワード(確認用)" %></td>
+              <td class="p-1"><strong><%= f.label :password_confirmation, "パスワード(確認用)" %></strong></td>
               <td>
                 <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
               </td>
             </tr>
             <tr>
-              <td colspan="4"></td>
-              <td class="p-2"><%= f.submit "新規登録", class:"btn btn-success" %></td>
+              <td colspan="2" class="text-center">
+                <%= link_to new_session_path(resource_name), class: "btn btn-primary", style: "width: 200px; height: 50px; line-height: 35px; text-align: center;" do %>
+                  ログインへ
+                <% end %>
+              </td>
+              <td colspan="2"></td>
+              <td colspan="2" class="text-right"><%= f.submit "新規登録", class:"btn btn-success", style:"width: 200px; height: 50px;" %></td>
             </tr>
           </tbody>
         </table>
